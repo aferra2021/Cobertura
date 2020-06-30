@@ -28,7 +28,7 @@ class Registrarse(CreateView):
         email = form_class.cleaned_data.get('email')
         usuario = authenticate(username=username, password=password,email=email)
         login(self.request, usuario)
-        return redirect('reloadlycuba')
+        return redirect('cobertura')
 
 def ajax_posting(request):
     if request.is_ajax():

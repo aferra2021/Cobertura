@@ -42,7 +42,7 @@ animation-fill-mode: forwards;
 }
 </style>
 
-    <nav class="container-fluid navbar " id="barra" style="background-color: #f7f7f7">
+    <nav class="container-fluid navbar " id="inicio" style="background-color: #f7f7f7">
             <div class="row-container" id="Principal" style="display: flex;justify-content: space-between" >
                 <div class="navbar-header" id="general"style="width: 30%">
                     <button type="button"  id="boton" style="background-color:transparent;float: left" onclick="AjusteNavbar1(this)"  class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -50,7 +50,7 @@ animation-fill-mode: forwards;
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{% url 'reloadlycuba' %}">
+                    <a class="navbar-brand" href="{% url 'cobertura' %}">
                         <img id="myLogo" src= "{% static 'images/IMG-20200616-WA0002.jpg' %}" alt="Logo"
                         style="height: 50px;width: auto; border-color: #0f0f0f;border-radius: 5px;margin-top: -15px">
                     </a>
@@ -58,7 +58,7 @@ animation-fill-mode: forwards;
                 <div class="collapse navbar-collapse row"  style="width: 70%" id="myNavbar">
                     <ul class="nav navbar-nav" style="float: right" id="listanavbar">
                         <li class="">
-                                 <a href="{% url 'reloadlycubaEN' %}" style="color: #002a8f" data-toggle="tooltip"
+                                 <a href="{% url 'coberturaEN' %}" style="color: #002a8f" data-toggle="tooltip"
                                     title="Cambiar a inglés" data-placement="bottom" class="idioma">
                                     <i class="fa fa-globe"></i>&nbsp;ES
                                     <span class="caret"></span>
@@ -77,7 +77,7 @@ animation-fill-mode: forwards;
                                    <i class="glyphicon glyphicon-log-out"></i>
                                </a></li>
                             {% else %}
-                                <li><a href="{% url 'iniciarsecion' %}  " onclick="cli(x)" style="color: #002a8f"
+                                <li><a href="{% url 'iniciarsecion' %}" onclick="cli(x)" style="color: #002a8f"
                                 data-toggle="tooltip" title="Autenticarse" data-placement="bottom">
                                     <i class="glyphicon glyphicon-log-in"></i>
                                 </a></li>
@@ -86,7 +86,7 @@ animation-fill-mode: forwards;
                                     <i class="glyphicon glyphicon-edit"></i>
                                 </a></li>
                         {% endif%}
-                        <li><a style="color: #002a8f" href="#Servicios" data-toggle="tooltip" title="Deja tu comentario"
+                        <li><a style="color: #002a8f" href="{% url 'blog' %}" data-toggle="tooltip" title="Deja tu comentario"
                                data-placement="bottom">
                             <i class="fa fa-blog"></i>
                             Blog</a>
@@ -129,14 +129,14 @@ animation-fill-mode: forwards;
    <div class="container" style="display:flex;justify-content: space-between">
         <div class="col-sm-2">
         <div class="thumbnail">
-          <a data-toggle="collapse" onclick="Servicios('linkCubacel')" name="linkServicios" id="linkCubacel" href="#collapseGeneral" style="text-align: center;margin-top: -10px;color: #3c3c3c">
+          <a data-toggle="collapse" onclick="Servicios('linkCubacel','#Servicios')" name="linkServicios" id="linkCubacel" href="#collapseGeneral" style="text-align: center;margin-top: -10px;color: #3c3c3c">
             <img src="https://imagerepo.ding.com/logo/CU/CU.png" alt="Cubacel" style="width:140px;height:45px"></a>
             <p><strong>Cubacel</strong></p>
         </div>
       </div>
       <div class="col-sm-2">
         <div class="thumbnail">
-          <a data-toggle="collapse" onclick="Servicios('linkNauta')" name="linkServicios" id="linkNauta" href="#collapseGeneral" style="text-align: center;margin-top: -10px;color: #3c3c3c">
+          <a data-toggle="collapse" onclick="Servicios('linkNauta','#Servicios')" name="linkServicios" id="linkNauta" href="#collapseGeneral" style="text-align: center;margin-top: -10px;color: #3c3c3c">
             <img src="https://imagerepo.ding.com/logo/NU/CU.png" alt="Nauta"  style="width:140px;height:45px" ></a>
             <p><strong>Nauta</strong></p>
         </div>
@@ -336,10 +336,13 @@ animation-fill-mode: forwards;
     var move='';
     var collapseGeneral=document.getElementById('collapseGeneral');
     var collapse=null;
-    function Servicios(off) {
-        Collapse(off);
+
+    function Servicios(off,off2) {
+        if(off!=null){
+            Collapse(off);
+        }
         if(move==""){
-        var hash = "#Servicios";
+        var hash = off2;
             // Using jQuery's animate() method to add smooth page scroll
             // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
             $('html, body').animate({
@@ -356,7 +359,7 @@ animation-fill-mode: forwards;
               //  scrollTop: $(hash).offset().top
             }, 900, function () {
                 // Add hash (#) to URL when done scrolling (default click behavior)
-                window.location.hash = "#Servicios";
+                window.location.hash = off2;
             });
 
         }
@@ -459,7 +462,9 @@ animation-fill-mode: forwards;
             }
 
        window.onload=function () {
-
+                window.location.hash = '#inicio';
+                Servicios(null,'#inicio');
+                move="";
                 var size=$(window).width();
                 if($(window).width()>755){
                     navbarPrincipal();

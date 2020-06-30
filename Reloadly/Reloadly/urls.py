@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url,include
-from Reloadly.views import inicio, pagosGeneral,nuevaRecarga,inicioEN,MySocialView
+from Reloadly.views import inicio,nuevaRecarga,inicioEN,MySocialView,cantTransfer,blog
 from django.urls import reverse_lazy
 from django.contrib.auth import views as auth_views
 from django.conf.urls import (handler400, handler403, handler404, handler500)
@@ -28,10 +28,12 @@ from django.contrib.auth import views as auth_views
 #import six
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^reloadlycuba/en', inicioEN,name='reloadlycubaEN'),
-    url(r'^reloadlycuba/', inicio, name='reloadlycuba'),
-    url(r'^targetas/', pagosGeneral,name='pago'),
+    url(r'^cobertura/en', inicioEN,name='coberturaEN'),
+    url(r'^cobertura/', inicio, name='cobertura'),
     url(r'^nuevarecarga/', nuevaRecarga, name='nuevarecarga'),
+    url(r'^cantidadtransferencia/', cantTransfer, name='cantidadtransferencia'),
+    url(r'^blog/', blog, name='blog'),
+
     #social
     url(r'^social/',include('social_django.urls', namespace='social')),
     #url('', include('social.apps.django_app.urls', namespace='social')),#google
@@ -44,6 +46,7 @@ urlpatterns = [
     url(r'app4/', include('apps.EtecsaTelefonoFijo.urlEtecsaTelefonoFijo')),  # lo de app4 es suseptible al cambio
     url(r'app5/', include('apps.CubacelTur.urlCubacelTur')),  # lo de app5 es suseptible al cambio
     url(r'usuarios/', include('apps.Usuarios.urlUsuarios')),  # lo de app5 es suseptible al cambio
+    url(r'pagos/', include('apps.Pagos.urlPagos')),#PAGOS
    # url(r'^auth_ajax/', include('xauth.login_ajax_urls')),#auth with ajax
 #reset_password
     url('^', include('django.contrib.auth.urls')),

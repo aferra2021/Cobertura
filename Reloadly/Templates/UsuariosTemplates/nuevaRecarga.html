@@ -1,0 +1,149 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block Content %}
+<body>
+<style>
+    a {
+position: relative;
+overflow: hidden;
+display: inline-block;
+text-decoration: none;
+color: #002a8f;
+}
+a:after {
+content: "";
+position: absolute;
+bottom: 0;
+left: -100%;
+width: 100%;
+height: 2px;
+background: #002a8f;
+transition: left .8s;
+}
+a:hover:after {
+left: 0;
+}
+</style>
+
+<aside class="container-fluid col-sm-3" style="background-color:  #f7f7f7;border-radius: 0px 20px 20px 0px">
+    <div style="display: flex;justify-content: center">
+        <a class="navbar-brand" href="{% url 'cobertura' %}">
+            <img id="myLogo" src= "{% static 'images/IMG-20200616-WA0002.jpg' %}" alt="Logo"
+            style="height: 50px;width: auto; border-color: #0f0f0f;border-radius: 5px;margin-top: -15px">
+        </a>
+    </div>
+    <div style="display: flex;justify-content: center">
+        <i class="fa fa-user" style="height: 70px;width: auto;margin-top: 10px"></i>
+        <!--<img src="{% static 'images/1544726acd967064cf6559cc4dce6b9b.jpg' %}" alt="Picture" class="img-circle"
+             style="height: 100px; width: auto;margin-top: 10px">-->
+    </div>
+    <div style="display: flex;justify-content: center">
+        <h3 style="text-align: center;font-family: FontAwesome">Bienvenido, {{ request.user }}</h3>
+    </div>
+    <hr style="border: 1px solid lightgrey">
+    <div style="display: flex;justify-content: center;margin-top: 20px;margin-bottom: 20px">
+        <a style="color: #002a8f;text-decoration: none"  href="{% url 'nuevarecarga' %}">
+            <i class="fa fa-check"></i>
+            Nueva Recarga
+        </a>
+    </div>
+    <hr style="border: 1px solid lightgrey">
+    <div style="display: flex;justify-content: center;margin-top: 20px;margin-bottom: 20px">
+        <a style="color: #002a8f;text-decoration: none" href="{% url 'cantidadtransferencia' %}">
+            <i class="fa fa-share"></i>
+            Cantidad de transferencias
+        </a>
+    </div>
+    <hr style="border: 1px solid lightgrey">
+    <div style="display: flex;justify-content: space-around;margin-top: 20px;margin-bottom: 20px">
+        <a style="color: #002a8f;text-decoration: none">
+            <i class="fa fa-users"></i>
+            Contactos
+        </a>
+    </div>
+    <hr style="border: 1px solid lightgrey">
+    <div style="display: flex;justify-content: center;margin-top: 20px;margin-bottom: 20px">
+        <a style="color: #002a8f;text-decoration: none">
+        <i class="fa fa-shopping-cart"></i>
+        Carrito
+        </a>
+    </div>
+    <hr style="border: 1px solid lightgrey">
+    <div style="display: flex;justify-content: center">
+        <a href="{% url 'cerrar-sesion' %}" style="color: #002a8f;text-decoration: none"
+           data-toggle="tooltip" title="Salir de la cuenta" data-placement="bottom">
+           <i class="glyphicon glyphicon-log-out"></i>
+            Salir de la Cuenta
+        </a>
+    </div>
+    <hr style="border: 1px solid lightgrey">
+    <div style="display: flex;justify-content: center">
+        <a style="color: #002a8f; text-decoration: none" href="{% url 'blog' %}">
+            <i class="fa fa-blog"></i>
+            Blog
+        </a>
+    </div>
+    <hr style="border: 1px solid lightgrey">
+
+</aside>
+
+<div class="col-sm-9" style="height: 600px">
+<div class="container-fluid text-center">
+        <h1 class="col-sm-12 text-center" id="Servicios" style="background-color: #f7f7f7;border-radius:5px;height: 40px">Servicios</h1>
+        <div class="col-sm-12" style="display: flex;justify-content: center;margin-bottom: -10px">
+           <hr class="col-sm-11">
+        </div>
+
+       <div class="container-fluid col-sm-12" style="display: flex;justify-content: space-around">
+            <div class="col-sm-2">
+            <div class="thumbnail">
+              <a data-toggle="collapse" onclick="Servicios('linkCubacel')" name="linkServicios" id="linkCubacel" href="#collapseGeneral" style="text-align: center;margin-top: -10px;color: #3c3c3c">
+                <img src="https://imagerepo.ding.com/logo/CU/CU.png" alt="Cubacel" style="width:140px;height:45px"></a>
+                <p><strong>Cubacel</strong></p>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="thumbnail">
+              <a data-toggle="collapse" onclick="Servicios('linkNauta')" name="linkServicios" id="linkNauta" href="#collapseGeneral" style="text-align: center;margin-top: -10px;color: #3c3c3c">
+                <img src="https://imagerepo.ding.com/logo/NU/CU.png" alt="Nauta"  style="width:140px;height:45px" ></a>
+                <p><strong>Nauta</strong></p>
+            </div>
+          </div>
+            <div class="col-sm-2">
+                 <div class="jumbotron" style="display: flex;justify-content: center;height: 70%;width: auto">
+                    <a href="{% url 'cubacelventa' %}" style="text-align: center;margin-top: -20px;color: #3c3c3c">Cubacel Sim Telefono</a>
+                 </div>
+            </div>
+            <div class="col-sm-2">
+                  <div class="jumbotron" style="display: flex;justify-content: center;height: 70%;width: auto">
+                    <a href="{% url 'etecsa' %}" style="color: #3c3c3c">ETECTSA</a>
+                  </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="jumbotron" style="display: flex;justify-content: center;height: 70%;width: auto">
+                    <a href="{% url 'cubaceltur' %}" style="text-align: center;margin-top: -10px;color: #3c3c3c">Cubacel Tur</a>
+                </div>
+            </div>
+        </div>
+    <!--Esto debe ser construido con js para q no valla bajando se puede crear un marco comun y
+     lo q se cambia seria los link y los titulos con las imagenes y essas cosas pero el esqueleto es el mismo-->
+        <div class="panel-collapse collapse " id="collapseGeneral">
+              <h3 id="RecargaCollapse">RECARGAS</h3>
+              <div class="nav-tabs container col-sm-12" name="listaOfertas">
+                 <div class="well col-sm-2" >
+                      <a class="" href="http://127.0.0.1:8000/cubacel/recarga/1">Oferta UNO</a>
+                 </div>
+                 <div class="well col-sm-2" >
+                      <a class="" href="http://127.0.0.1:8000/cubacel/recarga/2">Oferta DOS</a>
+                 </div>
+                 <div class="well col-sm-2" >
+                      <a class="" href="http://127.0.0.1:8000/cubacel/recarga/2">Oferta TRES</a>
+                 </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+</body>
+{% endblock %}

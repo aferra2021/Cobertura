@@ -50,7 +50,7 @@ left: 0;
     </div>
     <hr style="border: 1px solid lightgrey">
     <div style="display: flex;justify-content: center;margin-top: 20px;margin-bottom: 20px">
-        <a style="color: #002a8f;text-decoration: none" href="{% url 'cantidadtransferencia' %}">
+        <a style="color: #002a8f;text-decoration: none">
             <i class="fa fa-share"></i>
             Cantidad de transferencias
         </a>
@@ -88,9 +88,37 @@ left: 0;
 
 </aside>
 
-<div class="container-fluid" style="background-color: #e1e9ec;height: 600px">
-
+<div class="container-fluid col-sm-9" style="height: 600px;display: flex;justify-content: center">
+    <div class="container four col-sm-5" style="margin-top: 150px">
+        <div class="counter-box" style="background-color: #f6f6f6;padding: 40px 20px 37px;text-align: center;border-radius: 10px">
+            <i class="fa fa-share" style="font-size: 60px;margin: 0 0 15px;color: #d2d2d2"></i>
+            <span class="counter" style="display: block;font-size: 32px;font-weight: 700;color: #666;line-height: 28px">
+                10
+            </span>
+            <p style="margin: 5px 0 0;padding: 0;color: #909090;font-size: 18px;font-weight: 500">
+                Cantidad de transferencias
+            </p>
+        </div>
+    </div>
 </div>
 
+
+<script>
+    $(document).ready(function() {
+
+$('.counter').each(function () {
+$(this).prop('Counter',0).animate({
+Counter: $(this).text()
+}, {
+duration: 1000,
+easing: 'swing',
+step: function (now) {
+$(this).text(Math.ceil(now));
+}
+});
+});
+
+});
+</script>
 </body>
 {% endblock %}

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.CubacelSimTelefono',
     'apps.ServiciosDing',
     'apps.Usuarios',
+    'apps.Pagos',
     #Social
     'rest_framework',#facebook
     #'rest_framework.authtoken',  # only if you use token authentication
@@ -158,9 +159,9 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '815b1f38b4a08d84181c2493f0dd9175'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY='837556477234-btgu807muqsgk3mcfards8hi8df0kbot.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET ='FtbKUYA5XEpgcQEd6xjEBMxw'
 REST_SOCIAL_DOMAIN_FROM_ORIGIN=True
-SOCIAL_AUTH_LOGIN_REDIRECT_URL='/reloadlycuba/'
-REST_SOCIAL_OAUTH_REDIRECT_URI = 'reloadlycuba'
-REST_SOCIAL_OAUTH_ABSOLUTE_REDIRECT_URI = 'http://http://127.0.0.1:8000/reloadlycuba/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL='/cobertura/'
+REST_SOCIAL_OAUTH_REDIRECT_URI = 'cobertura'
+REST_SOCIAL_OAUTH_ABSOLUTE_REDIRECT_URI = 'http://http://127.0.0.1:8000/cobertura/'
 REST_SOCIAL_LOG_AUTH_EXCEPTIONS=True
 SOCIAL_AUTH_STRATEGY='rest_social_auth.strategy.DRFStrategy'
 #end SOCIAL
@@ -170,8 +171,8 @@ SOCIAL_AUTH_STRATEGY='rest_social_auth.strategy.DRFStrategy'
 
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL = reverse_lazy('reloadlycuba')
-LOGOUT_REDIRECT_URL = reverse_lazy('reloadlycuba')
+LOGIN_REDIRECT_URL = reverse_lazy('cobertura')
+LOGOUT_REDIRECT_URL = reverse_lazy('cobertura')
 
 #recuperacion de contraseñas
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
