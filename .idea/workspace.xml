@@ -1,43 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b19be355-f63e-427d-abdc-61364bb96c75" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/blog.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/cantTransfer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/nuevaRecarga.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Pagos/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Pagos/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Pagos/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Pagos/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Pagos/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Pagos/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Pagos/urlPagos.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Pagos/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/migrations/0009_auto_20200630_1505.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/01_Capitolio_Habana_por_Pedro_Govea.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/93eb9ebd-eb71-4fcc-8d22-1fea80dfb1a2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/Havana-Cuba_Ultra-HD-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/galeria-la-habana-malecon.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/RECARGAS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RECARGAS.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Reloadly/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Reloadly/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Reloadly/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Reloadly/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Reloadly/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Reloadly/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/Base/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/Base/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/PagosTemplate/pagosGeneral.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/PagosTemplate/pagosGeneral.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/RecargasCubacelTemplates/RecargasCubacel.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/RecargasCubacelTemplates/RecargasCubacel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/RecargasNautaTemplates/RecargasNauta.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/RecargasNautaTemplates/RecargasNauta.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/userAdmin.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/userAdmin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/auth/user_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/auth/user_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/pagosGeneral.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/registration/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/Usuarios/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/Usuarios/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/Usuarios/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/db.sqlite3" afterDir="false" />
-    </list>
+    <list default="true" id="b19be355-f63e-427d-abdc-61364bb96c75" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,6 +50,19 @@
         </map>
       </branch-storage>
     </excluded-from-favorite>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/Nataly" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
         <option value="natySWE98" />
@@ -424,6 +401,7 @@
       <workItem from="1593484441978" duration="7184000" />
       <workItem from="1593496419738" duration="734000" />
       <workItem from="1593534529064" duration="9876000" />
+      <workItem from="1593555892922" duration="89000" />
     </task>
     <task id="LOCAL-00001" summary="subido">
       <created>1591995525040</created>
@@ -553,10 +531,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="98" y="90" width="1182" height="544" key="com.intellij.dvcs.ui.CompareBranchesDialog/0.0.1366.728@0.0.1366.728" timestamp="1593496868294" />
-    <state x="350" y="179" width="565" height="352" key="com.intellij.ide.util.TipDialog" timestamp="1593534535223">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="328" y="169" width="565" height="352" key="com.intellij.ide.util.TipDialog" timestamp="1593556021110">
+      <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="328" y="169" width="565" height="352" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1593365819777" />
+    <state x="328" y="169" width="565" height="352" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1593556021110" />
     <state x="350" y="179" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1593534535223" />
     <state x="436" y="34" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1591909245609">
       <screen x="0" y="0" width="1280" height="689" />
