@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
     def __srt__(self):
         return '{}'.format(self.correo)"""
 
-class TranferenciaCubacel (models.Model):
+class TranferenciaGeneral(models.Model):
     tipo=models.CharField(max_length=50)
     fecha=models.DateTimeField()
     cliente=models.ForeignKey(User,on_delete=models.CASCADE)

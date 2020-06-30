@@ -3,8 +3,6 @@ from json.decoder import JSONArray
 from django.template import Template,Context
 from django.http import HttpResponse,Http404
 from django.shortcuts import render
-from apps.Usuarios.models import TransferenciaActual
-from .ServiciosGenerales import ServerManage
 from django.template import RequestContext
 from rest_social_auth.views import SocialSessionAuthView
 from .serializers import MyUserSerializer
@@ -14,22 +12,25 @@ def inicio(request):
 def inicioEN(request):
     return HttpResponse(render(request,'indexEn.html'))
 
-def pagosGeneral(request):
-    if request.method=='GET':
-        listTrans=TransferenciaActual.objects.filter(cliente=request.user)
-        #aki hay q mostrar todas las transferencias q el usuario a metido en el carrito
-        return HttpResponse(render(request,'PagosTemplate/pagosGeneral.html',{'post':'True','ListTrans':listTrans}))
-    else:
-        #vamos asuponer q pague: ahora hay q hacer todad las transferencias q haya hecho ese usuario
-        listTrans=TransferenciaActual.objects.filter(cliente=request.user)
-        JsonCubacel=ServerManage(listTrans)
-        for trans in JsonCubacel:
-            if 'HTTPSConnectionPool' in trans.__str__():
-                return HttpResponse(render(request, 'PagosTemplate/pagosDone.html',{'json':'Usted no tiene coneccion'}))
-        return HttpResponse(render(request, 'PagosTemplate/pagosDone.html',{'json':JsonCubacel}))
 
 def nuevaRecarga(request):
-    pass
+    if request.method == 'POST':
+        pass
+    else:
+        return HttpResponse(render(request, 'UsuariosTemplates/nuevaRecarga.html'))
+
+def cantTransfer(request):
+    if request.method == 'POST':
+        pass
+    else:
+        return HttpResponse(render(request, 'UsuariosTemplates/cantTransfer.html'))
+
+def blog(request):
+    if request.method == 'POST':
+        pass
+    else:
+        return HttpResponse(render(request, 'UsuariosTemplates/blog.html'))
+
 
 class MySocialView(SocialSessionAuthView):
       serializer_class = MyUserSerializer

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TranferenciaCubacel,TransferenciaActual
+from .models import TranferenciaGeneral,TransferenciaActual
 # Register your models here.
-admin.site.register(TranferenciaCubacel)
+admin.site.register(TranferenciaGeneral)
 admin.site.register(TransferenciaActual)

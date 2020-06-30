@@ -2,7 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b19be355-f63e-427d-abdc-61364bb96c75" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/blog.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/cantTransfer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/nuevaRecarga.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Pagos/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Pagos/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Pagos/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Pagos/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Pagos/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Pagos/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Pagos/urlPagos.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Pagos/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/migrations/0009_auto_20200630_1505.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/01_Capitolio_Habana_por_Pedro_Govea.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/93eb9ebd-eb71-4fcc-8d22-1fea80dfb1a2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/Havana-Cuba_Ultra-HD-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/galeria-la-habana-malecon.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/RECARGAS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RECARGAS.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Reloadly/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Reloadly/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Reloadly/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Reloadly/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Reloadly/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Reloadly/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/Base/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/Base/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/PagosTemplate/pagosGeneral.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/PagosTemplate/pagosGeneral.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/RecargasCubacelTemplates/RecargasCubacel.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/RecargasCubacelTemplates/RecargasCubacel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/RecargasNautaTemplates/RecargasNauta.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/RecargasNautaTemplates/RecargasNauta.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/userAdmin.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/userAdmin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/auth/user_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/auth/user_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/pagosGeneral.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/registration/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/apps/Usuarios/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/apps/Usuarios/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/apps/Usuarios/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/db.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +66,26 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
         <option value="natySWE98" />
@@ -368,6 +422,8 @@
       <workItem from="1593378313810" duration="17629000" />
       <workItem from="1593461557440" duration="12938000" />
       <workItem from="1593484441978" duration="7184000" />
+      <workItem from="1593496419738" duration="734000" />
+      <workItem from="1593534529064" duration="9876000" />
     </task>
     <task id="LOCAL-00001" summary="subido">
       <created>1591995525040</created>
@@ -404,7 +460,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593491521514</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="subido">
+      <created>1593496549118</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1593496549119</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,10 +491,11 @@
     <option name="LAST_COMMIT_MESSAGE" value="subido" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="233" y="3" key="#Inspections" timestamp="1590553668542">
-      <screen x="0" y="0" width="1280" height="689" />
+    <state x="249" y="3" key="#Inspections" timestamp="1593543297750">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="233" y="3" key="#Inspections/0.0.1280.689@0.0.1280.689" timestamp="1590553668542" />
+    <state x="249" y="3" key="#Inspections/0.0.1366.728@0.0.1366.728" timestamp="1593543297750" />
     <state x="249" y="3" key="#Notifications" timestamp="1593491569281">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -445,11 +509,15 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="371" y="91" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.689@0.0.1280.689" timestamp="1591417550525" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1593491519056">
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1593496546639">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1591999327232" />
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1593491519056" />
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1593496546639" />
+    <state x="258" y="52" key="DiffContextDialog" timestamp="1593496675184">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="258" y="52" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1593496675184" />
     <state x="653" y="115" key="FileChooserDialogImpl" timestamp="1591997625928">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
@@ -467,24 +535,29 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="385" y="49" key="Github.UntrackedFilesDialog/0.0.1280.689@0.0.1280.689" timestamp="1591994492655" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1590553114819">
-      <screen x="0" y="0" width="1280" height="689" />
+    <state x="152" y="0" key="SettingsEditor" timestamp="1593547747953">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1590553114819" />
+    <state x="152" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1593547747953" />
     <state x="92" y="92" width="1182" height="544" key="ShowDiffWithBranchDialog" timestamp="1593496533406">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="ShowDiffWithBranchDialog/0.0.1366.728@0.0.1366.728" timestamp="1593496533406" />
-    <state x="413" y="94" key="Vcs.Push.Dialog.v2" timestamp="1593491531869">
+    <state x="413" y="94" key="Vcs.Push.Dialog.v2" timestamp="1593496916043">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="387" y="89" key="Vcs.Push.Dialog.v2/0.0.1280.689@0.0.1280.689" timestamp="1592000804066" />
-    <state x="413" y="94" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1593491531869" />
-    <state x="350" y="179" width="565" height="352" key="com.intellij.ide.util.TipDialog" timestamp="1593496426824">
+    <state x="413" y="94" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1593496916043" />
+    <state x="98" y="90" width="1182" height="544" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1593496868294">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="98" y="90" width="1182" height="544" key="com.intellij.dvcs.ui.CompareBranchesDialog/0.0.1366.728@0.0.1366.728" timestamp="1593496868294" />
+    <state x="350" y="179" width="565" height="352" key="com.intellij.ide.util.TipDialog" timestamp="1593534535223">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="328" y="169" width="565" height="352" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1593365819777" />
-    <state x="350" y="179" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1593496426824" />
+    <state x="350" y="179" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1593534535223" />
     <state x="436" y="34" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1591909245609">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
