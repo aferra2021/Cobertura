@@ -1,0 +1,7 @@
+1-)Terminar en reset password
+2-)Terminar el servicio completo de TransferCuabcel.
+	1-)Hacer el metodo q envia todas las transferencia al sendTransfer
+	2-)Terminar el sendtransfer con el json comomprarametro 
+	3-)Guardar todas las transferencias hechas 
+	4-)Crear el pagoModels e llenarlo cuando se hacen los pagos
+	5-)Asegurar en todos los pasos control de excepciones

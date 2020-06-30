@@ -1,0 +1,287 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block navbar %}
+    <nav class="container-fluid navbar navbar-default" id="barra" style="">
+            <div class="row-container" id="Principal" style="display: flex;justify-content: space-between" >
+                <div class="navbar-header" id="general"style="width: 30%">
+                    <button type="button"  id="boton" style="background-color:transparent;float: left" onclick="AjusteNavbar1(this)"  class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'reloadlycuba' %}">
+                        <img id="myLogo" src= "{% static 'images/IMG-20200616-WA0002.jpg' %}" alt="Logo"
+                        style="height: 50px;width: auto; border-color: #0f0f0f;border-radius: 5px;margin-top: -15px">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse row"  style="width: 70%" id="myNavbar">
+                    <ul class="nav navbar-nav" style="float: right" id="listanavbar">
+                        <li class="">
+                                <a href="{% url 'reloadlycuba' %}">
+                                    <i class="fa fa-globe fa-lg"></i>&nbspEN
+                                    <span class="caret"></span>
+                                </a>
+
+                        </li>
+                        <li><a style="color: #002a8f"  href="{% url 'nuevarecarga' %}">New Recharge</a></li>
+                            {% if user.is_authenticated %}
+                               <li><a href="{% url 'adminUser' %}  " onclick="cli(x)" style="color: #002a8f">{{user}}</a></li>
+                               <li><a href="{% url 'cerrar-sesion' %}">Salir de la Cuenta</a></li>
+                            {% else %}
+                                <li><a href="{% url 'registrar' %}  " onclick="cli(x)" style="color: #002a8f">Registrarme</a></li>
+                                <li><a href="{% url 'iniciarsecion' %}  " onclick="cli(x)" style="color: #002a8f">Iniciar Sesi&oacute;n</a></li>
+                            {% endif%}
+                        <li><a style="color: #002a8f" >Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+    </nav>
+
+    <script>
+        function navbarPrincipal(x="grande") {
+
+                var listanavbar=document.getElementById("listanavbar");
+                var myNavbar=document.getElementById("myNavbar");
+                var general=document.getElementById("general");
+                var myLogo=document.getElementById("myLogo");
+
+                if(x=="grande"){
+                    listanavbar.style.cssFloat="right";
+                    myNavbar.style.marginTop="";
+                    myNavbar.style.marginLeft="";
+                    general.style.width="30%";
+                    myNavbar.style.width="70%";
+                }else {
+                    general.style.width="10%";
+                    listanavbar.style.cssFloat="left";
+                    myNavbar.style.marginTop="50px";
+                    myNavbar.style.marginLeft="-30%";
+                    myNavbar.style.width="50%";
+                    myLogo.style.marginLeft="100px";
+                    myLogo.style.marginBottom="100px";
+                }
+                //logo
+                //redes sociales
+            }
+
+       window.onload=function () {
+
+                var size=$(window).width();
+                if($(window).width()>755){
+                    navbarPrincipal();
+                }
+                else{
+                    navbarPrincipal("");
+                }
+
+                window.onresize=function () {
+                    function change() {
+                        if($(window).width()>755 && size>755){
+                            return false;
+                        }
+                        if ($(window).width()<755 && size<755){
+                            return false;
+                        }
+                        size=$(window).width();
+                        return true;
+                    }
+                    if(change()){
+                        if($(window).width()>755){
+                            navbarPrincipal();
+                        }
+                        else{
+                            navbarPrincipal("");
+                        }
+                    }
+                }
+            };
+    </script>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid" style= "background-image:url({% static 'images/IMG-20200616-WA0000.jpg' %});height: 350px;
+margin-top: -20px" alt="Cobertura">
+<div style="margin-top: 80px">
+    <div class="col-sm-12" style="display: flex;justify-content: center">
+      <div class="col-sm-10" style="justify-content: center">
+        <h1 style="font-size: 45px">A better option</h1>
+      </div>
+    </div>
+    <div class="col-sm-12" style="display: flex;justify-content: center">
+      <div class="col-sm-10" style="justify-content: center">
+        <p style="font-size: 18px">We specialize in Cuban's Recharges</p>
+      </div>
+    </div>
+    {% if carrito %}
+    <div class="col-sm-12" style="display: flex;justify-content: center">
+      <div class="col-sm-10" style="justify-content: center">
+          <p>There's elements into the car</p>
+      </div>
+    </div>
+    {% else %}
+    <div class="col-sm-12" style="display: flex;justify-content: center">
+      <div class="col-sm-10" style="justify-content: center">
+          <p style="font-size: 20px">There's no elements into the car</p>
+      </div>
+    </div>
+    {% endif %}
+    <form class="col-sm-12" style="display: flex;justify-content: center">
+        <div class="input-group col-sm-10" style="display: flex; justify-content: left">
+          <input type="email" class="col-sm-2" size="20" placeholder="Type your number" required
+                 style="margin-left: 30px">
+          <button type="button" class="btn" style="background-color: #cf142b;color: white">Subscribe</button>
+        </div>
+    </form>
+</div>
+</div>
+
+<div class="container-fluid">
+
+   <div class="col-sm-12" style="width: 100%;display: flex;justify-content: center">
+      <h1 style="margin-bottom: 20px">Cubacel Recharges</h1>
+   </div>
+   <div class="col-sm-12" style="display:flex;justify-content: space-between">
+        <div class="col-sm-2">
+            <div class="jumbotron" style="display: flex;justify-content: center;height: 70%;width: auto">
+                <a href="{% url 'cubacel' %}" style="text-align: center;margin-top: -10px;color: #3c3c3c">Cubacel Recharges</a>
+            </div>
+        </div>
+        <div class="col-sm-2">
+             <div class="jumbotron" style="display: flex;justify-content: center;height: 70%;width: auto">
+                <a href="{% url 'nauta' %}" style="text-align: center;margin-top: -10px;color: #3c3c3c">Nauta Recharges</a>
+             </div>
+        </div>
+        <div class="col-sm-2">
+             <div class="jumbotron" style="display: flex;justify-content: center;height: 70%;width: auto">
+                <a href="{% url 'cubacelventa' %}" style="text-align: center;margin-top: -20px;color: #3c3c3c">Cubacel Sim Phone</a>
+             </div>
+        </div>
+        <div class="col-sm-2">
+              <div class="jumbotron" style="display: flex;justify-content: center;height: 70%;width: auto">
+                <a href="{% url 'etecsa' %}" style="color: #3c3c3c">ETECTSA</a>
+              </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="jumbotron" style="display: flex;justify-content: center;height: 70%;width: auto">
+                <a href="{% url 'cubaceltur' %}" style="text-align: center;margin-top: -10px;color: #3c3c3c">Cubacel Tur</a>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="jumbotron" style="display: flex;justify-content: center;height: 70%;width: auto">
+                <a href="{% url 'registrar' %}" style="text-align: center;color: #3c3c3c">Register</a>
+            </div>
+        </div>
+        </div>
+</div>
+
+<div class="rc-topup-form-actions col-sm-12">
+    <div class="row">
+        <div class="col-sm-6 col-sm-push-6">
+            <button data-testid="topUpButton" class="btn btn-lg btn-rounded btn-block" type="submit" style="width: 70%;
+                background-color: #002a8f;color: white">
+                Recarga
+            </button>
+        </div>
+        <div class="col-sm-pull-6 col-sm-6">
+            <button data-testid="TeCButton" class="btn btn-lg btn-default-darker btn-offer-details btn-rounded btn-block"
+                    type="button" style="color: grey;width: 70%; margin-left: 180px;color: #002a8f">
+                <i class="glyphicon glyphicon-eye-open" style="color: #002a8f"></i>
+                &nbsp;Detalles de la oferta
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-12" style="width: 100%;display: flex;justify-content: center;margin-top: 50px">
+    <h1 style="">Recarga a todas las personas que desees</h1>
+</div>
+
+<div class="col-sm-12" style="text-align: center;margin-bottom: 50px">
+    <p style="font-size: large">
+        Con nuestra p&aacute;gina y los servicios brindados en ella, usted puede recargar a su familia desde cualquier parte del mundo,
+        explore nuestras ofertas, ahorre su dinero.
+    </p>
+</div>
+
+<div class="col-sm-12" style="display: flex;justify-content: space-around;">
+
+    <div class="jumbotron col-sm-3" style="text-align: center;border-radius: 10px">
+        <img src="{% static 'images/archivo.png' %}" style="width: 80px;height: auto">
+        <!--<i class="glyphicon glyphicon-edit" style="font-size: 80px;color: #1b6d85"></i>-->
+        <h3 style="margin-top: 20px;color: dodgerblue">Rellena los Datos</h3>
+        <p style="font-size: small;margin-top: 30px">Nombre del titular y numero de teléfono del celular que quieres
+            recargar. Selecciona la cantidad a recargar y te saldrá el monto que recibirá el móvil en pesos cubanos
+            convertibles (CUC).</p>
+    </div>
+    <div class="jumbotron col-sm-3" style="text-align: center;border-radius: 10px">
+        <img src="{% static 'images/aprovechar.png' %}" style="width: 80px;height: auto">
+        <h3 style="color: dodgerblue">Hacer Click en Recargar</h3>
+        <p style="font-size: small;margin-top: 30px">Si eres un usuario nuevo deberás registrarte en el sitio, si ya
+            eres usuario autentificate para pasar a la pagina del resumen de la orden.</p>
+    </div>
+    <div class="jumbotron col-sm-3" style="text-align: center;border-radius: 10px">
+        <img src="{% static 'images/tarjeta-de-credito (1).png' %}" style="width: 80px;height: auto">
+        <h3 style="color: dodgerblue">Revisar el pedido y Pagar</h3>
+        <p style="font-size: small;margin-top: 30px">Si todo esta correcto da click en pagar y pasaras a la pasarela
+            segura de pago por tarjeta donde realizaras el pago por el monto seleccionado.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<section>
+<footer class="footer-bs">
+        <div class="container">
+        	<div class="col-md-3 footer-brand animated fadeInLeft">
+                <img src="{% static 'images/IMG-20200616-WA0002.jpg' %}" alt="Logo" style="height: 50px;width: auto;
+                border-color: #0f0f0f;border-radius: 5px;margin-top: -15px">
+            	<!--<h2>Logo</h2>-->
+                <p style="margin-top: 15px">Suspendisse hendrerit tellus laoreet luctus pharetra. Aliquam porttitor vitae orci nec ultricies. Curabitur vehicula, libero eget faucibus faucibus, purus erat eleifend enim, porta pellentesque ex mi ut sem.</p>
+                <p>© 2014 BS3 UI Kit, All rights reserved</p>
+            </div>
+        	<div class="col-md-4 footer-nav animated fadeInUp">
+            	<h4>Menu —</h4>
+            	<div class="col-md-6">
+                    <ul class="pages">
+                        <li><a href="#"></a>{{ usuario }}</li>
+                        <li><a href="#">Servicios</a></li>
+                        <li><a href="#">Portafolios</a></li>
+                        <li><a href="#">Iniciar Sesi&oacute;n</a></li>
+                        <li><a href="#">Salir de la Cuenta</a></li>
+                    </ul>
+                </div>
+            	<div class="col-md-6">
+                    <ul class="list">
+                        <li><a href="#">Acerca de Nosotros</a></li>
+                        <li><a href="#">Contactos</a></li>
+                        <li><a href="#">T&eacute;rminos y Condiciones</a></li>
+                        <li><a href="#">Pol&iacute;tica de privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+        	<div class="col-md-2 footer-social animated fadeInDown">
+            	<h4>S&iacute;guenos</h4>
+            	<ul>
+                	<li><a href="#">Facebook</a></li>
+                	<li><a href="#">Twitter</a></li>
+                	<li><a href="#">Instagram</a></li>
+                	<li><a href="#">RSS</a></li>
+                </ul>
+            </div>
+        	<div class="col-md-3 footer-ns animated fadeInRight">
+            	<h4>Hoja Informativa</h4>
+                <p>blablabla</p>
+                <p>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Buscar por...">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
+                      </span>
+                    </div><!-- /input-group -->
+                 </p>
+            </div>
+        </div>
+    </footer>
+</section>
+{% endblock %}

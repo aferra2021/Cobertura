@@ -1,0 +1,3 @@
+
+def transCubacelSimTelefono(SimTelefono):
+    pass

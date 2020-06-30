@@ -1,0 +1,479 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block Content %}
+
+<div class="container" style="align: center">
+    <h2 class="well text-center">Crea tu Cuenta en COBERTURA</h2>
+  <form id="formReg" class="form-horizontal" method="POST">
+                {% csrf_token %}
+    <div class="form-group " style="display: flex;justify-content: center" name="UserDivs">
+        <label class="control-label col-sm-4" style="display: flex;justify-content: left"  for="username">Nombre de Usuario:</label>
+     </div>
+    <div class="form-group " style="display: flex;justify-content: center" name="UserDivs">
+        <div name="meterAlert" class="col-sm-4" style="margin-top: -10px;width: 35%" title="ok">
+            <input  id="userNameReg" type="text" name="username" oninput="ValidarUser()"
+                    class="form-control" autocomplete="off" title="Complete este campo">
+            <span id="Wait" name="UserDivs" class=""></span>
+         </div>
+    </div>
+
+    <div class="form-group " style="display: flex;justify-content: center;margin-top: -10px"  name="CorreoDivs" >
+          <label class="control-label col-sm-4" style="display: flex;justify-content: left"  for="email">Correo:</label>
+    </div>
+    <div class="form-group " style="display: flex;justify-content: center" name="CorreoDivs">
+        <div class="col-sm-4" name="meterAlert" style="margin-top: -10px;width: 35%" title="ok">
+            <input type="text" name="email" class="form-control" autocomplete="off" id="correoReg"  oninput="ValidarCorreo(this)"
+                 title="Complete este campo" >
+            <span  name="CorreoDivs" class=""></span>
+        </div>
+    </div>
+
+    <div class="form-group " style="display: flex;justify-content: center;margin-top: -10px" name="PassDivs">
+          <label class="control-label col-sm-4" style="display: flex;justify-content: left"  for="password1">Contraseña:</label>
+    </div>
+    <div class="form-group" style="display: flex;justify-content: center" name="PassDivs">
+        <div class="col-sm-4" name="meterAlert" style="margin-top: -10px;width: 35%" title="ok">
+            <input type="password" name="password1" class="form-control" autocomplete="off" id="passReg" oninput="ValidarPass(this,2,'PassDivs')"
+                title="Complete este campo">
+            <span name="PassDivs" class="form-control-feedback"></span>
+
+            <a type="link"  class="btn btn-link" style="text-decoration: none;" onclick="Transparent(this,'passReg')">Mostrar contraseña</a>
+        </div>
+    </div>
+
+    <div class="form-group " style="display: flex;justify-content: center;margin-top: -10px" name="Pass2Divs">
+          <label class="control-label col-sm-4" style="display: flex;justify-content: left"
+            for="password2">Confirmar Contraseña:</label>
+    </div>
+    <div class="form-group " style="display: flex;justify-content: center" name="Pass2Divs">
+        <div class="col-sm-4" name="meterAlert" style="margin-top: -10px;width: 35%" id="last" title="ok">
+            <input type="password" name="password2" class="form-control" autocomplete="off"
+               id="password2"  oninput="ValidarPass(this,3,'Pass2Divs')" title="Complete este campo">
+            <span class="form-control-feedback" name="Pass2Divs"></span>
+            <a type="link"  class="btn btn-link" style="text-decoration: none" onclick="Transparent(this,'password2')">Mostrar contraseña</a>
+        </div>
+    </div>
+     <div class="col-sm-12 text-center">
+           <button type="submit" value="submit" name="submit" class="btn btn-success">Crear su usuario</button>
+      </div>
+          <!--<div class="container" style="display: flex;justify-content: center">
+            <div class="col-md-6" style="justify-content: left">
+                <div class="form-group">
+                    <label for="email">Correo:</label>
+                    <input type="text" name="email" class="form-control" id="correoReg" required
+                    pattern="^[a-zA-Z1-9._-]+@[a-zA-Z1-9.-]+\.([a-zA-Z]{2,4})+$" title="Esta no es una
+                    dirección de correo válida.">
+                </div>
+            </div>
+        </div>
+        <div class="container" style="display: flex;justify-content: center">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="password1">Contraseña:</label>
+                    <input type="password" name="password1" class="form-control" id="passReg" required min="8"
+                    pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                    title="Debe tener al menos 8 caracteres e incluir mayúsculas, minúsculas y caracteres especiales.">
+                </div>
+            </div>
+        </div>
+        <div class="container" style="display: flex;justify-content: center">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="password2">Confirmar Contraseña:</label>
+                    <input type="password" name="password2" class="form-control" id="confirm" required>
+                </div>
+            </div>
+        </div>
+          <div class="form-group text-center">
+                <input type="submit" class="btn btn-primary" value="Ingresar">
+            </div>
+          <div class=" text-center" >
+                <a class="col-sm-12 " href="{% url 'social:begin' 'facebook' %}">INICIA CON FACEBOOK</a>
+                <a class="col-sm-12 " href="{% url 'social:begin' 'google-oauth2' %}">INICIA CON GOOGLE</a>
+        </div>-->
+    </form>
+    <div class="col-sm-12">&nbsp;</div>
+</div>
+    <!--pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{7,19}$"-->
+
+    <script>
+        var user1=false;
+        var correo1=false;
+        var pass1=false;
+        var pass2=false;
+        $('#formReg').on('submit', function(e){
+            e.preventDefault();
+            CamposObligatorios();
+            if(user1&&correo1&pass1&&document.getElementById('last').title=='ok'){
+
+                if ($('#passReg').val()==$('#password2').val()) {
+                       var csrftoken=document.getElementsByName('csrfmiddlewaretoken')[0].value;
+                        var data = {
+                            username: $('#userNameReg').val(),
+                            email: $('#correoReg').val(),
+                            password: $('#passReg').val(),
+                            csrfmiddlewaretoken:csrftoken.toString(),
+                            dataType: "json",
+                        };
+                        var args = {type: "POST", url: "{% url 'ajax_posting' %}", data};
+                        $.ajax(args).done(function (response) {
+                                //brrartodo
+                             document.getElementById('userNameReg').value='';
+                             document.getElementById('correoReg').value='';
+                             document.getElementById('passReg').value='';
+                             document.getElementById('password2').value='';
+                             window.location.href = "{% url 'reloadlycuba' %}";
+                                alert("Mostrar mensaje de usuario creado");
+                        })
+                    }else {
+                        pass2=document.getElementById('password2');
+                        EliminarError(pass2, 3);
+                        pass2.parentElement.title = 'error';
+                        CampoObligatorio(3,true,'Contraseñas no coinciden.');
+                        PassDivs[0].className = 'form-group has-error has-feedback';
+                        PassDivs[1].className = 'form-group has-error has-feedback';
+                        PassDivs[2].className = 'glyphicon glyphicon-remove form-control-feedback';
+                    }
+            }
+        });
+        function  ValidarUser(){
+            var userNameReg = $("#userNameReg").val();
+            var errorUser = document.getElementById('userNameReg');
+            if (errorUser.parentElement.title=='error'){
+                errorUser.parentElement.title='ok';
+                CampoObligatorio(0,false);
+            }
+            var data = { user:userNameReg };
+            var args = { type:"GET", url:"/usuarios/user", data:data };
+               if(userNameReg.length<=4) {
+                    UserDivs = document.getElementsByName('UserDivs');
+                    UserDivs[0].className = 'form-group has-error has-feedback';
+                    UserDivs[1].className = 'form-group has-error has-feedback';
+                    UserDivs[2].className = 'glyphicon glyphicon-remove  form-control-feedback';
+                    if(errorUser.parentElement.title=='ok') {
+                        CampoObligatorio(0,true,'El campo "Usuario" debe tener al menos 5 caracteres');
+                        boll = false;
+                        errorUser.parentElement.title = 'error';
+                        user1=false;
+                    }
+                    //alert numer
+                    //form-group has-error has-feedback
+                    //glyphicon glyphicon-remove form-control-feedback
+                    user1=false;
+                }else {
+                   $.ajax(args).done(function (response) {
+                       if (response.Result == 'True') {
+                           UserDivs = document.getElementsByName('UserDivs');
+                           UserDivs[0].className = 'form-group has-error has-feedback';
+                           UserDivs[1].className = 'form-group has-error has-feedback';
+                           UserDivs[2].className = 'glyphicon glyphicon-remove  form-control-feedback';
+                           if (errorUser.parentElement.title == 'ok') {
+                               CampoObligatorio(0, true, 'El usuario ' + userNameReg + ' ya existe. Por favor intente con otro.');
+                               boll = false;
+                               errorUser.parentElement.title = 'error';
+                               user1 = false;
+                           }
+                           //form-group has-error has-feedback
+                           //glyphicon glyphicon-remove form-control-feedback
+                           user1 = false;
+                       } else {
+                           UserDivs = document.getElementsByName('UserDivs');
+                           UserDivs[0].className = 'form-group has-success  has-feedback';
+                           UserDivs[1].className = 'form-group has-success  has-feedback';
+                           UserDivs[2].className = 'glyphicon glyphicon-ok form-control-feedback';
+                           //has-success has-feedback
+                           //glyphicon glyphicon-ok form-control-feedback
+                           user1 = true;
+                       }
+                   });
+               }
+        }
+        function Wait() {
+            var wait=document.getElementById('Wait');
+            wait.className="fa-li fa fa-spinner fa-spin";
+            //setTimeout(Wait(),10000);
+        }
+        function ValidarCorreo(self) {
+            var correoReg = $("#correoReg").val();
+            var errorCorreo = document.getElementById('correoReg');
+            var patron=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+            CorreoDivs = document.getElementsByName('CorreoDivs');
+            var data = { user:userNameReg };
+            var args = { type:"GET", url:"/usuarios/user", data:data };
+	        if(correoReg.search(patron)==0){
+	            var data = { email:correoReg };
+                var args = { type:"GET", url:"/usuarios/email", data:data };
+                $.ajax(args).done(function (response) {
+                    if (response.Result=="True"){
+	                  //hay q validar q el corro sea uniko
+                       if(errorCorreo.parentElement.title=='ok') {
+                            CampoObligatorio(1,true,'Este correo ya se encuentra en uso, por favor use otro.');
+                            errorCorreo.parentElement.title='error';
+                            CorreoDivs[0].className='form-group has-error has-feedback';
+                            CorreoDivs[1].className='form-group has-error  has-feedback';
+                            CorreoDivs[2].className='glyphicon glyphicon-remove form-control-feedback';
+                            correo1=false;
+                         }
+                    }else {
+                        CorreoDivs[0].className='form-group has-success  has-feedback';
+                        CorreoDivs[1].className='form-group has-success  has-feedback';
+                        CorreoDivs[2].className='glyphicon glyphicon-ok form-control-feedback';
+                        correo1=true;
+                        EliminarError(self,1);
+                        //ok aki
+                    }
+                });
+
+            }else{
+	            //error aki
+                if(errorCorreo.parentElement.title=='ok') {
+	                CampoObligatorio(1,true,'Esta no es una dirección válida de correo.');
+	                errorCorreo.parentElement.title='error';
+	                CorreoDivs[0].className='form-group has-error has-feedback';
+                    CorreoDivs[1].className='form-group has-error  has-feedback';
+                    CorreoDivs[2].className='glyphicon glyphicon-remove form-control-feedback';
+                    correo1=false;
+                }
+            }
+        }
+        function ValidarPass(self,off,text) {
+            security=securityPass(self.value);
+            PassDivs = document.getElementsByName(text);
+            if (self.value.length>=8&&self.value.length<12&&security&&true){
+                 EliminarError(self,off);
+                 CampoObligatorio(off,true,'Contraseña débil. Para que sea segura debe tener al menos 12 caracteres');
+                 self.parentElement.title='error';
+                 PassDivs[0].className='form-group has-warning has-feedback';
+                 PassDivs[1].className='form-group has-warning has-feedback';
+                 PassDivs[2].className='glyphicon glyphicon-warning-sign form-control-feedback';
+                 document.getElementById('div'+off).className='alert-warning';
+                 pass1=true;
+            }else {
+                if(security){
+                        EliminarError(self, off);
+                        self.parentElement.title = 'ok';
+                        PassDivs[0].className = 'form-group has-success has-feedback';
+                        PassDivs[1].className = 'form-group has-success has-feedback';
+                        PassDivs[2].className = 'glyphicon glyphicon-ok form-control-feedback';
+                        pass1 = true;
+                }else{
+                    EliminarError(self, off);
+                    self.parentElement.title = 'error';
+                    CampoObligatorio(off,true,'Contraseña Invalida. La contraseña debe tener al menos 8 caracteres una letra mayúsculas, una minúscula, un número, simbolo del teclado y no tener espacios en blanco.');
+                    PassDivs[0].className = 'form-group has-error has-feedback';
+                    PassDivs[1].className = 'form-group has-error has-feedback';
+                    PassDivs[2].className = 'glyphicon glyphicon-remove form-control-feedback';
+                     pass1=false;
+                }
+            }
+
+            if(self.value.length<8){
+                if(document.getElementById('div'+off)==null) {
+                    CampoObligatorio(off, true, 'Contraseña inválida. Debe tener al menos 8 caracteres');
+                    self.parentElement.title = 'error';
+                }
+                 pass1=false;
+                 PassDivs[0].className='form-group has-error has-feedback';
+                 PassDivs[1].className='form-group has-error  has-feedback';
+                 PassDivs[2].className='glyphicon glyphicon-remove form-control-feedback';
+            }
+               if(self.value.length==0){
+                EliminarError(self,off);
+                 PassDivs[0].className='form-group';
+                 PassDivs[1].className='form-group';
+                 PassDivs[2].className='form-control-feedback';
+                 pass1=false;
+            }
+
+        }
+        function securityPass(contrasenna){
+        		{
+                        if(contrasenna.length >= 8)
+                        {
+                            var mayuscula = false;
+                            var minuscula = false;
+                            var numero = false;
+                            var caracter_raro = false;
+                            var espacio=false;
+
+                            for(var i = 0;i<contrasenna.length;i++)
+                            {
+                                if(contrasenna.charCodeAt(i) >= 65 && contrasenna.charCodeAt(i) <= 90)
+                                {
+                                    mayuscula = true;
+                                }
+                                else if(contrasenna.charCodeAt(i) >= 97 && contrasenna.charCodeAt(i) <= 122)
+                                {
+                                    minuscula = true;
+                                }
+                                else if(contrasenna.charCodeAt(i) >= 48 && contrasenna.charCodeAt(i) <= 57)
+                                {
+                                    numero = true;
+                                }
+                                else if(contrasenna.charAt(i)==' ')
+                                {
+                                    espacio=true;
+                                }
+                                else
+                                {
+                                    caracter_raro = true;
+                                }
+                            }
+                            if(mayuscula == true && minuscula == true && caracter_raro == true && numero == true && espacio==false)
+                            {
+                                return true;
+                            }
+                        }
+                        return false;
+		        }
+        }
+        function Coincidencia(self){
+            if(security){
+                if($("#passReg").val()!=$("#password2").val()&&$("#password2").val().length!=0&&true) {
+                    EliminarError(self, 3);
+                    self.parentElement.title = 'error';
+                    CampoObligatorio(3,true,'Contraseñas no coinsiden.');
+                    PassDivs[0].className = 'form-group has-error has-feedback';
+                    PassDivs[1].className = 'form-group has-error has-feedback';
+                    PassDivs[2].className = 'glyphicon glyphicon-remove form-control-feedback';
+                    pass1=false;
+                }else{
+                    EliminarError(self, 3);
+                    self.parentElement.title = 'ok';
+                }
+            }
+        }
+        function CamposObligatorios() {
+            var userNameReg = $("#userNameReg").val();
+            var errorUser = document.getElementById('userNameReg');
+            var correoReg = $("#correoReg").val();
+            var errorCorreo = document.getElementById('correoReg');
+            var passReg = $("#passReg").val();
+            var errorpass = document.getElementById('passReg');
+            var password2 = $("#password2").val();
+            var errorpassword2 = document.getElementById('password2');
+            if(userNameReg.length==0){
+                if(errorUser.parentElement.title=='ok') {
+                    CampoObligatorio(0, true,'Debe completar el campo "Usuario".');
+                    boll = false;
+                    errorUser.parentElement.title = 'error';
+                    user1=false;
+                }
+            }
+
+            if (correoReg.length==0){
+                if(errorCorreo.parentElement.title=='ok'){
+                    CampoObligatorio(1,true,'Debe completar el campo "Correo".');
+                    boll=false;
+                    errorCorreo.parentElement.title='error';
+                    correo1=false;
+                }
+            }
+
+            if (passReg.length==0){
+                if(errorpass.parentElement.title=='ok') {
+                    CampoObligatorio(2,true,'Debe completar el campo "Contraseña"');
+                    boll=false;
+                    errorpass.parentElement.title='error';
+                    pass1=false;
+                }
+            }
+
+            if (password2.length==0){
+                if(errorpassword2.parentElement.title=='ok') {
+                    CampoObligatorio(3, true,'Debe completar el campo "Confirmar Contraseña"');
+                    boll = false;
+                    errorpassword2.parentElement.title = 'error';
+                    pass2=false;
+                }
+            }
+        }
+        function CampoObligatorio(off,dos,text){
+            meterAlerts=document.getElementsByName('meterAlert');
+            /*  <div class="alert " style="margin-top: 5px;margin-bottom: -10px;background-color: #feeeef;
+            border-color: #e2808a">
+                <i class="fa fa-exclamation-triangle" style="margin-right: 10px"></i>
+                Debe completar el campo Username.
+            </div>*/
+            if(dos) {
+                var div = document.createElement("div");
+                div.id='div'+off;
+                div.className = " alert-danger col-sm-12";
+                div.style.marginTop = "5px";
+                //div.style.height="20px";
+                div.style.marginBottom = " -10px";
+                div.style.backgroundColor = " #feeeef";
+                div.style.borderColor = " #e2808a";
+                var i = document.createElement("i");
+                i.className = "fa fa-exclamation-triangle";
+                i.style.marginRight = " 10px";
+                div.appendChild(i);
+                var text = document.createTextNode(text);
+                div.appendChild(text);
+                meterAlerts[off].appendChild(div);
+            }
+            else{
+                 meterAlerts[off].removeChild(document.getElementById('div'+off))
+            }
+        }
+        function EliminarError(self,off) {
+            if (self.parentElement.title=='error'){
+                self.parentElement.title='ok';
+                CampoObligatorio(off,false);
+            }
+        }
+        function regValidation() {
+            var userNameReg=document.getElementById("userNameReg").value;
+            var correoReg=document.getElementById("correoReg").value;
+            var reCorreo=new RegExp(/^[a-zA-Z1-9._-]+@[a-zA-Z1-9.-]+\.([a-zA-Z]{2,4})+$/);
+            var passReg=document.getElementById("passReg").value;
+            var rePassReg=new RegExp(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{7,19}$/);
+            var confirm=document.getElementById("confirm").value;
+
+            /*if(userNameReg.length == 0){
+                alert("El campo de usuario es obligatorio");
+                return false;
+            }
+            else if(correoReg.length == 0){
+                alert("El campo de correo es obligatorio");
+                return false;
+            }
+            else*/ /*if(!reCorreo.test(correoReg)){
+                alert("La dirección de correo introducida no es válida");
+                return false;
+            }
+            /*else if(passReg.length == 0){
+                alert("El campo de contraseña es obligatorio");
+                return false;
+            }
+            else*/ /*if(!rePassReg.test(passReg)){
+                alert("La contraseña debe tener al menos 8 caracteres y debe contener mayúsculas, minúculas y " +
+                    "caracteres especiales");
+                return false;
+            }*/
+            /*else if(confirm.length == 0){
+                alert("El campo de confirmación es obligatorio");
+                return false;
+            }
+            else*/ if(passReg!=confirm){
+                alert("La contraseña y la confirmación de contraseña deben coinsidir");
+                return false;
+            }
+
+            return true;
+        }
+        function Transparent(self,off) {
+            if(document.getElementById(off).type=='text'){
+               document.getElementById(off).type='password'
+            }else {
+                document.getElementById(off).type = 'text';
+            }
+        }
+          $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+
+</script>
+
+{% endblock %}

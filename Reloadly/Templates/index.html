@@ -1,0 +1,498 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block Content %}
+<body>
+
+<style>
+    a {
+position: relative;
+text-decoration: none;
+color: #333;
+z-index: 1;
+}
+a:before {
+content: "";
+background: #ccc;
+position: absolute;
+width: 100%;
+height: 2px;
+bottom: 0;
+left: 0;
+transform: scaleX(0);
+animation: .8s no-hover;
+animation-fill-mode: forwards;
+z-index: -1;
+}
+a:hover:before,
+a:focus:before {
+animation: .4s hover linear;
+animation-fill-mode: forwards;
+}
+@keyframes hover {
+0% {transform: scaleX(0);height: 5px;}
+45% {transform: scaleX(1.05);height: 5px;}
+55% {height: 5px;}
+100% {transform: scaleX(1.05);height: 100%;}
+}
+@keyframes no-hover {
+0% {transform: scaleX(1.05);height: 100%;}
+45% {height: 5px;}
+55% {transform: scaleX(1.05);height: 5px;opacity: 1;}
+100% {transform: scaleX(0);height: 5px;opacity: .02;}
+}
+</style>
+
+    <nav class="container-fluid navbar " id="barra" style="background-color: #f7f7f7">
+            <div class="row-container" id="Principal" style="display: flex;justify-content: space-between" >
+                <div class="navbar-header" id="general"style="width: 30%">
+                    <button type="button"  id="boton" style="background-color:transparent;float: left" onclick="AjusteNavbar1(this)"  class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'reloadlycuba' %}">
+                        <img id="myLogo" src= "{% static 'images/IMG-20200616-WA0002.jpg' %}" alt="Logo"
+                        style="height: 50px;width: auto; border-color: #0f0f0f;border-radius: 5px;margin-top: -15px">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse row"  style="width: 70%" id="myNavbar">
+                    <ul class="nav navbar-nav" style="float: right" id="listanavbar">
+                        <li class="">
+                                 <a href="{% url 'reloadlycubaEN' %}" style="color: #002a8f" data-toggle="tooltip"
+                                    title="Cambiar a inglés" data-placement="bottom" class="idioma">
+                                    <i class="fa fa-globe"></i>&nbsp;ES
+                                    <span class="caret"></span>
+                                </a>
+                        </li>
+                        <li><a style="color: #002a8f"  href="{% url 'nuevarecarga' %}">
+                            <i class="fa fa-check"></i>
+                            Nueva Recarga</a></li>
+                        {% if user.is_authenticated %}
+                               <li><a href="{% url 'adminUser' %}  " onclick="cli(x)" style="color: #002a8f"
+                               data-toggle="tooltip" title="Perfil de usuario" data-placement="bottom">
+                                   <i class="glyphicon glyphicon-user"></i>
+                                   {{user}}</a></li>
+                               <li><a href="{% url 'cerrar-sesion' %}" style="color: #002a8f"
+                               data-toggle="tooltip" title="Salir de la cuenta" data-placement="bottom">
+                                   <i class="glyphicon glyphicon-log-out"></i>
+                               </a></li>
+                            {% else %}
+                                <li><a href="{% url 'iniciarsecion' %}  " onclick="cli(x)" style="color: #002a8f"
+                                data-toggle="tooltip" title="Autenticarse" data-placement="bottom">
+                                    <i class="glyphicon glyphicon-log-in"></i>
+                                </a></li>
+                                <li><a href="{% url 'registrar' %}  " onclick="cli(x)" style="color: #002a8f"
+                                data-toggle="tooltip" title="Registrarse" data-placement="bottom">
+                                    <i class="glyphicon glyphicon-edit"></i>
+                                </a></li>
+                        {% endif%}
+                        <li><a style="color: #002a8f" href="#Servicios" data-toggle="tooltip" title="Deja tu comentario"
+                               data-placement="bottom">
+                            <i class="fa fa-blog"></i>
+                            Blog</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    </nav>
+
+
+
+<div class="container-fluid" style= "background-image:url({% static 'images/IMG-20200616-WA0000.jpg' %});height: 350px;margin-top: -30px" alt="Cobertura">
+<div style="margin-top: 80px">
+    <div class="col-sm-12" style="display: flex;justify-content: center">
+      <div class="col-sm-10" style="justify-content: center">
+        <h1 style="font-size: 45px">Una mejor opci&oacute;n</h1>
+      </div>
+    </div>
+    <div class="col-sm-12" style="display: flex;justify-content: center">
+      <div class="col-sm-10" style="justify-content: center">
+        <p style="margin-left: 15px;font-size: 18px">Nos especializamos en recargas a Cuba</p>
+      </div>
+    </div>
+    <form class="col-sm-12" style="display: flex;justify-content: center">
+        <div class="input-group col-sm-10" style="display: flex; justify-content: left">
+          <input type="email" class="col-sm-2" size="20" placeholder="Ingrese su n&uacute;mero" required
+                 style="margin-left: 50px">
+          <button type="button" class="btn" style="background-color: #cf142b;color: white">Subscribe</button>
+        </div>
+    </form>
+</div>
+</div>
+
+<div class="container-fluid text-center">
+    <h1 class="col-sm-12 text-center" id="Servicios" style="background-color: #f7f7f7;border-radius:5px;height: 40px">Servicios</h1>
+    <div class="col-sm-12" style="display: flex;justify-content: center;margin-top: -20px;margin-bottom: -10px">
+       <hr class="col-sm-11">
+    </div>
+
+   <div class="container" style="display:flex;justify-content: space-between">
+        <div class="col-sm-2">
+        <div class="thumbnail">
+          <a data-toggle="collapse" onclick="Servicios('linkCubacel')" name="linkServicios" id="linkCubacel" href="#collapseGeneral" style="text-align: center;margin-top: -10px;color: #3c3c3c">
+            <img src="https://imagerepo.ding.com/logo/CU/CU.png" alt="Cubacel" style="width:140px;height:45px"></a>
+            <p><strong>Cubacel</strong></p>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="thumbnail">
+          <a data-toggle="collapse" onclick="Servicios('linkNauta')" name="linkServicios" id="linkNauta" href="#collapseGeneral" style="text-align: center;margin-top: -10px;color: #3c3c3c">
+            <img src="https://imagerepo.ding.com/logo/NU/CU.png" alt="Nauta"  style="width:140px;height:45px" ></a>
+            <p><strong>Nauta</strong></p>
+        </div>
+      </div>
+        <div class="col-sm-2">
+             <div class="thumbnail">
+                <a href="{% url 'cubacelventa' %}" style="text-align: center;margin-top: -20px;color: #3c3c3c">Cubacel Sim Telefono</a>
+             </div>
+        </div>
+        <div class="col-sm-2">
+              <div class="thumbnail">
+                <a href="{% url 'etecsa' %}" style="color: #3c3c3c">ETECTSA</a>
+              </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="thumbnail" >
+                <a href="{% url 'cubaceltur' %}" style="text-align: center;margin-top: -10px;color: #3c3c3c">Cubacel Tur</a>
+            </div>
+        </div>
+    </div>
+<!--Esto debe ser construido con js para q no valla bajando se puede crear un marco comun y
+ lo q se cambia seria los link y los titulos con las imagenes y essas cosas pero el esqueleto es el mismo-->
+<div class="panel-collapse collapse" id="collapseGeneral">
+      <h1 id="RecargaCollapse">RECARGAS</h1>
+      <div class="nav-tabs container" name="listaOfertas">
+         <div class="jumbotron col-sm-2" >
+              <a class="" href="http://127.0.0.1:8000/cubacel/recarga/1">Oferta UNO</a>
+         </div>
+         <div class="jumbotron col-sm-2" >
+              <a class="" href="http://127.0.0.1:8000/cubacel/recarga/2">Oferta DOS</a>
+         </div>
+         <div class="jumbotron col-sm-2" >
+              <a class="" href="http://127.0.0.1:8000/cubacel/recarga/2">Oferta TRES</a>
+         </div>
+      </div>
+</div>
+    <!--
+<div id="cubacel" class="panel-collapse collapse">
+      <h1> Recargas Cubacel</h1>
+    <div class="nav-tabs container">
+          <div class="jumbotron col-sm-2">
+              <a class="" href="http://127.0.0.1:8000/cubacel/recarga/1">Oferta UNO</a>
+          </div>
+        <div class="jumbotron col-sm-2">
+              <a class="" href="http://127.0.0.1:8000/cubacel/recarga/2">Oferta DOS</a>
+          </div>
+         <div class="jumbotron col-sm-2">
+              <a class="" href="http://127.0.0.1:8000/cubacel/recarga/2">Oferta DOS</a>
+          </div>
+    </div>
+</div>
+<div id="nauta" class="panel-collapse collapse">
+      <h1> Recargas Nautas</h1>
+    <div class="nav-tabs container">
+          <div class="jumbotron col-sm-2">
+              <a class="" href="http://127.0.0.1:8000/nauta/recarga/1">Oferta UNO</a>
+          </div>
+        <div class="jumbotron col-sm-2">
+              <a class="" href="http://127.0.0.1:8000/nauta/recarga/2">Oferta DOS</a>
+          </div>
+         <div class="jumbotron col-sm-2">
+              <a class="" href="http://127.0.0.1:8000/nauta/recarga/2">Oferta DOS</a>
+          </div>
+    </div>
+</div>
+          <div class="col-sm-4">
+              <a class="jumbotron" href="http://127.0.0.1:8000/cubacel/recarga/1">Oferta UNO</a>
+          </div>
+          <div class="col-sm-4">
+              <a class="jumbotron" href="http://127.0.0.1:8000/cubacel/recarga/2">Oferta DOS</a>
+          </div>
+          <div class="col-sm-4">
+              <a class="jumbotron" href="http://127.0.0.1:8000/cubacel/recarga/3">Oferta TRES</a>
+          </div>
+          <div class="col-sm-4">
+              <a class="jumbotron" href="http://127.0.0.1:8000/cubacel/recarga/4">Oferta CUATRO</a>
+          </div>
+          <div class="col-sm-4">
+              <a class="jumbotron" href="http://127.0.0.1:8000/cubacel/recarga/5">Oferta CINCO</a>
+          </div>
+          <div class="col-sm-4">
+              <a class="jumbotron" href="http://127.0.0.1:8000/cubacel/recarga/6">Oferta SEIS</a>
+          </div>-->
+</div>
+<div class="rc-topup-form-actions col-sm-12 slideanim">
+    <div class="row">
+        <div class="col-sm-6 col-sm-push-6">
+            <button data-testid="topUpButton" class="btn btn-lg btn-rounded btn-block" type="submit" style="width: 70%;
+                background-color: #002a8f;color: white">
+                Recarga
+            </button>
+        </div>
+        <div class="col-sm-pull-6 col-sm-6">
+            <button data-testid="TeCButton" class="btn btn-lg btn-default-darker btn-offer-details btn-rounded btn-block"
+                    type="button" style="color: grey;width: 70%; margin-left: 180px;color: #002a8f" id="detalles">
+                <i class="glyphicon glyphicon-eye-open" style="color: #002a8f"></i>
+                &nbsp;Detalles de la oferta
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-12" style="width: 100%;display: flex;justify-content: center;margin-top: 50px">
+    <h1 style="">Recarga a todas las personas que desees</h1>
+</div>
+
+<div class="col-sm-12" style="text-align: center;margin-bottom: 50px">
+    <p style="font-size: large">
+        Con nuestra p&aacute;gina y los servicios brindados en ella, usted puede recargar a su familia desde cualquier parte del mundo,
+        explore nuestras ofertas, ahorre su dinero.
+    </p>
+</div>
+
+<div class="col-sm-12" style="display: flex;justify-content: space-around;">
+
+    <div class="jumbotron col-sm-3" style="text-align: center;border-radius: 10px">
+        <img src="{% static 'images/archivo.png' %}" style="width: 80px;height: auto">
+        <!--<i class="glyphicon glyphicon-edit" style="font-size: 80px;color: #1b6d85"></i>-->
+        <h3 style="margin-top: 20px;color: dodgerblue">Rellena los Datos</h3>
+        <p style="font-size: small;margin-top: 30px">Nombre del titular y numero de teléfono del celular que quieres
+            recargar. Selecciona la cantidad a recargar y te saldrá el monto que recibirá el móvil en pesos cubanos
+            convertibles (CUC).</p>
+    </div>
+    <div class="jumbotron col-sm-3" style="text-align: center;border-radius: 10px">
+        <img src="{% static 'images/aprovechar.png' %}" style="width: 80px;height: auto">
+        <h3 style="color: dodgerblue">Hacer Click en Recargar</h3>
+        <p style="font-size: small;margin-top: 30px">Si eres un usuario nuevo deberás registrarte en el sitio, si ya
+            eres usuario autentificate para pasar a la pagina del resumen de la orden.</p>
+    </div>
+    <div class="jumbotron col-sm-3" style="text-align: center;border-radius: 10px">
+        <img src="{% static 'images/tarjeta-de-credito (1).png' %}" style="width: 80px;height: auto">
+        <h3 style="color: dodgerblue">Revisar el pedido y Pagar</h3>
+        <p style="font-size: small;margin-top: 30px">Si todo esta correcto da click en pagar y pasaras a la pasarela
+            segura de pago por tarjeta donde realizaras el pago por el monto seleccionado.</p>
+    </div>
+</div>
+
+{% block footer %}
+<section>
+<footer class="footer-bs ">
+        <div class="container">
+        	<div class="col-md-3 footer-brand animated fadeInLeft">
+                <img src="{% static 'images/IMG-20200616-WA0002.jpg' %}" alt="Logo" style="height: 50px;width: auto;
+                border-color: #0f0f0f;border-radius: 5px;margin-top: -15px">
+            	<!--<h2>Logo</h2>-->
+                <p style="margin-top: 15px">Suspendisse hendrerit tellus laoreet luctus pharetra. Aliquam porttitor vitae orci nec ultricies. Curabitur vehicula, libero eget faucibus faucibus, purus erat eleifend enim, porta pellentesque ex mi ut sem.</p>
+                <p>© 2014 BS3 UI Kit, All rights reserved</p>
+            </div>
+        	<div class="col-md-4 footer-nav animated fadeInUp">
+            	<h4>Menu —</h4>
+            	<div class="col-md-6">
+                    <ul class="pages">
+                        <li><a href="#"></a>{{ usuario }}</li>
+                        <li><a href="#">Servicios</a></li>
+                        <li><a href="#">Portafolios</a></li>
+                        <li><a href="#">Iniciar Sesi&oacute;n</a></li>
+                        <li><a href="#">Salir de la Cuenta</a></li>
+                    </ul>
+                </div>
+            	<div class="col-md-6">
+                    <ul class="list">
+                        <li><a href="#">Acerca de Nosotros</a></li>
+                        <li><a href="#">Contactos</a></li>
+                        <li><a href="#">T&eacute;rminos y Condiciones</a></li>
+                        <li><a href="#">Pol&iacute;tica de privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+        	<div class="col-md-2 footer-social animated fadeInDown">
+            	<h4>S&iacute;guenos</h4>
+            	<ul>
+                	<li><a href="#">Facebook</a></li>
+                	<li><a href="#">Twitter</a></li>
+                	<li><a href="#">Instagram</a></li>
+                	<li><a href="#">RSS</a></li>
+                </ul>
+            </div>
+        	<div class="col-md-3 footer-ns animated fadeInRight">
+            	<h4>Hoja Informativa</h4>
+                <p>blablabla</p>
+                <p>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Buscar por...">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
+                      </span>
+                    </div><!-- /input-group -->
+                 </p>
+            </div>
+        </div>
+    </footer>
+</section>
+
+</body>
+{% endblock %}
+<script>
+    var move='';
+    var collapseGeneral=document.getElementById('collapseGeneral');
+    var collapse=null;
+    function Servicios(off) {
+        Collapse(off);
+        if(move==""){
+        var hash = "#Servicios";
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 900, function () {
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = hash;
+            });
+            move=hash}
+        else{
+            move='';
+            hash="";
+              $('html, body').animate({
+              //  scrollTop: $(hash).offset().top
+            }, 900, function () {
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = "#Servicios";
+            });
+
+        }
+    }
+    function Collapse(off){
+        if(collapseGeneral.className=='panel-collapse collapse'){
+            linksServicios=document.getElementsByName("linkServicios");
+            for (link of linksServicios){
+                if(link.id!=off){
+                    link.href = '';
+                }
+            }
+            Cambios(off);
+            collapse=document.getElementById(off);
+        }
+        else{
+            if(collapse.id==off){
+//si esta abierto y tocan el q lo abrio lo unico q hay q hacer es regresarles a los demas la propiedad de href q se le cambio
+                 linksServicios=document.getElementsByName("linkServicios");
+                for (link of linksServicios){
+                    link.href = '#collapseGeneral';
+                }
+            }
+            else {
+                //hago los cambios en el div
+                Cambios(off);
+                linksServicios=document.getElementsByName("linkServicios");
+                for (link of linksServicios){
+                    if(link.id!=off){
+                        link.href = '';
+                    }
+                }
+                collapse=document.getElementById(off);
+            }
+            //si esta abierto y tocan a otro entc tengo q escribirle a ese q tocaron su propiedad y a los demas quitarselas es decir quitarsela al q lo abrio
+        }
+    }
+    function Cambios(off){
+        off=document.getElementById(off);
+        if(off.id=='linkCubacel'){
+            document.getElementById('RecargaCollapse').textContent='Recargas Cubacel';
+        }
+         if(off.id=='linkNauta'){
+            document.getElementById('RecargaCollapse').textContent='Recargas Nauta';
+        }
+    }
+
+        $(document).ready(function () {
+            // Initialize Tooltip
+            $('[data-toggle="tooltip"]').tooltip();
+
+            // Add smooth scrolling to all links in navbar + footer link
+            $(".navbar a, footer a[href='#Servicios']").on('click', function (event) {
+
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+
+                    // Store hash
+                    var hash = this.hash;
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 900, function () {
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        window.location.hash = hash;
+
+                    });
+                } // End if
+            });
+        })
+
+        function navbarPrincipal(x="grande") {
+
+                var listanavbar=document.getElementById("listanavbar");
+                var myNavbar=document.getElementById("myNavbar");
+                var general=document.getElementById("general");
+                var myLogo=document.getElementById("myLogo");
+
+                if(x=="grande"){
+                    listanavbar.style.cssFloat="right";
+                    myNavbar.style.marginTop="";
+                    myNavbar.style.marginLeft="";
+                    general.style.width="30%";
+                    myNavbar.style.width="70%";
+                }else {
+                    general.style.width="10%";
+                    listanavbar.style.cssFloat="left";
+                    myNavbar.style.marginTop="50px";
+                    myNavbar.style.marginLeft="-30%";
+                    myNavbar.style.width="50%";
+                    myLogo.style.marginLeft="100px";
+                    myLogo.style.marginBottom="100px";
+                }
+                //logo
+                //redes sociales
+            }
+
+       window.onload=function () {
+
+                var size=$(window).width();
+                if($(window).width()>755){
+                    navbarPrincipal();
+                }
+                else{
+                    navbarPrincipal("");
+                }
+
+                window.onresize=function () {
+                    function change() {
+                        if($(window).width()>755 && size>755){
+                            return false;
+                        }
+                        if ($(window).width()<755 && size<755){
+                            return false;
+                        }
+                        size=$(window).width();
+                        return true;
+                    }
+                    if(change()){
+                        if($(window).width()>755){
+                            navbarPrincipal();
+                        }
+                        else{
+                            navbarPrincipal("");
+                        }
+                    }
+                }
+            };
+
+        $(document).ready(function(){
+         $('[data-toggle="tooltip"]').tooltip();
+        });
+
+    </script>
+{% endblock %}

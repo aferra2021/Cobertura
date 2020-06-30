@@ -1,0 +1,31 @@
+{% extends 'Base/base.html' %}
+
+<body>
+{%block content%}
+
+
+{{ post }}
+<hr>
+<hr>
+ <form method="post">
+     {% csrf_token %}
+     <button type="submit">Pagar</button>
+ </form>
+<tbody>
+{% if ListTrans %}
+{% for trans in ListTrans %}
+<tr>
+    <td>{{trans.cliente}}</td>
+    <td>{{trans.tipo}}</td>
+    <td>{{trans.fecha}}</td>
+    <td>{{trans.SendValue}}</td>
+    <td>{{trans.accountNumber}}</td>
+</tr>
+{% endfor %}
+{% else %}
+<h1>No hay trans de este usuario</h1>
+{% endif %}
+</tbody>
+<a href="#">{{ len }}</a>
+</body>
+{%endblock%}
