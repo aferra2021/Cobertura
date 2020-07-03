@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b19be355-f63e-427d-abdc-61364bb96c75" name="Default Changelist" comment="" />
+    <list default="true" id="b19be355-f63e-427d-abdc-61364bb96c75" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -402,6 +404,9 @@
       <workItem from="1593496419738" duration="734000" />
       <workItem from="1593534529064" duration="9876000" />
       <workItem from="1593555892922" duration="89000" />
+      <workItem from="1593556020417" duration="796000" />
+      <workItem from="1593652817782" duration="1194000" />
+      <workItem from="1593737750472" duration="1662000" />
     </task>
     <task id="LOCAL-00001" summary="subido">
       <created>1591995525040</created>
@@ -445,7 +450,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593496549119</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="prueba">
+      <created>1593556112837</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1593556112837</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -466,7 +478,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="subido" />
-    <option name="LAST_COMMIT_MESSAGE" value="subido" />
+    <MESSAGE value="prueba" />
+    <option name="LAST_COMMIT_MESSAGE" value="prueba" />
   </component>
   <component name="WindowStateProjectService">
     <state x="249" y="3" key="#Inspections" timestamp="1593543297750">
@@ -487,10 +500,10 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="371" y="91" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.689@0.0.1280.689" timestamp="1591417550525" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1593496546639">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1593556110148">
+      <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1591999327232" />
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1593556110148" />
     <state x="0" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1593496546639" />
     <state x="258" y="52" key="DiffContextDialog" timestamp="1593496675184">
       <screen x="0" y="0" width="1366" height="728" />
@@ -522,19 +535,19 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="ShowDiffWithBranchDialog/0.0.1366.728@0.0.1366.728" timestamp="1593496533406" />
-    <state x="413" y="94" key="Vcs.Push.Dialog.v2" timestamp="1593496916043">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="387" y="89" key="Vcs.Push.Dialog.v2" timestamp="1593556123489">
+      <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="387" y="89" key="Vcs.Push.Dialog.v2/0.0.1280.689@0.0.1280.689" timestamp="1592000804066" />
+    <state x="387" y="89" key="Vcs.Push.Dialog.v2/0.0.1280.689@0.0.1280.689" timestamp="1593556123489" />
     <state x="413" y="94" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1593496916043" />
     <state x="98" y="90" width="1182" height="544" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1593496868294">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="98" y="90" width="1182" height="544" key="com.intellij.dvcs.ui.CompareBranchesDialog/0.0.1366.728@0.0.1366.728" timestamp="1593496868294" />
-    <state x="328" y="169" width="565" height="352" key="com.intellij.ide.util.TipDialog" timestamp="1593556021110">
+    <state x="328" y="169" width="565" height="352" key="com.intellij.ide.util.TipDialog" timestamp="1593737798924">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
-    <state x="328" y="169" width="565" height="352" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1593556021110" />
+    <state x="328" y="169" width="565" height="352" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1593737798924" />
     <state x="350" y="179" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1593534535223" />
     <state x="436" y="34" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1591909245609">
       <screen x="0" y="0" width="1280" height="689" />
