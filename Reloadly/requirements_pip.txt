@@ -5,7 +5,7 @@ chardet==3.0.4
 confusable-homoglyphs==3.2.0
 cryptography==2.9.2
 defusedxml==0.7.0rc1
-Django==3.0.6
+Django==3.0.7
 django-registration==3.1
 idna==2.9
 oauthlib==3.1.0
