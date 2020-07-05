@@ -72,7 +72,7 @@ animation-fill-mode: forwards;
                                data-toggle="tooltip" title="Perfil de usuario" data-placement="bottom">
                                    <i class="glyphicon glyphicon-user"></i>
                                    {{user}}</a></li>
-                               <li><a href="{% url 'cerrar-sesion' %}" style="color: #002a8f"
+                               <li><a href="#cerrar_seccion" onclick="logout()" style="color: #002a8f"
                                data-toggle="tooltip" title="Salir de la cuenta" data-placement="bottom">
                                    <i class="glyphicon glyphicon-log-out"></i>
                                </a></li>
@@ -498,6 +498,12 @@ animation-fill-mode: forwards;
         $(document).ready(function(){
          $('[data-toggle="tooltip"]').tooltip();
         });
+
+        function logout(){
+            //esto hay q hacerlo con ajaxs {% url 'cerrar-sesion' %}
+            //antes hay q saber si el usuari tiene alguna racarga en el carrito
+            alert('Si cierra session se perdera todo lo que tiene en el carrito')
+        }
 
     </script>
 {% endblock %}

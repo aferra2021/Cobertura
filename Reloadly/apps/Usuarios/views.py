@@ -9,6 +9,7 @@ from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import CreateView
 from .formRegistro import RegistroFormUsuario
+from .models import TransferenciaActual
 # Create your views here.
 from json.decoder import JSONArray
 
@@ -41,7 +42,10 @@ def ajax_posting(request):
         login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         return JsonResponse({'Result':'True'})
 
-
+def ajax_Logout(request):
+    listTrans = TransferenciaActual.objects.filter(cliente=request.user)
+    for trans in listTrans:
+        trans.delete()
 
 def userExist(request):
     userNameReg=request.GET['user']
