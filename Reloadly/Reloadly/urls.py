@@ -46,8 +46,10 @@ urlpatterns = [
     url(r'app4/', include('apps.EtecsaTelefonoFijo.urlEtecsaTelefonoFijo')),  # lo de app4 es suseptible al cambio
     url(r'app5/', include('apps.CubacelTur.urlCubacelTur')),  # lo de app5 es suseptible al cambio
     url(r'usuarios/', include('apps.Usuarios.urlUsuarios')),  # lo de app5 es suseptible al cambio
-    url(r'pagos/', include('apps.Pagos.urlPagos')),#PAGOS
-   # url(r'^auth_ajax/', include('xauth.login_ajax_urls')),#auth with ajax
+    url(r'mercadopago/', include('apps.MercadoPago.urlPagos')),#PAGOS
+
+
+
 #reset_password
     url('^', include('django.contrib.auth.urls')),
     url(

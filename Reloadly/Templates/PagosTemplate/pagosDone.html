@@ -6,16 +6,7 @@
 </head>
 <body>
 <h1>Pago hecho</h1>
-<tbody>
-{% if json %}
-{% for jso in json %}
-<tr>
-    <td>{{jso}}</td>
-</tr>
-{% endfor %}
-{% else %}
-<h1>No hay trans de este usuario</h1>
-{% endif %}
+{{json}}
 </tbody>
 
 </body>

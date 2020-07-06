@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from apps.MercadoPago.models import ClienteMercadoPago
 # Create your models here.
 
 
@@ -13,6 +14,7 @@ class TranferenciaGeneral(models.Model):
     cliente=models.ForeignKey(User,on_delete=models.CASCADE)
     SendValue=models.IntegerField()
     contacto=models.ForeignKey(Contacto,on_delete=models.PROTECT)
+    clienteMercadoPago=models.ForeignKey(ClienteMercadoPago,on_delete=models.PROTECT,blank=True)
 
     def __srt__(self):
         return  '{} {}'.format(self.cliente,self.tipo)

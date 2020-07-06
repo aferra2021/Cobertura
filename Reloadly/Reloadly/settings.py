@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'apps.CubacelSimTelefono',
     'apps.ServiciosDing',
     'apps.Usuarios',
-    'apps.Pagos',
+    'apps.MercadoPago',
     #Social,(pip install rest-social-auth)
     'rest_framework',#facebook
     #'rest_framework.authtoken',  # only if you use token authentication
@@ -61,6 +61,18 @@ INSTALLED_APPS = [
     'six',
 ]
 # Application definition
+#MercardoPago
+
+MERCADOPAGO = {
+    'autoprocess': True,
+    'success_url': 'Reloadly: mp_success',
+    'failure_url': 'Reloadly: mp_failure',
+    'pendiente_url': 'Reloadly: mp_pending',
+    'base_host': 'http://127.0.0.1:8000/cobertura'
+}
+
+
+
 
 
 MIDDLEWARE = [
