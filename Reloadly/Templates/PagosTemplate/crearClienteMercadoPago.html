@@ -1,0 +1,231 @@
+{% extends 'base/base.html' %}
+{% load static %}
+<script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
+<body>
+{%block Content%}
+{% if user.is_authenticated %}
+{% if ListTrans %}
+    <td>{{trans}}</td>
+
+    <nav class="container-fluid navbar " id="inicio" style="background-color: #f7f7f7">
+            <div class="row-container" id="Principal" style="display: flex;justify-content: space-between" >
+                <div class="navbar-header" id="general"style="width: 30%">
+                    <button type="button"  id="boton" style="background-color:transparent;float: left" onclick="AjusteNavbar1(this)"  class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'cobertura' %}">
+                        <img id="myLogo" src= "{% static 'images/IMG-20200616-WA0002.jpg' %}" alt="Logo"
+                        style="height: 50px;width: auto; border-color: #0f0f0f;border-radius: 5px;margin-top: -15px">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse row"  style="width: 70%" id="myNavbar">
+                    <ul class="nav navbar-nav" style="float: right" id="listanavbar">
+                        <li class="">
+                                 <a href="{% url 'coberturaEN' %}" style="color: #002a8f" data-toggle="tooltip"
+                                    title="Cambiar a inglés" data-placement="bottom" class="idioma">
+                                    <i class="fa fa-globe"></i>&nbsp;ES
+                                    <span class="caret"></span>
+                                </a>
+                        </li>
+                        <li><a style="color: #002a8f"  href="{% url 'nuevarecarga' %}">
+                            <i class="fa fa-check"></i>
+                            Nueva Recarga</a></li>
+                        {% if user.is_authenticated %}
+                               <li><a href="{% url 'adminUser' %}  " onclick="cli(x)" style="color: #002a8f"
+                               data-toggle="tooltip" title="Perfil de usuario" data-placement="bottom">
+                                   <i class="glyphicon glyphicon-user"></i>
+                                   {{user}}</a></li>
+                               <li><a href="#cerrar_seccion" onclick="logout()" style="color: #002a8f"
+                               data-toggle="tooltip" title="Salir de la cuenta" data-placement="bottom">
+                                   <i class="glyphicon glyphicon-log-out"></i>
+                               </a></li>
+                            {% else %}
+                                <li><a href="{% url 'iniciarsecion' %}" onclick="cli(x)" style="color: #002a8f"
+                                data-toggle="tooltip" title="Autenticarse" data-placement="bottom">
+                                    <i class="glyphicon glyphicon-log-in"></i>
+                                </a></li>
+                                <li><a href="{% url 'registrar' %}  " onclick="cli(x)" style="color: #002a8f"
+                                data-toggle="tooltip" title="Registrarse" data-placement="bottom">
+                                    <i class="glyphicon glyphicon-edit"></i>
+                                </a></li>
+                        {% endif%}
+                        <li><a style="color: #002a8f" href="{% url 'blog' %}" data-toggle="tooltip" title="Deja tu comentario"
+                               data-placement="bottom">
+                            <i class="fa fa-blog"></i>
+                            Blog</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    </nav>
+
+<div class="container">
+    <form  class="form-horizontal" method="POST" id="formClienteMercadoPago" name="pay" role="form">
+        {% csrf_token %}
+        <div class="form-group col-sm-12">
+          <label class="control-label col-sm-4" for="email" style="color: #696265">Email:</label>
+          <div class="col-sm-6">
+            <input type="email" class="form-control" id="email" placeholder="Escriba su correo">
+          </div>
+        </div>
+        <div class="form-group col-sm-12">
+          <label class="control-label col-sm-4" for="first_name" style="color: #696265">Nombre:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="firstName" placeholder="Escriba su nombre">
+          </div>
+        </div>
+        <div class="form-group col-sm-12">
+          <label class="control-label col-sm-4" for="last_name" style="color: #696265">Apellidos:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="apellidos" placeholder="Escriba sus apellidos">
+          </div>
+        </div>
+        <div class="container col-sm-12" style="background-color: #f7f7f7;border-radius: 10px;margin-bottom: 20px">
+            <h3 class="text-center" style="color: #696265">
+                <i class="fa fa-mobile-alt" style="color: #002a8f"></i>
+                Teléfono
+            </h3>
+        </div>
+        <div class="form-group col-sm-12">
+          <label class="control-label col-sm-4" for="area_code" style="color: #696265">Código de Area:</label>
+          <div class="col-sm-6">
+            <input type="number" class="form-control" id="codigoArea" placeholder="Escriba su código de area">
+          </div>
+        </div>
+        <div class="form-group col-sm-12">
+          <label class="control-label col-sm-4" for="number" style="color: #696265">Número de teléfono:</label>
+          <div class="col-sm-6">
+            <input type="number" class="form-control" id="numerotelefono" placeholder="Escriba su número de teléfono">
+          </div>
+        </div>
+        <div class="container col-sm-12" style="background-color: #f7f7f7;border-radius: 10px;margin-bottom: 20px">
+            <h3 class="text-center" style="color: #696265">
+                <i class="fa fa-user" style="color: #002a8f"></i>
+                Identificación
+            </h3>
+        </div>
+        <div class="form-group col-sm-12">
+          <label class="control-label col-sm-4" for="type" style="color: #696265">Tipo de identificación:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="tipoIdentificacion" placeholder="Escriba el tipo de identificación (ejemplo: DNS, CI)">
+          </div>
+        </div>
+        <div class="form-group col-sm-12">
+          <label class="control-label col-sm-4" for="numberIdentifications" style="color: #696265">Número de identificación:</label>
+          <div class="col-sm-6">
+            <input type="number" class="form-control" id="numeroIdentificacion" placeholder="Escriba su número de identificación">
+          </div>
+        </div>
+        <div class="container col-sm-12" style="background-color: #f7f7f7;border-radius: 10px;margin-bottom: 20px">
+            <h3 class="text-center" style="color: #696265">
+                <i class="fa fa-address-card" style="color: #002a8f"></i>
+                Dirección
+            </h3>
+        </div>
+        <div class="form-group col-sm-12">
+          <label class="control-label col-sm-4" for="zip_code" style="color: #696265">Código Zip:</label>
+          <div class="col-sm-6">
+            <input type="number" class="form-control" id="codigoZip" placeholder="Escriba su código zip">
+          </div>
+        </div>
+        <div class="form-group col-sm-12">
+          <label class="control-label col-sm-4" for="street_name" style="color: #696265">Nombre de la calle:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" id="nombrecalle" placeholder="Escriba el nombre de su calle">
+          </div>
+        </div>
+        <div class="form-group col-sm-12" style="display: flex;justify-content: center">
+          <div class="col-sm-2">
+            <button type="submit" class="btn btn-default btn-block" style="background-color: #002a8f;color: white;
+            font-size: medium;margin-top: 10px">Pagar</button>
+          </div>
+        </div>
+
+
+<!--
+        <fieldset>
+            <p>
+                <label for="email">Correo</label>
+                <input type="email" name="Correo" id="Correo" />
+            </p>
+            <p>
+                <label for="Nombre">Nombre</label>
+                <input name="Nombre" id="first_name" />
+            </p>
+            <p>
+                <label for="Apellidos">Apellidos</label>
+                <input type="text" id="last_name" />
+    <!--data-checkout="cardNumber" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+            </p>
+            <h3>Telefono</h3>
+            <p>
+                <label for="area_code">Codigo de Area</label>
+                <input type="number" id="area_code"/>
+            </p>
+            <p>
+                <label for="number">Número de Telefono</label>
+                <input type="number" id="number"/>
+    <!-- data-checkout="cardExpirationMonth" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+            </p>
+            <h3>Identificación</h3>
+            <p>
+                <label for="type">Tipo de identificación</label>
+                <input type="text" id="type"/>
+    <!--data-checkout="cardExpirationYear" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+            </p>
+            <p>
+                <label for="numberIdentifications">Número de Identidad</label>
+                <input type="number" id="numberIdentifications" />
+    <!--data-checkout="securityCode" onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=off />
+            </p>
+            <h3>Direccion</h3>
+            <p>
+                <label for="zip_code">zip_code</label>
+                <input id="zip_code" id="zip_code" />
+            </p>
+            <p>
+                <label for="street_name">street_name</label>
+                <input type="text" id="street_name" />
+            </p>
+
+            <input id="ClienteMercadoPago" type="submit" value="Pagar"/>
+        </fieldset>
+
+        -->
+
+
+    </form>
+</div>
+
+</tr>
+{% else %}
+<h1>No hay trans de este usuario</h1>
+{% endif %}
+{% else %}
+<h1>El usuario no está autenticado </h1>
+{% endif %}
+</tbody>
+<a href="#">{{ len }}</a>
+
+</body>
+
+
+<script>
+        function UserValidation(){
+            alert('User')
+        }
+
+        $('#formClienteMercadoPago').on('submit', function(e){
+            alert('ALERTa')
+            //$.ajax(args).done(function (response) {
+                        //})
+        })
+
+    $(document).ready(function(){
+         $('[data-toggle="tooltip"]').tooltip();
+        });
+
+</script>
+{%endblock%}

@@ -34,4 +34,4 @@ def recargaCubacelView2(request,offset):
             SendValue=int(request.POST['Recarga'])
             Trans=TransferenciaActual(tipo=tipo,fecha=fecha,cliente=user,SendValue=SendValue,accountNumber=AccountNumber)
             Trans.save()
-        return redirect('pago')#pago
+        return redirect('crearClienteMercadoPago')#pago

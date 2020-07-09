@@ -4,48 +4,51 @@ from django.http import HttpResponse
 from Reloadly.ServiciosGenerales import ServerManage
 from django.contrib.auth.models import User
 import requests
-from .ServiciosMercadoPago import ObtenerCliente
+from .ServiciosMercadoPago import CrearClienteAPI,ObtenerCliente
+from .models import ClienteMercadoPago
 
 # Create your views here.
-#    //access_token=TEST-3968442574725364-052821-0a162b8a21c4dbd43f48933d227339ce-468607165'
+#access_token=TEST-3968442574725364-052821-0a162b8a21c4dbd43f48933d227339ce-468607165'
 
 def pagosGeneral(request):
-    response = ObtenerCliente()
-    return HttpResponse(render(request, 'PagosTemplate/pagosDone.html', {'json': response.json()}))
-
-
-
-""" url = "https://api.mercadopago.com/v1/customers?access_token=TEST-3968442574725364-052821-0a162b8a21c4dbd43f48933d227339ce-468607165"
-    payload = {
-        "email": "brwwo@gmail.com",
-        "first_name": "Bsruce",
-        "last_name": "Wasyne",
-        "phone": {
-            "area_code": "023",
-            "number": "12345638"
-        },
-        "identification": {
-            "type": "DNI",
-            "number": "12343672"
-        },
-        "address": {
-            "zip_code": "SG1 2AX",
-            "street_name": "Old Knebworth Ln"
-        },
-        "description": "Lorem Ipsum"
-    }
+    #get en el q mando el formulario para llenar los datos del cliente de tarjeta
+    #en el post recojo los datos
+    url='https://api.mercadopago.com/v1/payments?access_token=TEST-3968442574725364-052821-0a162b8a21c4dbd43f48933d227339ce-468607165'
+    url='https://api.mercadopago.com/v1/payments?access_token=TEST-3968442574725364-052821-0a162b8a21c4dbd43f48933d227339ce-468607165'
+   # // api.mercadopago.com / v1 / customers / {} / cards
+    #payload={            }
     headers = {}
-    response = requests.request("POST", url, headers=headers, json=payload)
-    print(response.text.encode('utf8'))
-    print(response.json().id)
-    return HttpResponse(render(request, 'PagosTemplate/pagosDone.html',{'json': response.json()}))"""
+    #response = requests.request("POST", url, headers=headers, json=payload)
+    response=CrearClienteAPI()
+    response = requests.request("GET", 'https://api.mercadopago.com/v1/customers/606370491-Q5eBJUglok98pa/cards?access_token=TEST-3968442574725364-052821-0a162b8a21c4dbd43f48933d227339ce-468607165', headers=headers, json={})
 
+    #id=606370491-Q5eBJUglok98pa
+    return HttpResponse(render(request, 'PagosTemplate/pagosDone.html', {'ClienteMercadoPago': response.json()}))
+
+
+
+
+
+
+
+    """CC=CrearClienteAPI()
+    if CC['error']=='':#no hubo error
+        ClienteMercadoPago=ModeloClenteMercadoPago(CC)
+        ClienteMercadoPago.save()
+        return HttpResponse(render(request, 'PagosTemplate/pagosDone.html',{'ClienteMercadoPago':ClienteMercadoPago}))"""
+    #if CC['error']
+    #tengo q renderizar el formulario denuevo y mostrarle al usuario el error del campo en el que se equivoco
+
+
+def CrearClienteMercadoPago(request):
+    ListTrans=TransferenciaActual.objects.filter(cliente=request.user)
+    return HttpResponse(render(request, 'PagosTemplate/crearClienteMercadoPago.html',{'ListTrans':ListTrans}))
 
 
 """  if request.method=='GET':
         listTrans=TransferenciaActual.objects.filter(cliente=request.user)
         #aki hay q mostrar todas las transferencias q el usuario a metido en el carrito
-        return HttpResponse(render(request,'PagosTemplate/pagosGeneral.html',{'ListTrans':listTrans}))
+        return HttpResponse(render(request,'PagosTemplate/crearClienteMercadoPago.html',{'ListTrans':listTrans}))
     else:
         # vamos asuponer q pague: ahora hay q hacer todad las transferencias q haya hecho ese usuario
         listTrans = TransferenciaActual.objects.filter(cliente=request.user)
@@ -77,3 +80,18 @@ def pagosGeneral(request):
 def procesarPago(request):
     return HttpResponse(render(request, 'PagosTemplate/pagosDone.html'))
 
+def ModeloClenteMercadoPago(response_json):
+    id = response_json['id']
+    email = response_json['email']
+    first_name = response_json['first_name']
+    last_name = response_json['last_name']
+    # phone
+    area_Code = response_json['phone']['area_code']
+    number = response_json['phone']['number']
+    # identification
+    type = response_json['identification']['type']
+    numberIdentifications = response_json['identification']['number']
+    date_created = response_json['date_created']
+    date_last_updated = response_json['date_last_updated']
+    CMP = ClienteMercadoPago(id=id, email=email, first_name=first_name,last_name=last_name, area_Code=area_Code, number=number,type=type, numberIdentifications=numberIdentifications,date_created=date_created,date_last_updated=date_last_updated)
+    return CMP
