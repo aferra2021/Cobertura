@@ -49,7 +49,7 @@
 </style>
 
 <body>
- <nav class="container-fluid navbar " id="barra" style="background-color: #f7f7f7">
+ <!--<nav class="container-fluid navbar " id="barra" style="background-color: #f7f7f7">
             <div class="row-container" id="Principal" style="display: flex;justify-content: space-between" >
                 <div class="navbar-header" id="general"style="width: 30%">
                     <button type="button"  id="boton" style="background-color:transparent;float: left" onclick="AjusteNavbar1(this)"  class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -101,7 +101,8 @@
                     </ul>
                 </div>
             </div>
-    </nav>
+    </nav>-->
+{% include 'navbar.html' %}
 
 <div style="display: flex;justify-content: center;margin-top: -25px;margin-bottom: -15px;font-family: FontAwesome;color: dimgrey">
  <h1>Nuestro sitio ofrece</h1>
@@ -131,7 +132,7 @@
       <div class="item">
         <img src="{% static 'images/93eb9ebd-eb71-4fcc-8d22-1fea80dfb1a2.jpg' %}" alt="Cuba" width="460" height="345">
         <div class="carousel-caption" style="display: flex;justify-content: center">
-          <h3>Bajos gastos</h3>
+          <h3>Bajos costos</h3>
         </div>
       </div>
 
@@ -153,11 +154,13 @@
 
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"
+       data-toggle="tooltip" data-placement="bottom" title="Anterior"></span>
       <span class="sr-only">Previous</span>
     </a>
     <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"
+       data-toggle="tooltip" data-placement="bottom" title="Siguiente"></span>
       <span class="sr-only">Next</span>
     </a>
   </div>
@@ -201,13 +204,39 @@
     <div style="display: flex;justify-content: center">
       <h2>Nuestros usuarios dicen:</h2>
     </div>
-    <form role="form" style="margin-top: 20px">
+    <form class="container"  method="POST" style="padding: 30px">
+    {% csrf_token %}
         <div class="form-group">
-            <label for="comment">Comment:</label>
-            <textarea class="form-control" rows="5" id="comment" style="background-color: #e8e8e8"></textarea>
+            <label for="comment">Dejanos tu opinion:</label>
+            <textarea class="form-control" rows="5" id="comment" for="text" style="background-color: #e8e8e8"></textarea>
+        </div>
+        <div class="text-right">
+            <a type="" class="btn btn-default" data-toggle="tooltip" data-placement="bottom"
+            title="Envia tu comentario" onclick="Comentar()" style="width: 200px;background-color: #002a8f;color: white">Enviar</a>
         </div>
     </form>
 </div>
+
+<ul>
+    {% if comentarios %}
+    {% for coment in comentarios %}
+    <li class="well container" style="list-style: none">
+    <div>
+        <div style="width: 95%;float: left">
+         <p>{{coment.text}}</p>
+        </div>
+        <div style="width: 5%;float: right">
+         <a href="#"><i class="fa fa-thumbs-up"></i></a>
+         <a href="#"><i class="fa fa-thumbs-down" style="color: indianred;margin-left: 5px"></i></a>
+        </div>
+    </div>
+    </li>
+    {% endfor %}
+    {% else %}
+    <p>no hay comentarios</p>
+    {% endif %}
+</ul>
+
 
 </body>
 
@@ -227,6 +256,32 @@ $(this).text(Math.ceil(now));
 });
 
 });
+
+$(document).ready(function(){
+         $('[data-toggle="tooltip"]').tooltip();
+        });
+
+function Comentar() {
+    var text=$('#comment').val();
+    var user='';
+   {% if user.is_authenticated %}
+        user='user';
+    {% else %}
+        alert('debe autenticarse antes de comentar. Luego de que se autentique su comentario sera guardado');
+    {% endif %}
+    data={text:text};
+    var args={type: "GET",url: "{% url 'comentar' %}", data};
+    $.ajax(args).done(function (response){
+        if(response.Result==true){
+            window.location.href="{% url 'blog' %}";
+        }else{
+            window.location.href="{% url 'loginMensaje' %}"+'?next=/blog/'+response.id;
+        }
+
+    });
+
+         //primero preguntar s el tipo se autentico sino hacer lo q yo hize con las recargas de manera q se pueda comentar y no se guarde hasta q el tpo se autentique
+}
 
 </script>
 {% endblock %}

@@ -2,16 +2,68 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b19be355-f63e-427d-abdc-61364bb96c75" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Reloadly/Templates/PagosTemplate/crearClienteMercadoPago.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/Templates/StripeAPITemplates/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/carrito.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/Templates/navbar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/Templates/registration/loginMensaje.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/StripeAPI/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/StripeAPI/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/StripeAPI/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/StripeAPI/customer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/StripeAPI/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/StripeAPI/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/StripeAPI/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/StripeAPI/urlStripeAPI.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/StripeAPI/views.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/migrations/0013_auto_20200714_2203.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/migrations/0014_auto_20200714_2224.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/migrations/0015_testmodel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/migrations/0016_comentario.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/migrations/0017_auto_20200803_1550.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/migrations/0018_auto_20200803_2321.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/cssAlertify/alertify.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/cssAlertify/alertify.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/cssAlertify/alertify.rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/cssAlertify/alertify.rtl.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/cssAlertify/themes/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/cssAlertify/themes/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/cssAlertify/themes/bootstrap.rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/cssAlertify/themes/bootstrap.rtl.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/cssAlertify/themes/default.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/cssAlertify/themes/default.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/cssAlertify/themes/default.rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/cssAlertify/themes/default.rtl.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/cssAlertify/themes/semantic.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/cssAlertify/themes/semantic.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/cssAlertify/themes/semantic.rtl.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/cssAlertify/themes/semantic.rtl.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/jsAlertify/alertify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reloadly/static/jsAlertify/alertify.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/PagosTemplate/pagosDone.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/PagosTemplate/pagosDone.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/PagosTemplate/pagosGeneral.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Reloadly/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Reloadly/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Reloadly/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Reloadly/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Reloadly/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Reloadly/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/Base/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/Base/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/PagosTemplate/crearClienteMercadoPago.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/PagosTemplate/crearClienteMercadoPago.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/RecargasCubacelTemplates/RecargasCubacel.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/RecargasCubacelTemplates/RecargasCubacel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/Usuarios/cliente_form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/blog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/userAdmin.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/userAdmin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/auth/password_reset_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/auth/password_reset_confirm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/auth/password_reset_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/auth/password_reset_done.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/auth/password_reset_email.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/auth/password_reset_email.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/auth/password_reset_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/auth/password_reset_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/auth/user_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/auth/user_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reloadly/Templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/MercadoPago/ServiciosMercadoPago.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/MercadoPago/ServiciosMercadoPago.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/MercadoPago/urlPagos.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/MercadoPago/urlPagos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/MercadoPago/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/MercadoPago/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/registration/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reloadly/apps/RecargasCubacel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/RecargasCubacel/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/apps/Usuarios/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/apps/Usuarios/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/apps/Usuarios/urlUsuarios.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/urlUsuarios.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/apps/Usuarios/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reloadly/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reloadly/static/js/alertyfy.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,9 +87,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -136,6 +188,7 @@
         </serviceView>
       </list>
     </option>
+    <option name="showServicesTree" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -428,7 +481,34 @@
       <workItem from="1594061835947" duration="620000" />
       <workItem from="1594076397887" duration="9571000" />
       <workItem from="1594173227673" duration="7423000" />
-      <workItem from="1594254831167" duration="10637000" />
+      <workItem from="1594254831167" duration="12248000" />
+      <workItem from="1594453519898" duration="6743000" />
+      <workItem from="1594511108496" duration="2947000" />
+      <workItem from="1594611581097" duration="9824000" />
+      <workItem from="1594693169977" duration="13614000" />
+      <workItem from="1594756123950" duration="4031000" />
+      <workItem from="1594772214751" duration="11123000" />
+      <workItem from="1594836410910" duration="6307000" />
+      <workItem from="1594863957775" duration="3358000" />
+      <workItem from="1594954208805" duration="3763000" />
+      <workItem from="1595107870956" duration="16574000" />
+      <workItem from="1595209293187" duration="5658000" />
+      <workItem from="1595271434272" duration="8850000" />
+      <workItem from="1595356373871" duration="220000" />
+      <workItem from="1595365322697" duration="17995000" />
+      <workItem from="1595819016549" duration="1389000" />
+      <workItem from="1595993883784" duration="5836000" />
+      <workItem from="1596087464668" duration="2179000" />
+      <workItem from="1596134893340" duration="15512000" />
+      <workItem from="1596216230445" duration="18072000" />
+      <workItem from="1596411480500" duration="3714000" />
+      <workItem from="1596423260324" duration="2791000" />
+      <workItem from="1596467808184" duration="1933000" />
+      <workItem from="1596483003549" duration="18292000" />
+      <workItem from="1596557388163" duration="14068000" />
+      <workItem from="1596638079787" duration="4493000" />
+      <workItem from="1596740593157" duration="13812000" />
+      <workItem from="1596815936764" duration="3705000" />
     </task>
     <task id="LOCAL-00001" summary="subido">
       <created>1591995525040</created>
@@ -507,7 +587,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594062160894</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="&quot;formularioCrearClienteMercadoPago&quot;">
+      <created>1594325159018</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1594325159018</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -533,7 +620,8 @@
     <MESSAGE value="meet" />
     <MESSAGE value="contacto" />
     <MESSAGE value="&quot;mercadoPago&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;mercadoPago&quot;" />
+    <MESSAGE value="&quot;formularioCrearClienteMercadoPago&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;formularioCrearClienteMercadoPago&quot;" />
   </component>
   <component name="WindowStateProjectService">
     <state x="249" y="3" key="#Inspections" timestamp="1593543297750">
@@ -554,11 +642,11 @@
       <screen x="0" y="0" width="1280" height="689" />
     </state>
     <state x="371" y="91" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.689@0.0.1280.689" timestamp="1591417550525" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1594325060941">
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1594325154849">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1593740028565" />
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1594325060941" />
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1594325154849" />
     <state x="258" y="52" key="DiffContextDialog" timestamp="1593496675184">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -589,24 +677,24 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="ShowDiffWithBranchDialog/0.0.1366.728@0.0.1366.728" timestamp="1594325148751" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1593982911541">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1594705845201">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1593982911541" />
-    <state x="413" y="94" key="Vcs.Push.Dialog.v2" timestamp="1594062184804">
+    <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1594705845201" />
+    <state x="413" y="94" key="Vcs.Push.Dialog.v2" timestamp="1594325182411">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="387" y="89" key="Vcs.Push.Dialog.v2/0.0.1280.689@0.0.1280.689" timestamp="1593740065871" />
-    <state x="413" y="94" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1594062184804" />
+    <state x="413" y="94" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1594325182411" />
     <state x="98" y="90" width="1182" height="544" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1594325148751">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="98" y="90" width="1182" height="544" key="com.intellij.dvcs.ui.CompareBranchesDialog/0.0.1366.728@0.0.1366.728" timestamp="1594325148751" />
-    <state x="350" y="179" width="565" height="352" key="com.intellij.ide.util.TipDialog" timestamp="1594264524407">
+    <state x="350" y="179" width="565" height="352" key="com.intellij.ide.util.TipDialog" timestamp="1596815934755">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="328" y="169" width="565" height="352" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1593739563014" />
-    <state x="350" y="179" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1594264524407" />
+    <state x="350" y="179" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1596815934755" />
     <state x="436" y="34" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1591909245609">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
@@ -627,15 +715,26 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="464" y="76" key="git4idea.branch.GitSmartOperationDialog/0.0.1366.728@0.0.1366.728" timestamp="1594062121090" />
-    <state x="300" y="76" width="748" height="560" key="recent.locations.popup" timestamp="1594090392070">
+    <state x="300" y="76" width="748" height="560" key="recent.locations.popup" timestamp="1596772695906">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="281" y="72" width="700" height="530" key="recent.locations.popup/0.0.1280.689@0.0.1280.689" timestamp="1592592537697" />
-    <state x="300" y="76" width="748" height="560" key="recent.locations.popup/0.0.1366.728@0.0.1366.728" timestamp="1594090392070" />
-    <state x="323" y="11" width="718" height="717" key="search.everywhere.popup" timestamp="1594092200252">
+    <state x="300" y="76" width="748" height="560" key="recent.locations.popup/0.0.1366.728@0.0.1366.728" timestamp="1596772695906" />
+    <state x="323" y="11" width="718" height="717" key="search.everywhere.popup" timestamp="1596598975998">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1592152848198" />
-    <state x="323" y="11" width="718" height="717" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1594092200252" />
+    <state x="323" y="11" width="718" height="717" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1596598975998" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Reloadly/Templates/registration/login.html</url>
+          <line>125</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

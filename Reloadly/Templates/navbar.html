@@ -1,9 +1,6 @@
-{% extends 'Base/base.html' %}
 {% load static %}
 
-{% block Content %}
-{% block navbar %}
-<!--<nav id="home" class="container-fluid navbar " id="barra" style="background-color: #f7f7f7">
+    <nav class="container-fluid navbar slide" id="inicio" style="background-color: #f7f7f7">
             <div class="row-container" id="Principal" style="display: flex;justify-content: space-between" >
                 <div class="navbar-header" id="general"style="width: 30%">
                     <button type="button"  id="boton" style="background-color:transparent;float: left" onclick="AjusteNavbar1(this)"  class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -21,58 +18,49 @@
                         <li class="">
                                  <a href="{% url 'coberturaEN' %}" style="color: #002a8f" data-toggle="tooltip"
                                     title="Cambiar a inglés" data-placement="bottom" class="idioma">
-                                    <i class="fa fa-globe"></i>&nbsp;ES
+                                    <i class="fa fa-globe-americas"></i>&nbsp;ES
                                     <span class="caret"></span>
                                 </a>
                         </li>
-                        <li><a style="color: #002a8f"  href="{% url 'nuevarecarga' %}">Nueva Recarga</a></li>
+                        <li class="">
+                                 <a href="{% url 'carrito' %}" style="color: #002a8f" data-toggle="tooltip"
+                                    title="Recargas a pagar" data-placement="bottom" class="idioma">
+                                    <i class="fa fa-shopping-cart"></i>&nbsp;{{carrito}}
+                                </a>
+                        </li>
+                        <li class="fa-flip-vertical"></li>
+                        <li><a style="color: #002a8f"  href="{% url 'nuevarecarga' %}" data-toggle="tooltip" title="Crea y personaliza tu recarga" data-placement="bottom">
+                            <i class="fa fa-check"></i>
+                            Nueva Recarga</a></li>
                         {% if user.is_authenticated %}
-                               <li><a href="{% url 'adminUser' %}"  style="color: #002a8f"
+                               <li><a href="{% url 'adminUser' %}  "  style="color: #002a8f"
                                data-toggle="tooltip" title="Perfil de usuario" data-placement="bottom">
-                                   <i class="glyphicon glyphicon-user"></i>
+                                   <i class="fa fa-user"></i>
                                    {{user}}</a></li>
                                <li><a href="{% url 'cerrar-sesion' %}" style="color: #002a8f"
                                data-toggle="tooltip" title="Salir de la cuenta" data-placement="bottom">
-                                   <i class="glyphicon glyphicon-log-out"></i>
+                                   <i class="fa fa-sign-out-alt"></i>&nbsp;Cerrar Seción
                                </a></li>
                             {% else %}
                                 <li><a href="{% url 'iniciarsecion' %}" style="color: #002a8f"
-                                data-toggle="tooltip" title="Autenticarse" data-placement="bottom">
-                                    <i class="glyphicon glyphicon-log-in"></i>
+                                data-toggle="tooltip" title="Inciar Seción" data-placement="bottom">
+                                    <i class="fa fa-sign-in-alt"></i>&nbsp;Autenticarse
                                 </a></li>
                                 <li><a href="{% url 'registrar' %}" style="color: #002a8f"
                                 data-toggle="tooltip" title="Registrarse" data-placement="bottom">
-                                    <i class="glyphicon glyphicon-edit"></i>
+                                    <i class="fa fa-edit"></i>&nbsp;Registrarse
                                 </a></li>
                         {% endif%}
-                        <li><a style="color: #002a8f" href="#Servicios"  >Blog</a></li>
+                        <li><a style="color: #002a8f" href="{% url 'blog' %}" data-toggle="tooltip" title="Deja tu comentario"
+                               data-placement="bottom">
+                            <i class="fa fa-blog"></i>
+                            Blog</a>
+                        </li>
                     </ul>
                 </div>
             </div>
-    </nav>-->
-{% include 'navbar.html' %}
-
-{% endblock %}
-<div class="col-sm-12">&nbsp;</div>
-<div class="col-sm-12">&nbsp;</div>
-<h1 class="text-center">Recargas Cubacel</h1>
-<div class="col-sm-12">&nbsp;</div>
-<div class="container " style=" display: flex;justify-content: center">
-            <form class="well" method="post">
-                   {% csrf_token %}
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label for="AccountNumber">Numero de la recarga:</label>
-                            <input type="number" placeholder="Entre el número de movil" name="AccountNumber" class="form-control">
-                            <label for="Recarga">Valor de la recarga:</label>
-                            <input type="number" name="Recarga" class="form-control" placeholder="Entre el valor de la recarga">
-                        </div>
-                    </div>
-                   <div class="col-sm-12 text-center">
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Ingresar">
-                        </div>
-                    </div>
-            </form>
-</div>
-{% endblock %}
+    </nav>
+<script>
+   // alert({{carrito}})
+    //q compruebe si existe algo en el carrito es decir {{carrito}}>0 debo mostrarte un cartel alert confirm diciendoq
+</script>

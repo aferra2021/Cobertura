@@ -1,0 +1,36 @@
+{% extends 'Base/base.html' %}
+{% load static %}
+
+{% block Content %}
+
+<body>
+{% include 'navbar.html' %}
+
+<h2 class="well container text-center" style="width: 500px">Carrito</h2>
+
+<div class="table-responsive container" style="margin-top: 50px">
+  <table class="table">
+    <thead>
+      <tr>
+        <th style="width: 55%">Producto</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Anna</td>
+        <td>Pitt</td>
+        <td>35</td>
+        <td>New York</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+
+</body>
+
+{% endblock %}

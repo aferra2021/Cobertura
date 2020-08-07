@@ -31,16 +31,16 @@ left: 0;
             <h1>ya esta autenticado</h1>
             {{user}}
         {% else %}
-      <div class="container" id="general" style="align: center">
+      <div class="container" id="general"  disabled="true" style="align: center">
     <h2 class="well text-center">Iniciar cuenta en COBERTURA</h2>
-  <form id="formReg" class="form-horizontal" method="POST">
+  <form id="formReg" class="form-horizontal" disabled="true" method="POST">
                 {% csrf_token %}
     <div class="form-group " style="display: flex;justify-content: center" name="UserDivs">
         <label class="control-label col-sm-4" style="display: flex;justify-content: left"  for="username">Nombre de Usuario:</label>
      </div>
     <div class="form-group " style="display: flex;justify-content: center" name="UserDivs">
         <div name="meterAlert" class="col-sm-4" style="margin-top: -10px;width: 35%" title="ok">
-            <input  id="userNameReg"  type="text" name="username" oninput="ValidarUser()"
+            <input  id="userNameReg" type="text" name="username" oninput="ValidarUser()"
                     class="form-control" autocomplete="off" title="Complete este campo">
             <span id="Wait" name="UserDivs" class=""></span>
          </div>
@@ -51,7 +51,7 @@ left: 0;
     </div>
     <div class="form-group" style="display: flex;justify-content: center" name="PassDivs">
         <div class="col-sm-4" name="meterAlert" style="margin-top: -10px;width: 35%" title="ok">
-            <input type="password"  name="password1" class="form-control" autocomplete="off" id="passReg" oninput="ValidatePass()"
+            <input type="password" name="password1" class="form-control" autocomplete="off" id="passReg" oninput="ValidatePass()"
                 title="Complete este campo">
             <span name="PassDivs" class="form-control-feedback"></span>
 
@@ -62,13 +62,13 @@ left: 0;
      <div class="col-sm-12 text-center">
         <button id="ingresar" type="submit" class="btn btn-default" style="width: 200px;background-color: #002a8f;color: white"
          data-toggle="tooltip" data-placement="bottom" title="Iniciar cuenta">Ingresar</button>
-        <button  style="color: #002a8f;text-decoration: none" class="btn btn-link" id="linkOlvideContraseña" onclick="recuperarContrasenna()"
-            data-toggle="tooltip" data-placement="bottom" title="Click si olvidaste tu contraseña">Olvidé mi contraseña</button>
+        <a  style="color: #002a8f;text-decoration: none" class="btn btn-link" id="linkOlvideContraseña" onclick="recuperarContrasenna()"
+            data-toggle="tooltip" data-placement="bottom" title="Click si olvidaste tu contraseña">Olvidé mi contraseña</a>
     </div>
-      <div class="col-sm-12">&nbsp;</div>
+    <div class="col-sm-12">&nbsp;</div>
+
       <div class="col-sm-12 text-center">
-          <a class="btn btn-default"  id="crearCliente" href="{% url 'registrar' %}" onclick="RedirectRegister()"
-          data-toggle="tooltip" data-placement="bottom" title="Crear una nueva cuenta">Crear Cuenta en Cobertura</a>
+          <a class="btn btn-default" id="crearCliente" onclick="RedirectRegister()">Crear Cuenta en Cobertura</a>
       </div>
     </form>
     <div class="col-sm-12">&nbsp;</div>
@@ -113,14 +113,16 @@ left: 0;
         {% endif %}
 
 <script>
+       window.onload=function () {
+       alert('debes autenticarte antes de realizar esa action');
+       };
     var user1=false;
     var pass1=true;
     var disabled=false;
-    //document.getElementById('mostrarPass');
-    if ($("#userNameReg").val().length==0||$("#passReg").val().length==0){
+    if ($("#userNameReg").val().length==0&&$("#passReg").val().length==0){
           document.getElementById('ingresar').disabled = true;
           $('#crearCliente').attr('disabled', true);
-        $('#linkOlvideContraseña').attr('disabled', true);
+          $('#linkOlvideContraseña').attr('disabled', true);
     }
     $('#formReg').on('submit', function(e){
          document.getElementById('userNameReg').disabled=true;
@@ -131,7 +133,7 @@ left: 0;
          $('#linkOlvideContraseña').attr('disabled',true);
          $('#general').css('background-color', '#92a8d1')
            .css('opacity', 0.5);
-        document.getElementById('mostrarPass').disabled=true;
+
        e.preventDefault();
         if(user1){
             var csrftoken=document.getElementsByName('csrfmiddlewaretoken')[0].value;
@@ -141,47 +143,53 @@ left: 0;
             csrfmiddlewaretoken:csrftoken.toString(),
             dataType: "json",
             };
+            ///NOTA
+            ///OBTENER LA URL ANTES DE HACER EL AJAX Y DEPUES window>locations>hrf='esA URL'
+            ///SEGUIR CON LO DE MANDAR EL USERNAME AL LINK DE RECUPERAR PASSWORD PERGUNTAR POR EL CORREO Y ASI
+            var URLactual = window.location.search;
+            URL='';
+            for (var i=6;i<URLactual.length;i++){
+                URL+=URLactual.charAt(i)
+            }
             var args = {type: "POST", url: "{% url 'iniciarsecion' %}", data};
-            $.ajax(args).done(function (response) {
+            $.ajax(args).done(function (response){
                 if(response.Result=='True'){
-                    setTimeout(function (){window.location.href = "{% url 'cobertura' %}"},2000);
-                    $("formReg :input").prop('readonly', true);
+                    setTimeout(function (){window.location.href=URL} ,2000);
                     alertify.success("este es un mensaje de exito");
-                }else{
-                    if(pass1==true) {
-                        if(disabled) {
-                            document.getElementById('ingresar').disabled = true;
-                            disabled = false;
-                            document.getElementById('userNameReg').disabled = false;
-                            document.getElementById('passReg').disabled = false;
-                            document.getElementById('ingresar').disabled = false;
-                            $('#mostrarPass').attr('disabled', false);
-                            $('#crearCliente').attr('disabled', false);
-                            $('#linkOlvideContraseña').attr('disabled', false);
-                            $('#general').css('background-color', '')
-                                .css('opacity', 1.0);
-                        }
+                }
+                else{
+                        CampoObligatorio(1, false);
+//                      if(disabled&&user1&&pass1&&true){
+//                      document.getElementById('ingresar').disabled = true;
+//                      disabled=false;
+                        document.getElementById('ingresar').disabled = true;
+                        disabled=false;
+                        document.getElementById('userNameReg').disabled=false;
+                        document.getElementById('passReg').disabled=false;
+                        document.getElementById('ingresar').disabled=false;
+                        $('#mostrarPass').attr('disabled',false);
+                        $('#crearCliente').attr('disabled',false);
+                        $('#linkOlvideContraseña').attr('disabled',false);
                         var userNameReg = $("#userNameReg").val();
+                        $('#general').css('background-color', '')
+                        .css('opacity', 1.0);
                         CampoObligatorio(1, true, 'La Contraseña entrada no coincide con el usuario "' + userNameReg + '".');
                         PassDivs = document.getElementsByName('PassDivs');
                         PassDivs[0].className = 'form-group has-error has-feedback';
                         PassDivs[1].className = 'form-group has-error has-feedback';
                         PassDivs[2].className = 'glyphicon glyphicon-remove form-control-feedback';
                         pass1 = false;
-                        //btn.disabled
-                    }
+      //              }
                 }
-
             });
         }
-
     });
-    function  ValidarUser(){
+    function ValidarUser(){
             var userNameReg = $("#userNameReg").val();
             var errorUser = document.getElementById('userNameReg');
             var data = { user:userNameReg };
             var args = { type:"GET", url:"/usuarios/user", data:data };
-                   errorUser.parentElement.title = 'ok';
+            errorUser.parentElement.title = 'ok';
 
                    $.ajax(args).done(function (response) {
                        if (response.Result == 'True') {
@@ -193,31 +201,30 @@ left: 0;
                            UserDivs[0].className = 'form-group has-success  has-feedback';
                            UserDivs[1].className = 'form-group has-success  has-feedback';
                            UserDivs[2].className = 'glyphicon glyphicon-ok form-control-feedback';
+
                            //has-success has-feedback
                            //glyphicon glyphicon-ok form-control-feedback
                            user1 = true;
-                            //if(!disabled&&user1&&pass1&&true){
+                            if(!disabled&&user1&&pass1&&true){
                                document.getElementById('ingresar').disabled = false;
                                $('#crearCliente').attr('disabled', false);
                                $('#linkOlvideContraseña').attr('disabled', false);
+
                                disabled=true;
-                            //}
+                            }
                        } else {
                            UserDivs = document.getElementsByName('UserDivs');
                            UserDivs[0].className = 'form-group has-error has-feedback';
                            UserDivs[1].className = 'form-group has-error has-feedback';
                            UserDivs[2].className = 'glyphicon glyphicon-remove  form-control-feedback';
-                         //  if(disabled&&user1&&pass1&&true){
+                          // if(disabled&&user1&&pass1&&true){
                                document.getElementById('ingresar').disabled = true;
                                $('#crearCliente').attr('disabled', true);
                                $('#linkOlvideContraseña').attr('disabled', true);
                                disabled=false;
-                           // }
-                           if(errorUser.parentElement.title=='error'){
-                               CampoObligatorio(0,false,'');
-                               errorUser.parentElement.title = 'ok';
-                           }
-                           if (errorUser.parentElement.title == 'ok') {
+                            //}
+                            if (errorUser.parentElement.title == 'ok') {
+                               var userNameReg = $("#userNameReg").val();
                                CampoObligatorio(0,false,'');
                                CampoObligatorio(0,true,'El usuario "'+userNameReg+'", no existe.');
                                errorUser.parentElement.title = 'error';
@@ -240,8 +247,6 @@ left: 0;
         }
         if(!disabled&&user1&&pass1&&true){
            document.getElementById('ingresar').disabled = false ;
-           $('#crearCliente').attr('disabled', false);
-           $('#linkOlvideContraseña').attr('disabled', false);
            disabled=true;
         }
 
@@ -266,11 +271,11 @@ left: 0;
                 meterAlerts[off].appendChild(div);
             }
             else{
-                nod=document.getElementById('div'+off);
+                nod=document.getElementById('div'+off)
                 if(nod!=null) {
                     nod.remove()
                 }
-//                meterAlerts[off].removeChild(document.getElementById('div'+off))
+                //meterAlerts[off].removeChild(nod)
             }
         }
     function Transparent(self,off) {
@@ -280,20 +285,18 @@ left: 0;
             document.getElementById(off).type = 'text';
         }
     }
-    //$(document).ready(function () {
-        //$('#ingresar').click(function () {
-            //alertify.success("este es un mensaje de exito");
-        //});
-    //})
+    function RedirectRegister(){
+        alert('redirect');
+        var URLactual = window.location.search;
+        window.location.href="{% url 'registrar' %}"+URLactual;
+    }
     function recuperarContrasenna() {
+        var URLactual = window.location.search;
         var href="{% url 'password_recovery' %}";
      //   alert($('#userNameReg').val())
         window.location.href=href+'?='+$('#userNameReg').val();
 
     }
-     $(document).ready(function(){
-         $('[data-toggle="tooltip"]').tooltip();
-        });
 </script>
 
   {% endblock %}
@@ -301,3 +304,7 @@ left: 0;
 {% block footer %}
 {% endblock %}
 
+
+       window.onload=function () {
+       alert('debes autenticarte antes de realizar esa action');
+       }

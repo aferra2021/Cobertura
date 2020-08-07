@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #'social_django',
+    #LOCALES
     'apps.RecargasCubacel',
     'apps.RecargasNauta',
     'apps.EtecsaTelefonoFijo',
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'apps.ServiciosDing',
     'apps.Usuarios',
     'apps.MercadoPago',
+    'apps.StripeAPI',
     #Social,(pip install rest-social-auth)
     'rest_framework',#facebook
     #'rest_framework.authtoken',  # only if you use token authentication
@@ -59,20 +61,11 @@ INSTALLED_APPS = [
     'social.apps.django_app.default',#google
     #'xauth',#autentication with ajax
     'six',
+    #sweetAlert
+    'sweetify'
+
 ]
 # Application definition
-#MercardoPago
-
-MERCADOPAGO = {
-    'autoprocess': True,
-    'success_url': 'Reloadly: mp_success',
-    'failure_url': 'Reloadly: mp_failure',
-    'pendiente_url': 'Reloadly: mp_pending',
-    'base_host': 'http://127.0.0.1:8000/cobertura'
-}
-
-
-
 
 
 MIDDLEWARE = [
@@ -153,6 +146,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+#stripe
+#STRIPE_SECRET_KEY = config('sk_test_4eC39HqLyjWDarjtT1zdp7dc')
+STRIPE_PUBLISHABLE_KEY  =  'sk_test_4eC39HqLyjWDarjtT1zdp7dc'
+STRIPE_SECRET_KEY ='sk_test_4eC39HqLyjWDarjtT1zdp7dc'
 
 #SOCIAL
 AUTHENTICATION_BACKENDS = (
@@ -195,6 +192,9 @@ EMAIL_HOST_USER = 'aferra444'
 EMAIL_HOST_PASSWORD = '97091602468'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'aferra444@gmail.com'
+
+#sweetAlert2
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)

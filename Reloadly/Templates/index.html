@@ -1,9 +1,11 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block Content %}
+
 <body>
 
-    <nav class="container-fluid navbar " id="inicio" style="background-color: #f7f7f7">
+{% include 'navbar.html' %}
+    <!--<nav class="container-fluid navbar slide" id="inicio" style="background-color: #f7f7f7">
             <div class="row-container" id="Principal" style="display: flex;justify-content: space-between" >
                 <div class="navbar-header" id="general"style="width: 30%">
                     <button type="button"  id="boton" style="background-color:transparent;float: left" onclick="AjusteNavbar1(this)"  class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -21,30 +23,37 @@
                         <li class="">
                                  <a href="{% url 'coberturaEN' %}" style="color: #002a8f" data-toggle="tooltip"
                                     title="Cambiar a inglés" data-placement="bottom" class="idioma">
-                                    <i class="fa fa-globe"></i>&nbsp;ES
+                                    <i class="fa fa-globe-americas"></i>&nbsp;ES
                                     <span class="caret"></span>
                                 </a>
                         </li>
-                        <li><a style="color: #002a8f"  href="{% url 'nuevarecarga' %}">
+                        <li class="">
+                                 <a href="" style="color: #002a8f" data-toggle="tooltip"
+                                    title="Recargas a pagar" data-placement="bottom" class="idioma">
+                                    <i class="fa fa-shopping-cart"></i>&nbsp;{{carrito}}
+                                </a>
+                        </li>
+                        <li class="fa-flip-vertical"></li>
+                        <li><a style="color: #002a8f"  href="{% url 'nuevarecarga' %}" data-toggle="tooltip" title="Crea y personaliza tu recarga" data-placement="bottom">
                             <i class="fa fa-check"></i>
                             Nueva Recarga</a></li>
                         {% if user.is_authenticated %}
                                <li><a href="{% url 'adminUser' %}  " onclick="cli(x)" style="color: #002a8f"
                                data-toggle="tooltip" title="Perfil de usuario" data-placement="bottom">
-                                   <i class="glyphicon glyphicon-user"></i>
+                                   <i class="fa fa-user"></i>
                                    {{user}}</a></li>
-                               <li><a href="#cerrar_seccion" onclick="logout()" style="color: #002a8f"
+                               <li><a href="{% url 'cerrar-sesion' %}" onclick="logout()" style="color: #002a8f"
                                data-toggle="tooltip" title="Salir de la cuenta" data-placement="bottom">
-                                   <i class="glyphicon glyphicon-log-out"></i>
+                                   <i class="fa fa-sign-out-alt"></i>&nbsp;Cerrar Seción
                                </a></li>
                             {% else %}
                                 <li><a href="{% url 'iniciarsecion' %}" onclick="cli(x)" style="color: #002a8f"
-                                data-toggle="tooltip" title="Autenticarse" data-placement="bottom">
-                                    <i class="glyphicon glyphicon-log-in"></i>
+                                data-toggle="tooltip" title="Inciar Seción" data-placement="bottom">
+                                    <i class="fa fa-sign-in-alt"></i>&nbsp;Autenticarse
                                 </a></li>
                                 <li><a href="{% url 'registrar' %}  " onclick="cli(x)" style="color: #002a8f"
                                 data-toggle="tooltip" title="Registrarse" data-placement="bottom">
-                                    <i class="glyphicon glyphicon-edit"></i>
+                                    <i class="fa fa-edit"></i>&nbsp;Registrarse
                                 </a></li>
                         {% endif%}
                         <li><a style="color: #002a8f" href="{% url 'blog' %}" data-toggle="tooltip" title="Deja tu comentario"
@@ -55,7 +64,7 @@
                     </ul>
                 </div>
             </div>
-    </nav>
+    </nav>-->
 
 
 
@@ -182,7 +191,7 @@
               <a class="jumbotron" href="http://127.0.0.1:8000/cubacel/recarga/6">Oferta SEIS</a>
           </div>-->
 </div>
-<div class="rc-topup-form-actions col-sm-12 slideanim">
+<div class="rc-topup-form-actions col-sm-12 slide">
     <div class="row">
         <div class="col-sm-6 col-sm-push-6">
             <button data-testid="topUpButton" class="btn btn-lg btn-rounded btn-block" type="submit" style="width: 70%;
@@ -459,11 +468,11 @@
         $(document).ready(function(){
          $('[data-toggle="tooltip"]').tooltip();
         });
-
         function logout(){
-            //esto hay q hacerlo con ajaxs {% url 'cerrar-sesion' %}
+                //esto hay q hacerlo con ajaxs {% url 'cerrar-sesion' %}
             //antes hay q saber si el usuari tiene alguna racarga en el carrito
-            alert('Si cierra session se perdera todo lo que tiene en el carrito')
+            //sweetify.warning(self.request, 'This is a warning... I guess');
+            //alert('Si cierra session se perdera todo lo que tiene en el carrito')
         }
 
     </script>

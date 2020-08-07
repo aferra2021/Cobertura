@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,reverse
 from django.http import HttpResponse
 from django.template import Template,Context
 from apps.Usuarios.models import TransferenciaActual
@@ -7,7 +7,10 @@ from django.contrib.auth.models import User
 
 def recargaCubacelView(request):
     if request.method=='GET':
-        return HttpResponse(render(request, 'RecargasCubacelTemplates/RecargasCubacel.html'))
+        if request.user.is_authenticated:
+            Carrito = TransferenciaActual.objects.filter(cliente=request.user)
+            return HttpResponse(render(request, 'RecargasCubacelTemplates/RecargasCubacel.html', {'carrito': len(Carrito)}))
+        return HttpResponse(render(request, 'RecargasCubacelTemplates/RecargasCubacel.html', {'carrito': 0}))
     else:
         if request.user:
             tipo='Cubacel'
@@ -22,16 +25,23 @@ def recargaCubacelView(request):
 
 def recargaCubacelView2(request,offset):
     if request.method=='GET':
-        print(offset)
-        return HttpResponse(render(request, 'RecargasCubacelTemplates/RecargasCubacel.html'))
+        #offset es para controlar q oferta de recarga se pidio
+        if request.user.is_authenticated:
+            Carrito = TransferenciaActual.objects.filter(cliente=request.user)
+            return HttpResponse(render(request, 'RecargasCubacelTemplates/RecargasCubacel.html', {'carrito': len(Carrito)}))
+        return HttpResponse(render(request, 'RecargasCubacelTemplates/RecargasCubacel.html', {'carrito': 0}))
     else:
-        if request.user:
-            tipo='Cubacel'
-            fecha=datetime.datetime.now()
-            #user=User.objects.get(username=request.user)
-            user=request.user
-            AccountNumber=request.POST['AccountNumber']
-            SendValue=int(request.POST['Recarga'])
+        tipo='Cubacel'
+        fecha=datetime.datetime.now()
+        AccountNumber=request.POST['AccountNumber']
+        SendValue=int(request.POST['Recarga'])
+        if request.user.is_authenticated:
+            user = User.objects.get(username=request.user)
             Trans=TransferenciaActual(tipo=tipo,fecha=fecha,cliente=user,SendValue=SendValue,accountNumber=AccountNumber)
             Trans.save()
-        return redirect('crearClienteMercadoPago')#pago
+            return redirect(reverse('pagoStripeAPI'))
+        else:
+            Trans=TransferenciaActual(tipo=tipo,fecha=fecha,cliente=None,SendValue=SendValue,accountNumber=AccountNumber)
+            Trans.save()
+            result=Trans.id
+            return redirect(reverse('pagoStripeAPI', kwargs={'result': result}))
