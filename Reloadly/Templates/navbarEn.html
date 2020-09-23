@@ -1,0 +1,81 @@
+{% load static %}
+<style>
+
+</style>
+<body>
+    <nav class="navbar" id="inicio" style="background:#f7f7f7;border-radius: 0px">
+            <div class="row-container" id="Principal" style="" >
+                <div class="navbar-header" id="general"style="">
+                    <button type="button"  id="boton" class="navbar-toggle" style=" background-color:  #e2e2e9"
+                            data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar" style="background-color: #002a8f"></span>
+                        <span class="icon-bar" style="background-color: #002a8f"></span>
+                        <span class="icon-bar" style="background-color: #002a8f"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'cobertura' %}">
+                        <img id="myLogo" src= "{% static 'images/IMG-20200616-WA0002.jpg' %}" alt="Logo"
+                        style="height: 50px;width: auto; border-color: #0f0f0f;border-radius: 5px;margin-top: -14px">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse"  style="float: right" id="myNavbar">
+                    <hr class="col-sm-11" id="line" style="display:none;background-color:#002a8f;margin-bottom:-6px;margin-top: -1px;">
+                    <ul class="nav navbar-nav" style="float: right;" id="listanavbar">
+                        <li class="" >
+                                 <a href="{% url 'cobertura' %}" style="color: #002a8f" data-toggle="tooltip"
+                                    title="Change to Spanish" data-placement="bottom" class="idioma">
+                                    <i class="fa fa-globe-americas"></i>&nbsp;EN
+                                    <!--<span class="caret"></span>-->
+                                </a>
+                        </li>
+                        <li class="">
+                                 <a href="{% url 'carrito' %}" style="color: #002a8f" data-toggle="tooltip"
+                                    title="Recharges to pay" id="cantCarrito" data-placement="bottom" class="idioma">
+                                    <i class="fa fa-shopping-cart"></i>&nbsp;{{cantidadCarrito}}
+                                </a>
+                        </li>
+                        <li class="fa-flip-vertical"></li>
+
+                        {% if user.is_authenticated %}
+                               <li><a href="{% url 'adminUser' %}  "  style="color: #002a8f"
+                               data-toggle="tooltip" title="My account, Orders and Contacts" data-placement="bottom">
+                                   <i class="fa fa-user"></i>
+                                   {{user}}</a></li>
+                               <li><a onclick="CerrarSecion()" style="color: #002a8f"
+                               data-toggle="tooltip" title="Get out of your account" data-placement="bottom">
+                                   <i class="fa fa-sign-out-alt"></i>&nbsp;Close Session
+                               </a></li>
+                            {% else %}
+                                <li><a href="{% url 'iniciarsecion' %}" style="color: #002a8f"
+                                data-toggle="tooltip" title="Start Session" data-placement="bottom">
+                                    <i class="fa fa-sign-in-alt"></i>&nbsp;Autenticate
+                                </a></li>
+                                <li><a href="{% url 'registrar' %}" style="color: #002a8f"
+                                data-toggle="tooltip" title="Register your account" data-placement="bottom">
+                                    <i class="fa fa-edit"></i>&nbsp;Registrate
+                                </a></li>
+                        {% endif%}
+                        <li style="" id="blog1"><a style="width: 100%;color: #002a8f"  href="{% url 'blog' %}" data-toggle="tooltip" title="Leave your comment"
+                               data-placement="bottom">
+                            <i class="fa fa-blog"></i>
+                            Blog</a>
+                        </li>
+                          <li style="display: none"  id="blog2"><a style="width: 100%;color: #002a8f" href="{% url 'blog' %}" data-toggle="tooltip" title="Deja tu comentario"
+                               data-placement="top">
+                            <i class="fa fa-blog"></i>
+                            Blog</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    </nav>
+</body>
+<script type="text/javascript">
+
+
+
+    {% if not user.is_authenticated %}
+    $(document).ready(function () {
+        document.getElementById('cantCarrito').childNodes[2].textContent=' 0';
+    });
+    {% endif %}
+</script>

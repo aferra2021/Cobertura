@@ -1,0 +1,80 @@
+{% load static %}
+
+<style>
+ a {
+position: relative;
+overflow: hidden;
+display: inline-block;
+text-decoration: none;
+color: #002a8f;
+}
+a:after {
+content: "";
+position: absolute;
+bottom: 0;
+left: -100%;
+width: 100%;
+height: 2px;
+background: #002a8f;
+transition: left .8s;
+}
+a:hover:after {
+left: 0;
+}
+</style>
+
+<aside class="container-fluid col-sm-3" id="aside" style="background-color:  #f7f7f7;border-radius: 0px 20px 20px 0px">
+    <div style="display: flex;justify-content: center">
+        <a class="navbar-brand" href="{% url 'cobertura' %}">
+            <img id="myLogo" src= "{% static 'images/IMG-20200616-WA0002.jpg' %}" alt="Logo"
+            style="height: 50px;width: auto; border-color: #0f0f0f;border-radius: 5px;margin-top: -15px">
+        </a>
+    </div>
+    <div style="display: flex;justify-content: center">
+        <i class="fa fa-user" style="height: 70px;width: auto;margin-top: 10px"></i>
+        <!--<img src="{% static 'images/1544726acd967064cf6559cc4dce6b9b.jpg' %}" alt="Picture" class="img-circle"
+             style="height: 100px; width: auto;margin-top: 10px">-->
+    </div>
+    <div style="display: flex;justify-content: center">
+        <h3 style="text-align: center;font-family: FontAwesome">Bienvenido, {{ request.user }}</h3>
+    </div>
+
+    <hr style="border: 1px solid lightgrey">
+    <div style="display: flex;justify-content: center;margin-top: 20px;margin-bottom: 20px">
+        <a style="color: #002a8f;text-decoration: none" href="{% url 'cantidadtransferencia' %}">
+            <i class="fa fa-share"></i>
+            Cantidad de transferencias
+        </a>
+    </div>
+    <hr style="border: 1px solid lightgrey">
+    <div style="display: flex;justify-content: space-around;margin-top: 20px;margin-bottom: 20px">
+        <a style="color: #002a8f;text-decoration: none">
+            <i class="fa fa-users"></i>
+            Contactos
+        </a>
+    </div>
+    <hr style="border: 1px solid lightgrey">
+    <div style="display: flex;justify-content: center;margin-top: 20px;margin-bottom: 20px">
+        <a style="color: #002a8f;text-decoration: none" href="">
+        <i class="fa fa-shopping-cart"></i>
+        Carrito
+        </a>
+    </div>
+    <hr style="border: 1px solid lightgrey">
+    <div style="display: flex;justify-content: center">
+        <a href="{% url 'cerrar-sesion' %}" style="color: #002a8f;text-decoration: none"
+           data-toggle="tooltip" title="Salir de la cuenta" data-placement="bottom">
+           <i class="glyphicon glyphicon-log-out"></i>
+            Salir de la Cuenta
+        </a>
+    </div>
+    <hr style="border: 1px solid lightgrey">
+    <div style="display: flex;justify-content: center">
+        <a style="color: #002a8f; text-decoration: none" href="/blog/">
+            <i class="fa fa-blog"></i>
+            Blog
+        </a>
+    </div>
+    <hr style="border: 1px solid lightgrey">
+
+</aside>

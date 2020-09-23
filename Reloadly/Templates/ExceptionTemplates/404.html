@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Page not found404</title>
-</head>
-<body>
-<h1>404 </h1>
-<a href="{% url 'reloadlycuba'%}">ReloadlyCuba</a>
+{% extends 'base/base.html' %}
+{% block tittle %}<title>Página no encontrada</title> {% endblock %}
+
+{% block Content %}
+<body class="well">
+<div class="container text-justify text-center jumbotron">
+<h1>Página no encontrada</h1>
+    <p>Lo sentimos, pero la página que buscas no ha sido encontrada.</p>
+    <p style="font-size: small">Los desarrolladores han sido notificados, estamos trabajand en la solución de este problema</p>
+    <p style="font-size: small">Trabajamos por usted <span style="color:#1e347b;font-size:medium;font-family: FontAwesome">por una recarga facil y segura</span> </p>
+<a class="btn-link" style="text-decoration: none" href="{% url 'cobertura' %}">www.Cobertura.com/Inicio</a>
+
+</div>
 </body>
-</html>
+{% endblock %}

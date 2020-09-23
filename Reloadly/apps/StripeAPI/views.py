@@ -10,12 +10,6 @@ from apps.Usuarios.models import TransferenciaActual
 
 # Create your views here.
 
-""""def Param(request,result):
-    print("result")
-    print("result")
-    print(result)
-    return HomePageView.as_view()"""
-
 class HomePageViewClass(TemplateView):
     template_name = 'StripeAPITemplates/home.html'
 
@@ -23,8 +17,11 @@ def HomePageView(request, result):
     user=request.user
     Trans=TransferenciaActual.objects.get(id=result)
     Trans.cliente = user
+    contacto=Trans.contacto
+    contacto.User=user
+    contacto.save()
     Trans.save()
-    return redirect(reverse('pagoStripeAPI'))
+    return redirect(reverse('carrito'))
 
 
 @csrf_exempt

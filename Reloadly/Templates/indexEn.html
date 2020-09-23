@@ -1,206 +1,887 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% block Content %}
 
-{% block navbar %}
-    <nav class="container-fluid navbar navbar-default" id="barra" style="">
-            <div class="row-container" id="Principal" style="display: flex;justify-content: space-between" >
-                <div class="navbar-header" id="general"style="width: 30%">
-                    <button type="button"  id="boton" style="background-color:transparent;float: left" onclick="AjusteNavbar1(this)"  class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="{% url 'reloadlycuba' %}">
-                        <img id="myLogo" src= "{% static 'images/IMG-20200616-WA0002.jpg' %}" alt="Logo"
-                        style="height: 50px;width: auto; border-color: #0f0f0f;border-radius: 5px;margin-top: -15px">
-                    </a>
+<style>
+    #ajs-header {
+  background: linear-gradient(70deg,#d0142c,#f7f7f7);
+}
+    #ajs-footer {
+  background: linear-gradient(70deg,#002a8f,#f7f7f7);
+}
+
+    div.i{
+        transition: width 1s, height 1s, transform 1s;
+    }
+    div.i:hover{
+        transform: rotateY(180deg);
+    }
+
+    div.col-sm-12 a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: #002a8f;
+    transition: left .8s;
+    }
+    div.col-sm-12 a:hover::after {
+    left: 0;
+    }
+
+</style>
+<body style="font-family: Open Sans,Arial,sans-serif;">
+
+{% include 'navbarEn.html' %}
+
+<div class="container" id="fondo" style= "-webkit-box-sizing: border-box;background-image:url({% static 'images/esta.jpg' %});background-repeat: no-repeat;background-position: center;;height: 350px;width:100%;margin-top: -30px" alt="Cobertura">
+    <div class="thumbnail text-center" style="background-color:transparent;height:80%;margin-top:20px;align-content:center;opacity:0.3;width: 65%;display: table;font-family: Open Sans,Arial,sans-serif;">
+        <div class="thumbnail text-center" style="height:80%;margin-top:25px;align-content:center;opacity:0.6;width: 100%;display: table;font-family: Open Sans,Arial,sans-serif;">
+        </div>
+    </div>
+<!--<div class="container" style="float:left;margin-top: -280px">
+    <h2 class="color-red">
+        <i style=";font-size: 45px;color: white; text-shadow: 3px 3px 3px #002a8f;">¡Recarga Triple!</i>
+    </h2>
+    <h3 class="color-blue">
+        <i style="color: white;text-shadow: 3px 3px 3px #002a8f;">Por cada recarga de
+            <span class="color-red" style=" text-shadow: 3px 3px 3px white;color: #d0142c"><strong> 20 CUC </strong></span>
+            <span class="color-blue" style="color:white;text-shadow: 3px 3px 3px #002a8f;">Reciben</span>
+            <span class="color-red"style=" text-shadow: 3px 3px 3px #f7f7f7;color: #d0142c"><strong> 60 CUC</strong></span>
+        </i>
+    </h3>
+    <h3 id="promotionReserva" class="color-blue">
+        <i style="color: white;text-shadow: 3px 3px 3px #002a8f;">Reserve ahora y nosotros haremos la recarga por usted el primer dia de la promocion
+        </i>
+    </h3>
+    <h3>
+        <i><strong id="promotionReservaFecha" style="color: #d0142c;text-shadow: 3px 3px 3px white;">(6 de septiembre de 2020)</strong>
+        </i>
+    </h3>
+</div>-->
+    <div style="-webkit-box-sizing: border-box;position: relative;">
+            <div class="rc-tooltip rc-tooltip-error rc-tooltip-down rc-tooltip-center" style="opacity: 0; display: none; z-index: 3; transition: opacity 0.4s ease-in-out 0s;">
+            </div>
+    </div>
+</div>
+
+<div class="row" style=";padding:0px;margin:0px;display: flex;justify-content: center;flex-direction: column">
+    <h2 class="text-center" id="Servicios" style="color:#f7f7f7;background: linear-gradient(70deg,#d0142c,#002a8f);margin:0px;width: 100%">Services</h2>
+    <hr class="" style="margin:5px;background-color: #f7f7f7;">
+</div>
+
+<div class="row" style="margin: 0px">
+   <div class="col-sm-12" id="ServiciosSize" style="display:flex;justify-content: space-between;color: #002a8f">
+       <a id="linkCubacelReserva" onmouseover="Hover('DivReserva',true)" onmouseout="Hover('DivReserva',false)"
+          style="color:#002a8f;border-color: #002a8f transparent transparent #002a8f;border-style: solid;border-width: 2px;top: 0px;left: 0px;content:'';display: none"
+         class="btn  col-sm-2 rc-product promo" data-toggle="collapse" onclick="Collapse('linkCubacelReserva')"
+           name="linkServicios" id="linkCubacelReserva" href="#Ofertas"
+           data-toggle="tooltip" title="Recharge with the CUBACEL bonus." data-placement="bottom">
+           <div class="arrow"></div>
+           <div class="rc-product-content" id="DivReserva">
+               <div class="rc-product-logo-container">
+                   <img src="{% static 'images/cubacelOfer.png' %}" alt="Cubacel Reservation" style="width:140px;height:45px">
+               </div>
+               <h4 style="font-size:medium;font-family: 'Comic Sans MS'">Reserve your Recharge</h4>
+               <h6 class="text-center" style="font-size:medium;font-family: sans-serif">Recharge + <strong   style="color: #d0142c">Bonus</strong></h6>
+           <div>
+           </div>
+           </div>
+       </a>
+       <a  onmouseover="Hover('DivCubacel',true)" onmouseout="Hover('DivCubacel',false)" style="color:#002a8f;border-color:
+       #002a8f transparent transparent #002a8f;border-style: solid;border-width: 2px;top: 0px;left: 0px;content:'';display: block"
+           class="btn col-sm-2 rc-product promo" data-toggle="collapse" onclick="Collapse('linkCubacel')" name="linkServicios"
+           id="linkCubacel" href="#Ofertas"
+            title="Recharge as much as you like." data-placement="bottom">
+           <div class="arrow"></div>
+           <div class="rc-product-content" id="DivCubacel">
+               <div class="rc-product-logo-container">
+                   <img src="{% static 'images/CUBACEL.png' %}" alt="Cubacel" style="width:140px;height:30px">
+               </div>
+               <h4 style="font-size:medium;font-family: 'Comic Sans MS'">Recharge Now <i class="fa fa-mobile-alt"></i></h4>
+              <h6 class="text-center" style="font-size:medium;font-family: sans-serif">
+                  Choose your offer<strong  id="MasBono" style="color: #d0142c"></strong></h6>
+           <div>
+           </div>
+           </div>
+       </a>
+       <a onmouseover="Hover('DivNauta',true)" onmouseout="Hover('DivNauta',false)" style="color:#002a8f;border-color: #002a8f
+       transparent transparent #002a8f;border-style: solid;border-width: 2px;top: 0px;left: 0px;content:'';display: block"
+           class="btn col-sm-2 rc-product promo"  data-toggle="collapse"  onclick="Collapse('linkNauta')" name="linkServicios"
+          id="linkNauta" href="#Ofertas"
+             title="Recharge the accounts of your cuban family and friends." data-placement="bottom">
+           <div class="arrow"></div>
+           <div class="rc-product-content" id="DivNauta">
+               <div class="rc-product-logo-container">
+                   <img src="{% static 'images/NAUTA.png' %}" alt="Nauta" style="width:140px;height:45px">
+                   <i class="fa fa-wifi" style="color:#d0142c;font-size: x-large"></i>
+               </div>
+               <h4 style="font-size:medium;font-family: 'Comic Sans MS'">Recharge Now</h4>
+              <h6 class="text-center" style="font-size:medium;font-family: sans-serif">Nauta Accounts</h6>
+           <div>
+           </div>
+           </div>
+       </a>
+       <a onmouseover="Hover('DivCubacelSimTelefono',true)" onmouseout="Hover('DivCubacelSimTelefono',false)" style="color:#002a8f;
+       border-color: #002a8f transparent transparent #002a8f;border-style: solid;border-width: 2px;top: 0px;left: 0px;content:'';
+       display: block"
+           class="btn col-sm-2 rc-product promo"  name="" id="linkCubacelSimTelefono" href="{% url 'cubacelventa' %}"
+          data-toggle="tooltip" title="Buy and give Sims and Mobiles Phones to your cuban family and friends." data-placement="bottom">
+           <div class="arrow"></div>
+           <div class="rc-product-content" id="DivCubacelSimTelefono">
+               <div class="rc-product-logo-container">
+                   <img src="{% static 'images/cubacelSim.jpg' %}" alt="SimCubacel" style="margin-top:-15px;width:165px;height:60px">
+               </div>
+               <h4 class="text-center " style=";font-size:medium;font-family:sans-serif">Buy Sims</h4>
+              <h6 class="text-center " style="width:100% ;font-size:medium;"><strong style="color: #002a8f"> 3G </strong> and <strong style="color: #002a8f"> 4G</strong></h6>
+              <h6 class="text-center " style="width:100% ;font-size:medium;font-family: sans-serif"></h6>
+           <div>
+           </div>
+           </div>
+       </a>
+       <a onmouseover="Hover('DivEtecsa',true)" onmouseout="Hover('DivEtecsa',false)" style="color:#002a8f;border-color: #002a8f transparent transparent #002a8f;border-style: solid;border-width: 2px;top: 0px;left: 0px;content:'';display: block"
+           class="btn col-sm-2 rc-product promo" name="" id="Etecsa" href="{% url 'etecsa' %}"
+            data-toggle="tooltip" title="Pay the fixed telephone bill of your cuban family and friends." data-placement="bottom">
+           <div class="arrow"></div>
+           <div class="rc-product-content" id="DivEtecsa">
+               <div class="rc-product-logo-container">
+                   <img src="{% static 'images/etecsaSinFondo.png' %}" alt="ETECSA" style="width:140px;height:45px">
+               </div>
+               <h4 style="font-size:medium;font-family: 'Comic Sans MS'">Fixed telephone <i class="fa fa-phone" style="color:#d0142c;font-size:large"></i></h4>
+              <h6 class="text-center" style="font-size:medium;font-family: sans-serif">Bill payment</h6>
+           <div>
+           </div>
+           </div>
+       </a>
+       <a onmouseover="Hover('DivCubacelTur',true)" onmouseout="Hover('DivCubacelTur',false)" style="color:#002a8f;
+       border-color: #002a8f transparent transparent #002a8f;border-style: solid;border-width: 2px;top: 0px;left: 0px;content:'';
+       display: block"
+           class="btn col-sm-2 rc-product promo" name="" id="CubacelTur" href="{% url 'cubaceltur' %}"
+       data-toggle="tooltip" title="Buy a Cubacel Tur Sim for navigating Internet and calling around the world." data-placement="bottom">
+           <div class="arrow"></div>
+           <div class="rc-product-content" id="DivCubacelTur">
+               <div class="rc-product-logo-container">
+                   <img src="{% static 'images/cubacel-tur.png' %}" alt="CubacelTur" style="width:140px;height:45px">
+               </div>
+               <h4 style="font-size:medium;font-family: 'Comic Sans MS'">Cubacel Tur Sim</h4>
+              <h6 class="text-center" style="font-size:medium;font-family: sans-serif">Sim and Data Plan</h6>
+           <div>
+           </div>
+           </div>
+       </a>
+    </div>
+
+<div class="container" id="ofertas_" style="margin-bottom: -20px">
+    <hr></div>
+<div class="panel-collapse collapse" id="Ofertas">
+<div class="fade in container">
+
+    <div id="OfertasReserva" class="fade in container" name="listaOfertas" style="display: flex;justify-content: center">
+        <h1 class="text-center  col-sm-12">Reserve your Recharge with the Cubacel Bonus</h1>
+    <ul class="row" data-testid="denominationList" style="padding-left: 0px;margin: 0px;display: block">
+
+        <li class="col-sm-3 text-center" name="OfertsListReserva" style="display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('1r',true)" onmouseout="Hover('1r',false)" id="1r" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:67px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('1r')">
+                <div class="i">
+                 <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
                 </div>
-                <div class="collapse navbar-collapse row"  style="width: 70%" id="myNavbar">
-                    <ul class="nav navbar-nav" style="float: right" id="listanavbar">
-                        <li class="">
-                                <a href="{% url 'reloadlycuba' %}">
-                                    <i class="fa fa-globe fa-lg"></i>&nbspEN
-                                    <span class="caret"></span>
-                                </a>
+                </button>
+            </span>
+        </li>
+        <li class="col-sm-3 text-center" name="OfertsListReserva" style=";display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('2r',true)" onmouseout="Hover('2r',false)" id="2r" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:67px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('2r')">
+                    <div class="i">
+                 <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+                 </button>
+            </span>
+        </li>
+        <li class="col-sm-3 text-center" name="OfertsListReserva" style="display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('3r',true)" onmouseout="Hover('3r',false)" id="3r" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:67px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('3r')">
+                    <div class="i">
+                        <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
 
-                        </li>
-                        <li><a style="color: #002a8f"  href="{% url 'nuevarecarga' %}">New Recharge</a></li>
-                            {% if user.is_authenticated %}
-                               <li><a href="{% url 'adminUser' %}  " onclick="cli(x)" style="color: #002a8f">{{user}}</a></li>
-                               <li><a href="{% url 'cerrar-sesion' %}">Salir de la Cuenta</a></li>
-                            {% else %}
-                                <li><a href="{% url 'registrar' %}  " onclick="cli(x)" style="color: #002a8f">Registrarme</a></li>
-                                <li><a href="{% url 'iniciarsecion' %}  " onclick="cli(x)" style="color: #002a8f">Iniciar Sesi&oacute;n</a></li>
-                            {% endif%}
-                        <li><a style="color: #002a8f" >Blog</a></li>
-                    </ul>
+                 </button>
+            </span>
+        </li>
+        <li class="col-sm-3 text-center" name="OfertsListReserva" style="display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('4r',true)" onmouseout="Hover('4r',false)" id="4r" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:67px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('4r')">
+                    <div class="i">
+                        <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+
+                 </button>
+            </span>
+        </li>
+          <hr class="col-xs-12">
+        <li class="col-sm-3 text-center" name="OfertsListReserva" style="display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('5r',true)" onmouseout="Hover('5r',false)" id="5r" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:67px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('5r')">
+                    <div class="i">
+                         <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+                 </button>
+            </span>
+        </li>
+        <li class="col-sm-3 text-center" name="OfertsListReserva" style="display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('6r',true)" onmouseout="Hover('6r',false)" id="6r" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:67px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('6r')">
+                    <div class="i">
+                        <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+                 </button>
+            </span>
+        </li>
+        <li class="col-sm-3 text-center" name="OfertsListReserva" style="display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('7r',true)" onmouseout="Hover('7r',false)" id="7r" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:67px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('7r')">
+                    <div class="i">
+                 <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+                 </button>
+            </span>
+        </li>
+        <li class="col-sm-3 text-center" name="OfertsListReserva" style="display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('8r',true)" onmouseout="Hover('8r',false)" id="8r" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:67px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('8r')">
+                    <div class="i">
+                 <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+                 </button>
+            </span>
+        </li>
+    </ul>
+    </div>
+
+    <div id="OfertasDefault" class="fade in container" name="listaOfertas" style="display: flex;justify-content: center">
+        <h1 class="text-center  col-sm-12">Cubacel Recharge</h1>
+        <h4 class="text-center  col-sm-12" style="margin-bottom:25px; ">Select your favorite offer</h4>
+        <ul class="col-sm-12" data-testid="denominationList" style="display:flex;justify-content:space-between;flex-direction: column ;padding-left: 0px;margin: 0px;display: block">
+
+        <li class="col-sm-3 text-center" name="OfertsListDefault" style=";display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('1d',true)" onmouseout="Hover('1d',false)" id="1d" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+        </li>
+         <li class="col-sm-3 text-center" name="OfertsListDefault" style="display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('2d',true)" onmouseout="Hover('2d',false)" id="2d" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+         </li>
+         <li class="col-sm-3 text-center" name="OfertsListDefault" style="display:flex;justify-content:center;flex-direction:row;margin-left: 0%;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('3d',true)" onmouseout="Hover('3d',false)" id="3d" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+         </li>
+         <li class="col-sm-3 text-center" name="OfertsListDefault" style="display:flex;justify-content:center;flex-direction:row;margin-left: 0%;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('4d',true)" onmouseout="Hover('4d',false)" id="4d" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+
+         </li>
+          <hr class="col-sm-12">
+         <li class="col-sm-3 text-center" name="OfertsListDefault" style="display:flex;justify-content:center;flex-direction:row;margin-left: 0%;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('5d',true)" onmouseout="Hover('5d',false)" id="5d" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+         </li>
+         <li class="col-sm-3 text-center" name="OfertsListDefault" style="display:flex;justify-content:center;flex-direction:row;margin-left: 0%;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('6d',true)" onmouseout="Hover('6d',false)" id="6d" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+         </li>
+         <li class="col-sm-3 text-center" name="OfertsListDefault" style="display:flex;justify-content:center;flex-direction:row;margin-left: 0%;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('7d',true)" onmouseout="Hover('7d',false)" id="7d" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+         </li>
+         <li class="col-sm-3 text-center" name="OfertsListDefault" style="display:flex;justify-content:center;flex-direction:row;margin-left: 0%;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('8d',true)" onmouseout="Hover('8d',false)" id="8d" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+         </li>
+      </ul>
+    </div>
+
+    <div id="OfertasBono" class="fade in container" name="listaOfertas" style="display: flex;justify-content: center">
+        <h1 class="text-center  col-sm-12">Recharge with the Cubacel Bonus</h1>
+        <ul class="row" data-testid="denominationList" style="padding-left: 0px;margin: 0px;display: block">
+
+        <li class="col-sm-3 text-center" name="OfertsListBono" style="float:left;display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('1b',true)" onmouseout="Hover('1b',false)" id="1b" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:63px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('1b')">
+                <div class="i">
+                 <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
                 </div>
-            </div>
-    </nav>
+                </button>
+            </span>
+        </li>
+        <li class="col-sm-3 text-center" name="OfertsListBono" style="float:right;display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('2b',true)" onmouseout="Hover('2b',false)" id="2b" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:63px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('2b')">
+                    <div class="i">
+                 <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+                 </button>
+            </span>
+        </li>
+        <li class="col-sm-3 text-center" name="OfertsListBono" style="float:left;display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('3b',true)" onmouseout="Hover('3b',false)" id="3b" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:63px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('3b')">
+                    <div class="i">
 
-    <script>
-        function navbarPrincipal(x="grande") {
+                 <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+                 </button>
+            </span>
+        </li>
+        <li class="col-sm-3 text-center" name="OfertsListBono" style="float:right;display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('4b',true)" onmouseout="Hover('4b',false)" id="4b" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:63px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('4b')">
+                    <div class="i">
 
-                var listanavbar=document.getElementById("listanavbar");
-                var myNavbar=document.getElementById("myNavbar");
-                var general=document.getElementById("general");
-                var myLogo=document.getElementById("myLogo");
+                 <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+                 </button>
+            </span>
+        </li>
+          <hr class="col-xs-12">
+        <li class="col-sm-3 text-center" name="OfertsListBono" style="float:left;display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('5b',true)" onmouseout="Hover('5b',false)" id="5b" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:64px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('5b')">
+                    <div class="i">
 
-                if(x=="grande"){
-                    listanavbar.style.cssFloat="right";
-                    myNavbar.style.marginTop="";
-                    myNavbar.style.marginLeft="";
-                    general.style.width="30%";
-                    myNavbar.style.width="70%";
-                }else {
-                    general.style.width="10%";
-                    listanavbar.style.cssFloat="left";
-                    myNavbar.style.marginTop="50px";
-                    myNavbar.style.marginLeft="-30%";
-                    myNavbar.style.width="50%";
-                    myLogo.style.marginLeft="100px";
-                    myLogo.style.marginBottom="100px";
-                }
-                //logo
-                //redes sociales
-            }
+                 <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+                 </button>
+            </span>
+        </li>
+        <li class="col-sm-3 text-center" name="OfertsListBono" style="float:right;display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('6b',true)" onmouseout="Hover('6b',false)" id="6b" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:64px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('6b')">
+                    <div class="i">
 
-       window.onload=function () {
+                 <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+                 </button>
+            </span>
+        </li>
+        <li class="col-sm-3 text-center" name="OfertsListBono" style="float:left;display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('7b',true)" onmouseout="Hover('7b',false)" id="7b" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:64px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('7b')">
+                    <div class="i">
 
-                var size=$(window).width();
-                if($(window).width()>755){
-                    navbarPrincipal();
-                }
-                else{
-                    navbarPrincipal("");
-                }
+                 <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+                 </button>
+            </span>
+        </li>
+        <li class="col-sm-3 text-center" name="OfertsListBono" style="float:right;display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('8b',true)" onmouseout="Hover('8b',false)" id="8b" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:64px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('8b')">
+                    <div class="i">
 
-                window.onresize=function () {
-                    function change() {
-                        if($(window).width()>755 && size>755){
-                            return false;
-                        }
-                        if ($(window).width()<755 && size<755){
-                            return false;
-                        }
-                        size=$(window).width();
-                        return true;
-                    }
-                    if(change()){
-                        if($(window).width()>755){
-                            navbarPrincipal();
-                        }
-                        else{
-                            navbarPrincipal("");
-                        }
-                    }
-                }
-            };
-    </script>
-{% endblock %}
-
-{% block content %}
-<div class="container-fluid" style= "background-image:url({% static 'images/IMG-20200616-WA0000.jpg' %});height: 350px;
-margin-top: -20px" alt="Cobertura">
-<div style="margin-top: 80px">
-    <div class="col-sm-12" style="display: flex;justify-content: center">
-      <div class="col-sm-10" style="justify-content: center">
-        <h1 style="font-size: 45px">A better option</h1>
-      </div>
+                 <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+                 </button>
+            </span>
+        </li>
+      </ul>
     </div>
-    <div class="col-sm-12" style="display: flex;justify-content: center">
-      <div class="col-sm-10" style="justify-content: center">
-        <p style="font-size: 18px">We specialize in Cuban's Recharges</p>
-      </div>
+
+    <div id="OfertasNautas" class="fade in container" name="listaOfertas" style="display: flex;justify-content: center">
+        <h1  class="text-center  col-sm-12">Nauta Recharge</h1>
+        <h4 class="text-center  col-sm-12" style="margin-bottom:25px; ">Select your favorite offer</h4>
+        <ul class="row"  data-testid="denominationList" style="padding-left: 0px;margin: 0px;display: block">
+        <li class="col-sm-3 text-center" name="OfertsListNauta" style="display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('1n',true)" onmouseout="Hover('1n',false)" id="1n" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:64px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('1n')">
+                <div class="i">
+                 <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                </div>
+                </button>
+            </span>
+        </li>
+        <li class="col-sm-3 text-center" name="OfertsListNauta" style=";display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('2n',true)" onmouseout="Hover('2n',false)" id="2n" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:64px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('2n')">
+                    <div class="i">
+                 <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+                 </button>
+            </span>
+        </li>
+        <li class="col-sm-3 text-center" name="OfertsListNauta" style="display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('3n',true)" onmouseout="Hover('3n',false)" id="3n" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:64px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('3n')">
+                    <div class="i">
+                        <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+
+                 </button>
+            </span>
+        </li>
+        <li class="col-sm-3 text-center" name="OfertsListNauta" style="display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('4n',true)" onmouseout="Hover('4n',false)" id="4n" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:64px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('4n')">
+                    <div class="i">
+                        <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+
+                 </button>
+            </span>
+        </li>
+          <hr class="col-xs-12">
+        <li class="col-sm-3 text-center" name="OfertsListNauta" style="display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('5n',true)" onmouseout="Hover('5n',false)" id="5n" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:64px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('5n')">
+                    <div class="i">
+                         <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+                 </button>
+            </span>
+        </li>
+        <li class="col-sm-3 text-center" name="OfertsListNauta" style="display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('6n',true)" onmouseout="Hover('6n',false)" id="6n" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:64px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('6n')">
+                    <div class="i">
+                        <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+                 </button>
+            </span>
+        </li>
+        <li class="col-sm-3 text-center" name="OfertsListNauta" style="display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('7n',true)" onmouseout="Hover('7n',false)" id="7n" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:64px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('7n')">
+                    <div class="i">
+                 <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+                 </button>
+            </span>
+        </li>
+        <li class="col-sm-3 text-center" name="OfertsListNauta" style="display:flex;justify-content:center;flex-direction:row;list-style: none;padding: 0px">
+             <button onclick="Promt(this)" onmouseover="Hover('8n',true)" onmouseout="Hover('8n',false)" id="8n" type="button" data-testid="denom_1"  class="btn  rc-block-denom"
+                     style="border: 2px #002a8f solid">
+             <span class="rc-block-denom-display-amount">$<strong>23.49</strong> USD</span> </br>
+             <span class="rc-block-denom-receive">Receive</span></br>
+             <span>
+                 <span class="rc-block-denom-promo-value">
+                 <span>20 CUC + 40 CUC</span>
+                 </span></br>
+                 <span class="rc-block-denom-delivered-value">
+                 <span>60.00 CUC</span>
+                 </span>
+             </span></br>
+             </button>
+               <span style="margin-top:64px;margin-left: 110px;position: absolute">
+                <button href="#"  style="" onclick="description('8n')">
+                    <div class="i">
+                 <i class="fa fa-search"  style="color: #002a8f;font-size: medium"></i>
+                    </div>
+                 </button>
+            </span>
+        </li>
+      </ul>
     </div>
-    {% if carrito %}
-    <div class="col-sm-12" style="display: flex;justify-content: center">
-      <div class="col-sm-10" style="justify-content: center">
-          <p>There's elements into the car</p>
-      </div>
-    </div>
-    {% else %}
-    <div class="col-sm-12" style="display: flex;justify-content: center">
-      <div class="col-sm-10" style="justify-content: center">
-          <p style="font-size: 20px">There's no elements into the car</p>
-      </div>
-    </div>
-    {% endif %}
-    <form class="col-sm-12" style="display: flex;justify-content: center">
-        <div class="input-group col-sm-10" style="display: flex; justify-content: left">
-          <input type="email" class="col-sm-2" size="20" placeholder="Type your number" required
-                 style="margin-left: 30px">
-          <button type="button" class="btn" style="background-color: #cf142b;color: white">Subscribe</button>
-        </div>
-    </form>
+
 </div>
 </div>
 
-<div class="container-fluid">
 
-   <div class="col-sm-12" style="width: 100%;display: flex;justify-content: center">
-      <h1 style="margin-bottom: 20px">Cubacel Recharges</h1>
-   </div>
-   <div class="col-sm-12" style="display:flex;justify-content: space-between">
-        <div class="col-sm-2">
-            <div class="jumbotron" style="display: flex;justify-content: center;height: 70%;width: auto">
-                <a href="{% url 'cubacel' %}" style="text-align: center;margin-top: -10px;color: #3c3c3c">Cubacel Recharges</a>
-            </div>
-        </div>
-        <div class="col-sm-2">
-             <div class="jumbotron" style="display: flex;justify-content: center;height: 70%;width: auto">
-                <a href="{% url 'nauta' %}" style="text-align: center;margin-top: -10px;color: #3c3c3c">Nauta Recharges</a>
-             </div>
-        </div>
-        <div class="col-sm-2">
-             <div class="jumbotron" style="display: flex;justify-content: center;height: 70%;width: auto">
-                <a href="{% url 'cubacelventa' %}" style="text-align: center;margin-top: -20px;color: #3c3c3c">Cubacel Sim Phone</a>
-             </div>
-        </div>
-        <div class="col-sm-2">
-              <div class="jumbotron" style="display: flex;justify-content: center;height: 70%;width: auto">
-                <a href="{% url 'etecsa' %}" style="color: #3c3c3c">ETECTSA</a>
-              </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="jumbotron" style="display: flex;justify-content: center;height: 70%;width: auto">
-                <a href="{% url 'cubaceltur' %}" style="text-align: center;margin-top: -10px;color: #3c3c3c">Cubacel Tur</a>
-            </div>
-        </div>
-        <div class="col-sm-2">
-            <div class="jumbotron" style="display: flex;justify-content: center;height: 70%;width: auto">
-                <a href="{% url 'registrar' %}" style="text-align: center;color: #3c3c3c">Register</a>
-            </div>
-        </div>
-        </div>
+<div class="col-sm-12" style="margin-top:30px;width: 100%;display: flex;justify-content: center;">
+    <h1 class="text-center">Recharge every person you wish.</h1>
 </div>
 
-<div class="rc-topup-form-actions col-sm-12">
-    <div class="row">
-        <div class="col-sm-6 col-sm-push-6">
-            <button data-testid="topUpButton" class="btn btn-lg btn-rounded btn-block" type="submit" style="width: 70%;
-                background-color: #002a8f;color: white">
-                Recarga
-            </button>
-        </div>
-        <div class="col-sm-pull-6 col-sm-6">
-            <button data-testid="TeCButton" class="btn btn-lg btn-default-darker btn-offer-details btn-rounded btn-block"
-                    type="button" style="color: grey;width: 70%; margin-left: 180px;color: #002a8f">
-                <i class="glyphicon glyphicon-eye-open" style="color: #002a8f"></i>
-                &nbsp;Detalles de la oferta
-            </button>
-        </div>
-    </div>
-</div>
-
-<div class="col-sm-12" style="width: 100%;display: flex;justify-content: center;margin-top: 50px">
-    <h1 style="">Recarga a todas las personas que desees</h1>
-</div>
-
-<div class="col-sm-12" style="text-align: center;margin-bottom: 50px">
-    <p style="font-size: large">
-        Con nuestra p&aacute;gina y los servicios brindados en ella, usted puede recargar a su familia desde cualquier parte del mundo,
-        explore nuestras ofertas, ahorre su dinero.
+<div class="col-sm-12" style="margin-bottom:30px;text-align: center">
+    <p style="font-size: large;color: #5b80b2   ">
+        Using our page and the services we give to you in it, you can recharge your family from every place around the world,
+        use our offers, spend less money.
     </p>
 </div>
 
@@ -209,79 +890,659 @@ margin-top: -20px" alt="Cobertura">
     <div class="jumbotron col-sm-3" style="text-align: center;border-radius: 10px">
         <img src="{% static 'images/archivo.png' %}" style="width: 80px;height: auto">
         <!--<i class="glyphicon glyphicon-edit" style="font-size: 80px;color: #1b6d85"></i>-->
-        <h3 style="margin-top: 20px;color: dodgerblue">Rellena los Datos</h3>
-        <p style="font-size: small;margin-top: 30px">Nombre del titular y numero de teléfono del celular que quieres
-            recargar. Selecciona la cantidad a recargar y te saldrá el monto que recibirá el móvil en pesos cubanos
-            convertibles (CUC).</p>
+        <h3 style="margin-top: 20px;color: #002a8f">Fill the Data</h3>
+        <p style="font-size: small;margin-top: 40px">Name and mobile phone number that you want to recharge. Select the quantity to recharge and you
+            will watch how much will receive the mobile in CUC.</p>
     </div>
     <div class="jumbotron col-sm-3" style="text-align: center;border-radius: 10px">
         <img src="{% static 'images/aprovechar.png' %}" style="width: 80px;height: auto">
-        <h3 style="color: dodgerblue">Hacer Click en Recargar</h3>
-        <p style="font-size: small;margin-top: 30px">Si eres un usuario nuevo deberás registrarte en el sitio, si ya
+        <h3 style="color: #002a8f">Hacer Click en Recargar</h3>
+        <p style="font-size: small;margin-top: 40px">Si eres un usuario nuevo deberás registrarte en el sitio, si ya
             eres usuario autentificate para pasar a la pagina del resumen de la orden.</p>
     </div>
     <div class="jumbotron col-sm-3" style="text-align: center;border-radius: 10px">
         <img src="{% static 'images/tarjeta-de-credito (1).png' %}" style="width: 80px;height: auto">
-        <h3 style="color: dodgerblue">Revisar el pedido y Pagar</h3>
-        <p style="font-size: small;margin-top: 30px">Si todo esta correcto da click en pagar y pasaras a la pasarela
+        <h3 style="color: #002a8f">Revisar el pedido y Pagar</h3>
+        <p style="font-size: small;margin-top: 40px">Si todo esta correcto da click en pagar y pasaras a la pasarela
             segura de pago por tarjeta donde realizaras el pago por el monto seleccionado.</p>
     </div>
 </div>
+</div>
+
+<div class="container-fluid" id="googlePlay" style="height:350px;background-image:url({% static 'images/6dcca4dacd4c2546150db2fa6f0bd596.png' %})
+;background-repeat: repeat-x;background-repeat: no-repeat;background-position: center;background-attachment:">
+<div class="col-sm-12" style="margin-top: 30px">
+        <h1 class="text-center" style="color:white">Descarga nuestra App</h1>
+    </div>
+
+    <!--Grande asi col-sm-6 text-center style:margin-top: 100px-->
+    <!--Peque;o asi text-center style:margin-top: 30px-->
+
+<div class="col-sm-12">
+        <p class="text-center col-sm-12" style="font-size: 20px;color: white">
+            De este modo podrás acceder más fácil desde tu SmartPhone o Tablet.</p>
+    </div>
+<div class="container" id="promo" style="display:flex;justify-content:space-between;flex-direction: row">
+
+    <div class="col-sm-6 text-center" style="">
+        <a data-testid="googlePlayButton" id="bottomGooglePlay" href="#" target="_blank" class="btn btn-default"
+           style="max-width:75%;background-color: #002a8f;border-radius: 10px">
+            <img src="{% static 'images/google_play_btn-402x120_esp.png' %}" class="img-responsive" id="bottomGooglePlayChild" alt="app android" style="">
+        </a>
+    </div>
+
+    <div class="col-sm-6" style="display: flex;justify-content: center">
+        <img class="img-responsive" style="margin-top: -50px" src="{% static 'images/fotoApp.png' %}" width="400px" height="500px" alt="">
+    </div>
+
+    </div>
+</div>
+{% include 'footer.html' %}
+
+</body>
+<script>
+//    linear-gradient(70deg,#d0142c,#002a8f)
+    var move='';
+    var collapseGeneral=document.getElementById('Ofertas');
+    var collapse=null;
+    var Bono=false;
+    window.onload=function () {
+
+      logo();
+      PromotionsCubacel();
+      var size=$(window).width();
+      window.location.hash = '#inicio';
+      Servicios(null,'#inicio');
+       if($(window).width()>768){
+           navbar('grande');
+           ServiciosSize('grande');
+           googlePlay('grande');
+       }else{
+           // document.getElementById('fondo').style.backgroundImage="url({% static 'images/inicioMovil.png' %})";
+            navbar('pequeño');
+            ServiciosSize('pequeño');
+            googlePlay('pequeño');
+       }
+
+       window.onresize=function () {
+        logo();
+        Servicios(null,'#inicio');
+            function change() {
+                if ($(window).width() > 829 && size > 829) {
+                    return false;
+                }
+                if ($(window).width() < 829 && size < 829) {
+                    return false;
+                }
+                size = $(window).width();
+                return true;
+            }
+            //if(change()){
+                if($(window).width()>768){
+                    navbar('grande');
+                    ServiciosSize('grande');
+                    googlePlay('grande');
+                }
+                else{
+                    navbar('pequeño');
+                    ServiciosSize('pequeño');
+                    googlePlay('pequeño');
+                }
+            //}
+           if(VarNautaForm){
+               NautaFormSize()
+           }
+       }
+    };
+    var VarNautaForm=false;
+    function NautaFormSize() {
+        VarNautaForm=true;
+        if ($(window).width()<768) {
+            document.getElementsByClassName("ajs-content")[0].style.paddingLeft = "0px";
+            document.getElementsByClassName("ajs-content")[0].style.paddingRight = "0px";
+            document.getElementById("formContact").style.width = "323px";
+            document.getElementById("formContact").parentElement.style.display = "flex";
+            document.getElementById("formContact").parentElement.style.justifyContent = "center";
+            document.getElementById("NautaNumber").style.paddingLeft = "8px";
+            document.getElementById("NautaNumber").style.paddingRight = "5px";
+            document.getElementById("NautaNumber").className = "col-sm-8 form-control form-control-lg";
+            document.getElementById("NautaNumber").style.width = "100%";
+            document.getElementById("spanNautaForm").className = "col-sm-4 input-group-addon rc-flag-input-group-addon";
+            document.getElementById("spanNautaForm").style.width = "40%";
+        }else {
+            document.getElementsByClassName("ajs-content")[0].style.paddingLeft = "16px";
+            document.getElementsByClassName("ajs-content")[0].style.paddingRight = "16px";
+            document.getElementById("formContact").style.width = "";
+            document.getElementById("formContact").parentElement.style.display = "";
+            document.getElementById("formContact").parentElement.style.justifyContent = "";
+            document.getElementById("NautaNumber").style.paddingLeft = "16px";
+            document.getElementById("NautaNumber").style.paddingRight = "16px";
+            document.getElementById("NautaNumber").className = "form-control form-control-lg";
+            document.getElementById("NautaNumber").style.width = "";
+            document.getElementById("spanNautaForm").className = "input-group-addon rc-flag-input-group-addon";
+            document.getElementById("spanNautaForm").style.width = "";
+        }
+    }
+    function Servicios(off,off2) {
+     if(move==""){
+        var hash = off2;
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 900, function () {
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = hash;
+            });
+            move=hash}
+        else{
+            move='';
+            hash="";
+              $('html, body').animate({
+              //  scrollTop: $(hash).offset().top
+            }, 900, function () {
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = off2;
+            });
+        }
+    }
+    function Collapse(off){
+        if(collapseGeneral.className=='panel-collapse collapse'){
+            //go
+            if($(window).width()<768){
+                window.location.hash = '#ofertas_';
+                window.location.href='#ofertas_';
+            }else {
+                window.location.hash = '#Servicios';
+                window.location.href='#Servicios';
+            }
+            linksServicios=document.getElementsByName("linkServicios");
+            for (link of linksServicios){
+                if(link.id!=off){
+                    link.href = '';
+                }
+            }
+            Cambios(off);
+            collapse=document.getElementById(off);
+        }
+        else{
+            if(collapse.id==off){
+//si esta abierto y tocan el q lo abrio lo unico q hay q hacer es regresarles a los demas la propiedad de href q se le cambio
+                linksServicios=document.getElementsByName("linkServicios");
+                for (link of linksServicios){
+                    link.href = '#Ofertas';
+                }
+                if(document.getElementById('Ofertas').className=='panel-collapse collapse'){
+                    window.location.hash = '#Servicios';
+                    //stay
+                    window.location.href='#Servicios';
+                }
+            }
+            else {
+                //hago los cambios en el div
+                Cambios(off);
+                linksServicios=document.getElementsByName("linkServicios");
+                for (link of linksServicios){
+                    if(link.id!=off){
+                        link.href = '';
+                    }
+                }
+                if($(window).width()<768){
+                    window.location.hash = '#ofertas_';
+                    window.location.href='#ofertas_';
+                }else {
+                    window.location.hash = '#Servicios';
+                    window.location.href='#Servicios';
+                }
+                //go
+                collapse=document.getElementById(off);
+            }
+
+            //si esta abierto y tocan a otro entc tengo q escribirle a ese q tocaron su propiedad y a los demas quitarselas es decir quitarsela al q lo abrio
+        }
+    }
+    function Cambios(off){
+        off=document.getElementById(off);
+        if(off.id=='linkCubacel'&&!Bono){
+            document.getElementById('OfertasNautas').style.display='none';
+            document.getElementById('OfertasReserva').style.display='none';
+            document.getElementById('OfertasBono').style.display='none';
+            document.getElementById('OfertasDefault').style.display='block';
+        }else
+        if(off.id=='linkCubacel'){
+            document.getElementById('OfertasNautas').style.display='none';
+            document.getElementById('OfertasReserva').style.display='none';
+            document.getElementById('OfertasDefault').style.display='none';
+            document.getElementById('OfertasBono').style.display='block';
+        }else
+        if(off.id=='linkCubacelReserva'||(off.id=='linkCubacel'&&Bono)){
+            document.getElementById('OfertasDefault').style.display='none';
+            document.getElementById('OfertasNautas').style.display='none';
+            document.getElementById('OfertasBono').style.display='none';
+            document.getElementById('OfertasReserva').style.display='block';
+        }else
+        if(off.id=='linkNauta'){
+            document.getElementById('OfertasReserva').style.display='none';
+            document.getElementById('OfertasDefault').style.display='none';
+            document.getElementById('OfertasBono').style.display='none';
+            document.getElementById('OfertasNautas').style.display='block';
+        }
+             }
+    function ServiciosSize(x){
+        let OfertsListDefault=document.getElementsByName('OfertsListDefault');
+        let OfertsListReserva=document.getElementsByName('OfertsListReserva');
+        let OfertsListNauta=document.getElementsByName('OfertsListNauta');
+        let OfertsListBono=document.getElementsByName('OfertsListBono');
+        var ServiciosSize=document.getElementById('ServiciosSize');
+        if (x=='grande'){
+            ServiciosSize.style.display='flex';
+            for (let i=0;i<OfertsListDefault.length;i++){
+                OfertsListDefault[i].style.width=''
+                if(i%2==0){
+                    OfertsListDefault[i].style.cssFloat=''
+                }else{
+                    OfertsListDefault[i].style.cssFloat=''
+                }
+            }
+            for (let i=0;i<OfertsListReserva.length;i++){
+                OfertsListReserva[i].style.width=''
+                if(i%2==0){
+                    OfertsListReserva[i].style.cssFloat=''
+                }else{
+                    OfertsListReserva[i].style.cssFloat=''
+                }
+            }
+            for (let i=0;i<OfertsListNauta.length;i++){
+                OfertsListNauta[i].style.width=''
+                if(i%2==0){
+                    OfertsListNauta[i].style.cssFloat=''
+                }else{
+                    OfertsListNauta[i].style.cssFloat=''
+                }
+            }
+            for (let i=0;i<OfertsListBono.length;i++){
+                OfertsListBono[i].style.width=''
+                if(i%2==0){
+                    OfertsListBono[i].style.cssFloat=''
+                }else{
+                    OfertsListBono[i].style.cssFloat=''
+                }
+            }
+        }else{
+            ServiciosSize.style.display='block';
+            for (let i=0;i<OfertsListDefault.length;i++){
+                OfertsListDefault[i].style.width='48%';
+                if(i%2==0){
+                    OfertsListDefault[i].style.cssFloat='left'
+                }else{
+                    OfertsListDefault[i].style.cssFloat='right'
+                }
+            }
+            for (let i=0;i<OfertsListReserva.length;i++){
+                OfertsListReserva[i].style.width='48%';
+                if(i%2==0){
+                    OfertsListReserva[i].style.cssFloat='left'
+                }else{
+                    OfertsListReserva[i].style.cssFloat='right'
+                }
+            }
+            for (let i=0;i<OfertsListNauta.length;i++){
+                OfertsListNauta[i].style.width='48%';
+                if(i%2==0){
+                    OfertsListNauta[i].style.cssFloat='left'
+                }else{
+                    OfertsListNauta[i].style.cssFloat='right'
+                }
+            }
+            for (let i=0;i<OfertsListBono.length;i++){
+                OfertsListBono[i].style.width='48%';
+                if(i%2==0){
+                    OfertsListBono[i].style.cssFloat='left'
+                }else{
+                    OfertsListBono[i].style.cssFloat='right'
+                }
+            }
+        }
+    }
+    function googlePlay(x){
+        var googlePlay=document.getElementById('googlePlay');
+        var promo=document.getElementById('promo');
+        var bottomGooglePlay=document.getElementById('bottomGooglePlay');
+        var bottomGooglePlayChild=document.getElementById('bottomGooglePlayChild');
+        //falta reducir los tama;os y aliniarlos
+        if (x=='grande'){
+            googlePlay.style.height='500px';
+            promo.style.display='flex';
+            bottomGooglePlay.style.marginTop='200px';
+            bottomGooglePlay.style.width='250px';
+            bottomGooglePlayChild.style.width='250px';
+        }else{
+            googlePlay.style.height='580px';
+            promo.style.display='block';
+            bottomGooglePlay.style.marginTop='';
+            bottomGooglePlay.style.width='150px';
+            bottomGooglePlayChild.style.width='150px';
+        }
+   }
+    function move2(){
+       window.location.href='#inicio';
+       window.location.hash = '#inicio';
+    }
+    function logo() {
+        var mylogo=document.getElementById('myLogo');
+        if($(window).width()<847&&$(window).width()>768) {
+            mylogo.src = "{% static 'images/favicon.png' %}";
+        }
+         else {
+             if($(window).width()<766){
+                mylogo.src = "{% static 'images/IMG-20200616-WA0002.jpg' %}";
+              }
+             else {
+                mylogo.src = "{% static 'images/IMG-20200616-WA0002.jpg' %}";
+             }
+         }
+    }
+    $(document).ready(function(){
+         $('[data-toggle="tooltip"]').tooltip();
+         $('[data-toggle="collapse"]').tooltip();
+    });
+    var PromotionId='';
+    var OperadorId;
+    var title1;
+    var title2;
+    var descripción;
+    var last='';
+
+function PromotionsCubacel() {
+        var data = {
+            dataType: "json",
+        };
+        var args = {type: "GET", url: "{% url 'ajax_promotion_cubacel' %}", data};
+        $.ajax(args).done(function (response) {
+           if (response.Empty==true){
+                Time=response.Time;
+                PromotionId=response.promotionId;
+                OperadorId=response.operadorId;
+                title1=response.title1;
+                title2=response.title2;
+                descripción =response.descripción;
+                Fecha=response.Fecha;
+               if (Time=='before'){
+                   //reserva
+                  Bono=false;
+                  document.getElementById('linkCubacelReserva').style.display='block';
+               } else{
+                   //promoNrmal  EL MAS BONO
+                   Bono=true;
+                   document.getElementById('MasBono').textContent="+BONO";
+                   document.getElementById('linkCubacelReserva').style.display='none'
+               }
+           }
+           else {
+               //son las ofertas normales de nosotros sin bono
+               PromotionId='promocion por default';
+                Bono=false;
+           }
+        });
+    }
+
+function NumberForm(){
+    form=$('#formNumber').val();
+    c='';
+    bool=false;
+    for(var i=0;i<form.length;i++){
+        if(form.length<=8) {
+            if (form[i] != last[i] && isNaN(form[i]) && true) {
+                c = form[i];
+                document.getElementById('formNumber').value = last;
+                bool = false;
+            } else {
+                bool = true;
+            }
+        }else{
+                document.getElementById('formNumber').value = last;
+        }
+    }
+    last=document.getElementById('formNumber').value;
+    if($('#formNumber').val().length<8){
+        document.getElementById('div0').style.display='none';
+        document.getElementById('div1').style.display='block';
+        document.getElementsByClassName("ajs-button ajs-ok")[0].disabled=true;
+        document.getElementsByClassName("ajs-button ajs-ok")[0].style.color="#3370ff";
+    }else{
+        document.getElementById('div1').style.display='none';
+        if($('#formNumber').val()[0]!=5){
+            document.getElementById('div0').style.display='block';
+            document.getElementsByClassName("ajs-button ajs-ok")[0].disabled=true;
+            document.getElementsByClassName("ajs-button ajs-ok")[0].style.color="#3370ff";
+        }else{
+            document.getElementById('div0').style.display='none';
+            document.getElementsByClassName("ajs-button ajs-ok")[0].disabled=false;
+            document.getElementsByClassName("ajs-button ajs-ok")[0].style.color="#002a8f";
+        }
+    }
+}
+
+function NautaForm() {
+    form=$('#NautaNumber').val();
+    if(form.length==0){
+        document.getElementsByClassName("ajs-button ajs-ok")[0].disabled=true;
+        document.getElementsByClassName("ajs-button ajs-ok")[0].style.color="#3370ff";
+    }else{
+        document.getElementsByClassName("ajs-button ajs-ok")[0].disabled=false;
+        document.getElementsByClassName("ajs-button ajs-ok")[0].style.color="#002a8f";
+    }
+
+}
+function Promt(off) {
+    if(off.id[1]=='n'){
+        PromtNuata(off)
+        //window.location.href="http://127.0.0.1:8000/nauta/recarga/nauta/"+off.id+"/"+$('#formNumber').val();
+    }else {
+        conf = alertify.confirm('<div id="formContact" class="form-horizontal" method="POST">\n' +
+            '            <div class="rc-account-number-lg-input input-group input-group-lg" style="max-width: 560px;;margin: 0px auto 10px;">\n' +
+            '                <span class="input-group-addon rc-flag-input-group-addon" style="padding: 6px;background-color: #fff;">\n' +
+            '                    <span class="rc-flag"><img src="{% static 'images/flag-md.jpg' %}">\n' +
+        '                    </span>&nbsp;\n' +
+        '                    <span class="rc-account-number__prefix" data-testid="accountIcon">\n' +
+        '                        <span>+53</span>\n' +
+        '                    </span>\n' +
+        '                </span>\n' +
+        '            <input  autocomplete="off" oninput="NumberForm()" required data-testid="accountNumberInput" type="text"  id="formNumber" class="form-control form-control-lg" placeholder="teléfono"\n' +
+        '                style="height:45.56px;-webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;" value="">\n' +
+        '            ' +
+        '</div>\n' +
+        '<div id="div0" class=" alert-danger col-sm-12" style="display:none;margin-top: -6px; background-color: rgb(254, 238, 239); border-color: rgb(226, 128, 138);">' +
+        '<svg class="svg-inline--fa fa-exclamation-triangle fa-w-18" style="margin-right: 10px;" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="exclamation-triangle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg="">' +
+        '<path fill="currentColor" d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"></path>' +
+        '</svg><!-- <i class="fa fa-exclamation-triangle" style="margin-right: 10px;"></i> -->' +
+        'Los números de telefonos en Cuba comienzan con "5"</div>\n' +
+        '<div id="div1" class=" alert-danger col-sm-12" style="display:none;margin-top: -6px; background-color: rgb(254, 238, 239); border-color: rgb(226, 128, 138);">' +
+        '<svg class="svg-inline--fa fa-exclamation-triangle fa-w-18" style="margin-right: 10px;" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="exclamation-triangle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg="">' +
+        '<path fill="currentColor" d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"></path>' +
+        '</svg><!-- <i class="fa fa-exclamation-triangle" style="margin-right: 10px;"></i> -->' +
+        'Los números de telefonos en Cuba contienen "8" digitos</div>' +
+        '           </form>', function () {
+            if (off.id[1] == 'd') {
+                window.location.href = "http://127.0.0.1:8000/cubacel/recarga/cubacel/" + off.id + "/" + $('#formNumber').val();
+            } else if (off.id[1] == 'r') {
+                window.location.href = "http://127.0.0.1:8000/cubacel/recarga/reserva/" + off.id + "/" + $('#formNumber').val();
+            } else if (off.id[1] == 'b') {
+                window.location.href = "http://127.0.0.1:8000/cubacel/recarga/bono/" + off.id + "/" + $('#formNumber').val();
+            }
+        }
+            , function () {
+            window.location.href = "http://127.0.0.1:8000/cobertura/#Servicios";
+        });
+        var titulo = document.getElementsByClassName("ajs-header");
+        titulo[0].textContent = 'Ingrese el Número del destinatario';
+        document.getElementsByClassName("ajs-header")[0].id = 'ajs-header';
+        document.getElementsByClassName("ajs-footer")[0].id = 'ajs-footer';
+        document.getElementsByClassName("ajs-dialog")[0].style.backgroundColor = "#f7f7f7";
+        document.getElementsByClassName("ajs-header")[0].style.color = "#f7f7f7";
+        var ok = document.getElementsByClassName("ajs-button ajs-ok");
+        var cancel = document.getElementsByClassName("ajs-button ajs-cancel");
+        ok[0].textContent = "Recargar";
+        ok[0].title = 'Introdusca correctamente el Número al cual va dirigida la recarga.';
+        if ($('#formNumber').val().length==0){
+        ok[0].style.color="#3370ff";
+        ok[0].disabled=true;
+        }
+        cancel[0].style.color = "#d0142c";
+        //OK
+        ok[0].addEventListener('mouseover', e => {
+            ok[0].style.color = '#3370ff';
+        });
+        ok[0].addEventListener('mouseleave', e => {
+            ok[0].style.color = '#002a8f';
+        });
+        //cancel
+        cancel[0].addEventListener('mouseover', e => {
+            cancel[0].style.color = '#ed455c';
+        });
+        cancel[0].addEventListener('mouseleave', e => {
+            cancel[0].style.color = '#d0142c';
+        });
+    }
+}
+
+function PromtNuata(off) {
+    conf=alertify.confirm('<div id="formContact" class="form-horizontal" method="POST">\n' +
+            '            <div class="col-sm-12 rc-account-number-lg-input input-group input-group-lg" style="max-width: 560px;;margin: 0px auto 10px;">\n' +
+            '            <input autocomplete="off" oninput="NautaForm()" required data-testid="accountNumberInput" type="text"  id="NautaNumber" class="form-control form-control-lg" placeholder="usuario nauta"\n' +
+            '                style="height:45.56px;-webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;" value="">\n' +
+            '            ' +
+            '                <span class="input-group-addon rc-flag-input-group-addon" id="spanNautaForm" style="padding:6px;;background-color: #fff;">\n' +
+            '                    <span class="rc-account-number__prefix" data-testid="accountIcon">\n' +
+            '                        <span style="color: #5b80b2">@nauta.com.cu</span>\n' +
+            '                    </span>\n' +
+            '                    <span class="rc-flag"><i class="fa fa-wifi"></i>\n' +
+            '                    </span>\n' +
+
+            '                </span>\n' +
+            '</div>\n' +
+            '<div id="div0" class=" alert-danger col-sm-12" style="display:none;margin-top: -6px; background-color: rgb(254, 238, 239); border-color: rgb(226, 128, 138);">' +
+        '<svg class="svg-inline--fa fa-exclamation-triangle fa-w-18" style="margin-right: 10px;" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="exclamation-triangle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg="">' +
+        '<path fill="currentColor" d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"></path>' +
+        '</svg><!-- <i class="fa fa-exclamation-triangle" style="margin-right: 10px;"></i> -->' +
+        'Los números de telefonos en Cuba comienzan con "5"</div>\n' +
+        '<div id="div1" class=" alert-danger col-sm-12" style="display:none;margin-top: -6px; background-color: rgb(254, 238, 239); border-color: rgb(226, 128, 138);">' +
+        '<svg class="svg-inline--fa fa-exclamation-triangle fa-w-18" style="margin-right: 10px;" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="exclamation-triangle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg="">' +
+        '<path fill="currentColor" d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z"></path>' +
+        '</svg><!-- <i class="fa fa-exclamation-triangle" style="margin-right: 10px;"></i> -->' +
+        'Los números de telefonos en Cuba contienen `8 digitos</div>' +
+        '</form>', function () {
+            window.location.href = "http://127.0.0.1:8000/nauta/recarga/nauta/" + off.id + "/" + $('#NautaNumber').val()+'@nauta.com.cu';
+        }
+            , function () {
+            window.location.href = "http://127.0.0.1:8000/cobertura/#Servicios";
+        });
+
+    NautaFormSize();
+
+    var titulo = document.getElementsByClassName("ajs-header");
+        titulo[0].textContent = 'Ingrese la Cuenta Nauta del destinatario';
+        document.getElementsByClassName("ajs-header")[0].id = 'ajs-header';
+        document.getElementsByClassName("ajs-footer")[0].id = 'ajs-footer';
+        document.getElementsByClassName("ajs-dialog")[0].style.backgroundColor = "#f7f7f7";
+        document.getElementsByClassName("ajs-header")[0].style.color = "#f7f7f7";
+        var ok = document.getElementsByClassName("ajs-button ajs-ok");
+        var cancel = document.getElementsByClassName("ajs-button ajs-cancel");
+        ok[0].textContent = "Recargar";
+        ok[0].title = 'Introdusca correctamente la Cuenta Nauta a la cual va dirigida la recarga.';
+        cancel[0].style.color = "#d0142c";
+        if ($('#NautaNumber').val().length==0){
+        ok[0].style.color="#3370ff";
+        ok[0].disabled=true;
+        }
+        //OK
+        ok[0].addEventListener('mouseover', e => {
+            ok[0].style.color = '#3370ff';
+        });
+        ok[0].addEventListener('mouseleave', e => {
+            ok[0].style.color = '#002a8f';
+        });
+        //cancel
+        cancel[0].addEventListener('mouseover', e => {
+            cancel[0].style.color = '#ed455c';
+        });
+        cancel[0].addEventListener('mouseleave', e => {
+            cancel[0].style.color = '#d0142c';
+        });
+}
+
+function Hover(off,x){
+    if($(window).width()>768) {
+        if (x) {
+            document.getElementById(off).style.transform = " scale(1.1,1.1)";
+           // document.getElementById(off).style.border = "2px #d0142c solid";
+        } else {
+            document.getElementById(off).style.transform = " scale(1,1)";
+            //document.getElementById(off).style.border = "2px #002a8f solid";
+        }
+    }
+}
+
+function description(off) {
+    let id = Number.parseInt(off[0])//valor para enumerar la oferta
+    let tipo = off[1].toString()//caracter q identifica  el tipo de servicio
+    let presiosBase = {'d': 20, 'b': 20, 'r': 20, 'n': 10, 's': 30, 'e': 10, 'c': 30};
+    let bono = 30;//esto hay q actualizarlo
+    if (tipo == 'd') {
+        alert(PromotionId + id + tipo + 'lalallalalalala')
+        //hay q hacerle la pincha de segun el id poner la cantidad, hacerselo a cada servicio
+    } else if (tipo == 'r') {
+        alert('1.En esta oferta usted reserva una recargara de ' + presiosBase[tipo] * id + ' CUC, que equivalen a recibir en Cuba: ' + presiosBase[tipo] * id + ' CUC de Saldo Principal más un Bono de ' + bono * id + ' CUC.\n' +
+            '2. Puede elegir la cantidad a recargar desde 20 CUC en adelante. Indicamos en cada caso la cantidad Total de CUC que se recibirá (Saldo + Bono) incluidos en la oferta. Asi como el valor total del bono teniendo en cuenta las tarifas vigentes de GB, Minutos y SMS internacionales en su caso.\n' +
+            '3. Puede comprar esta promoción hasta el 12 de septiembre a las 23:59 horas (hora de Cuba). Por favor, tenga en cuenta que hasta el 6 de septiembre estaremos reservando sus órdenes de recarga. Todas las recargas serán recibidas en Cuba a partir del 7 de septiembre a las 00:01 horas (hora de Cuba). Debido al elevado volumen de recargas enviado a Cubacel, es posible que el bono se reciba al final del primer día de la promoción. Le pedimos disculpas y le solicitamos que espere hasta el segundo día de la promoción para contactarnos en caso de que la recarga aún no se haya recibido en Cuba. Muchas gracias!\n' +
+            '4. El bono es válido por 30 días, contados a partir de recibida la recarga.\n' +
+            '5. La compra de esta promoción extiende la fecha de validez de los bonos promocionales anteriores.\n' +
+            '6. Con el Saldo Principal puede acceder a la Internet de Cubacel mediante la activación de la Tarifa por Consumo (0.10CUC/MB) o la compra de Planes de Datos sin limitaciones.\n' +
+            '7. Al utilizar los servicios de Cubacel, primero se descuenta del bono y luego del saldo principal.\n' +
+            '8. El bono no se puede transferir a otros clientes Cubacel.\n' +
+            '9. La cantidad recibida indicada en el ticket de confirmación de la recarga no muestra el bono, aunque el teléfono recibirá el saldo promocional y un SMS de confirmación.\n' +
+            '10. Desde Cuba el usuario Cubacel debe marcar *222# para consultar el saldo principal recibido y *222*266# para comprobar el bono adicional. Ambas consultas son libres de costo.\n' +
+            '11. Para cualquier consulta desde Cuba contactar al Servicio de atención al Cliente de Cubacel en el +53 52642266.\n' +
+            '12. Estamos disponibles 24/7 en el chat de Soporte para ayudarle durante el proceso de la recarga.\n')
+    } else if (tipo == 'b') {
+        alertify.confirm('<h2 class="text-center" style="color: #002a8f">' +
+            '<i class="fa fa-gift" style="margin-right: 10px;color: #d0142c">' +
+            '</i></h2>',function (e) {
+                       Cancel[0].style.display="";
+                    },function () {
+                       Cancel[0].style.display="";
+                    }
+            );
+        var nombre=document.getElementsByClassName('ajs-header');
+        nombre[0].textContent="Detalles de la Oferta";
+        nombre[0].style.color="white";
+        var OK=document.getElementsByClassName('ajs-button ajs-ok');
+        var Cancel=document.getElementsByClassName('ajs-button ajs-cancel');
+        OK[0].style.color="white";
+        OK[0].textContent = "Aceptar";
+        OK[0].disabled=false;
+        Cancel[0].style.display="none";
+        OK[0].title = 'Detalles de la Oferta.';
+        OK[0].addEventListener('mouseover', e => {
+            OK[0].style.color = 'gray';
+        });
+        OK[0].addEventListener('mouseleave', e => {
+            OK[0].style.color = 'white';
+        });
+        var header=document.getElementsByClassName("ajs-header")[0];
+        var footer=document.getElementsByClassName("ajs-footer")[0];
+        header.style.backgroundColor="#e2808a";
+        footer.style.backgroundColor="#e2808a";
+        document.getElementsByClassName("ajs-header")[0].id = 'header';
+        document.getElementsByClassName("ajs-footer")[0].id = 'footer';
+    } else if (tipo == 's') {
+        alert(PromotionId + id + tipo)
+    } else if (tipo == 'e') {
+        alert(PromotionId + id + tipo)
+    } else if (tipo == 'c') {
+        alert(PromotionId + id + tipo)
+    }
+}
+</script>
 {% endblock %}
 
-{% block footer %}
-<section>
-<footer class="footer-bs">
-        <div class="container">
-        	<div class="col-md-3 footer-brand animated fadeInLeft">
-                <img src="{% static 'images/IMG-20200616-WA0002.jpg' %}" alt="Logo" style="height: 50px;width: auto;
-                border-color: #0f0f0f;border-radius: 5px;margin-top: -15px">
-            	<!--<h2>Logo</h2>-->
-                <p style="margin-top: 15px">Suspendisse hendrerit tellus laoreet luctus pharetra. Aliquam porttitor vitae orci nec ultricies. Curabitur vehicula, libero eget faucibus faucibus, purus erat eleifend enim, porta pellentesque ex mi ut sem.</p>
-                <p>© 2014 BS3 UI Kit, All rights reserved</p>
-            </div>
-        	<div class="col-md-4 footer-nav animated fadeInUp">
-            	<h4>Menu —</h4>
-            	<div class="col-md-6">
-                    <ul class="pages">
-                        <li><a href="#"></a>{{ usuario }}</li>
-                        <li><a href="#">Servicios</a></li>
-                        <li><a href="#">Portafolios</a></li>
-                        <li><a href="#">Iniciar Sesi&oacute;n</a></li>
-                        <li><a href="#">Salir de la Cuenta</a></li>
-                    </ul>
-                </div>
-            	<div class="col-md-6">
-                    <ul class="list">
-                        <li><a href="#">Acerca de Nosotros</a></li>
-                        <li><a href="#">Contactos</a></li>
-                        <li><a href="#">T&eacute;rminos y Condiciones</a></li>
-                        <li><a href="#">Pol&iacute;tica de privacidad</a></li>
-                    </ul>
-                </div>
-            </div>
-        	<div class="col-md-2 footer-social animated fadeInDown">
-            	<h4>S&iacute;guenos</h4>
-            	<ul>
-                	<li><a href="#">Facebook</a></li>
-                	<li><a href="#">Twitter</a></li>
-                	<li><a href="#">Instagram</a></li>
-                	<li><a href="#">RSS</a></li>
-                </ul>
-            </div>
-        	<div class="col-md-3 footer-ns animated fadeInRight">
-            	<h4>Hoja Informativa</h4>
-                <p>blablabla</p>
-                <p>
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Buscar por...">
-                      <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
-                      </span>
-                    </div><!-- /input-group -->
-                 </p>
-            </div>
-        </div>
-    </footer>
-</section>
-{% endblock %}

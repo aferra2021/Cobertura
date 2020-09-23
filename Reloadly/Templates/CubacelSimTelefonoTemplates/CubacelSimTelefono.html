@@ -1,2 +1,314 @@
-CubacelSimTelefono
-Aki se gestiona toda la venta de sims y telefonos
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block Content %}
+{% block tittle %}
+<title>
+Lineas y Telefonos - Internet Movil 3G y 4G | Cobertura
+</title>
+
+{% endblock %}
+<style>
+    #ajs-header {
+  background: linear-gradient(70deg,#d0142c,#f7f7f7);
+}
+    #ajs-footer {
+  background: linear-gradient(70deg,#002a8f,#f7f7f7);
+}
+
+    div.i{
+        transition: width 1s, height 1s, transform 1s;
+    }
+    div.i:hover{
+        transform: rotateY(180deg);
+    }
+
+    div.col-sm-12 a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: #002a8f;
+    transition: left .8s;
+    }
+    div.col-sm-12 a:hover::after {
+    left: 0;
+    }
+
+</style>
+<body style="font-family: Open Sans,Arial,sans-serif;">
+
+{% include 'navbar.html' %}
+<div class="container" style= "-webkit-box-sizing: border-box;background-color: #28a4c9;background-repeat: no-repeat;background-position: center;height: 300px;width:100%;margin-top: -30px" alt="Cobertura">
+    <div class="rc-home-title text-center" style="height:150px;width: 100%;display: table;font-family: Open Sans,Arial,sans-serif;">
+    <div class="rc-home-title-content">
+            <h2 class="text-center color-red">
+                <i style="font-size: 35px;color: white;">Regale Líneas <i class="fa fa-sim-card"></i> a
+                    <strong style="">Familiares y Amigos</strong></i>
+            </h2>
+            <h3 class="color-blue">
+                <i style="color: white;">
+                    Internet en el Movil Disponble para<strong style="color: #002a8f"> 3G </strong> y <strong style="color: #002a8f"> 4G</strong> <i class="fa fa-signal"></i>
+                </i>
+            </h3>
+            <h5 style="color: white">
+                <i>Servicio de venta segura a traves de La Empresa De Comunicaciones de Cuba ETECSA</i>
+            </h5>
+                <h6 style="color: white">"¡Por una mejor conección con tu Familia y Amigos!"</h6>
+    </div>
+</div>
+</div>
+<div class="container"style="display: flex;justify-content: center">
+        <div class="thumbnail col-sm-7" style="webkit-box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-shadow: 0 0 0 3px rgba(0,0,0,.1);
+    box-shadow: 0 0 0 3px rgba(0,0,0,.1);-webkit-box-shadow: 0 0 22px 4px rgba(0,0,0,.24);box-shadow: 0 0 22px 4px rgba(0,0,0,.24);box-sizing: border-box;display:flex;justify-content:center;flex-direction: column;position: absolute;margin-top: -70px">
+            <div style="display: flex;justify-content: center;flex-direction: column">
+             <div class="text-center">
+                <img src="{% static 'images/CUBACEL.png' %}" alt="Cubacel" style="">
+             </div>
+            </div>
+        <div style="display: flex;justify-content: center;flex-direction: column">
+            <h1 class="text-center" style="font-family:FontAwesome;font-size: 20px">Línea Cubacel USIM Internet 3G y 4G + 10CUC Saldo</h1>
+            <div class="text-center" style="color:#28a4c9;fonfont-family: FontAwesome;font-size: large">
+                <i class="fa fa-dollar-sign" ></i><strong>&nbsp;43.50 <i class="text-capitalize" style="color: #3c3c3c">USD</i></strong>
+            </div>
+            <div class="text-center">
+                <img src="{% static 'images/15970870-4g-circuito-de-microchip-de-la-tarjeta-sim-emblema-aislado-sobre-fondo-blanco.jpg' %}" alt="Cubacel" style="width: 240px">
+            </div>
+       </div>
+        <div class="col-sm-12 " style="width:100%;padding: 0px;display: flex;justify-content: center;flex-direction: column">
+                <h3 class="text-center">Completa los siguientes datos</h3>
+                <div class="col-sm-12" style="padding:20px;display: flex;justify-content: center">
+                    <p class="col-sm-10 text-center text-justify" style="color:#7c7c7c;">Elige la Provincia y la Oficina Comercial de ETECSA donde recojer el producto seleccionado. Los productos se recogen Personalmente por el destinatario antes de los 30 días de comprados.</p>
+                </div>
+                <h4 class="text-center" style="font-family:inherit;color:#28a4c9">Seleccione una Provincia y Tienda</h4>
+
+                <hr class="col-sm-10" style="background-color:#28a4c9;width:90%;">
+
+
+              <div class="col-sm-12" style="display:flex;justify-content:space-between;padding: 0px">
+                <div class="col-sm-6" >
+                        <div class="input-group input-variant input-group-brand">
+                        <span class="input-group-addon">
+                            <i class="fa fa-map-marker"></i>
+                        </span>
+                        <select class="form-control" onchange="Provincia()" id="Provincia" data-testid="province">
+                            <option data-testid="default" value="-1">Seleccione una provincia</option>
+                            <option data-testid="17" value="89">ARTEMISA</option>
+                            <option data-testid="9" value="1">CAMAGUEY</option>
+                            <option data-testid="8" value="2">CIEGO DE AVILA</option>
+                            <option data-testid="5" value="3">CIENFUEGOS</option>
+                            <option data-testid="24" value="4">FILIAL LA HABANA</option>
+                            <option data-testid="12" value="5">GRANMA</option>
+                            <option data-testid="14" value="6">GUANTANAMO</option>
+                            <option data-testid="11" value="7">HOLGUIN</option>
+                            <option data-testid="15" value="8">ISLA JUVENTUD</option>
+                            <option data-testid="1" value="9">LA HABANA</option>
+                            <option data-testid="23" value="10">LA HABANA ESTE</option>
+                            <option data-testid="19" value="11">LA HABANA NORTE</option>
+                            <option data-testid="20" value="12">LA HABANA OESTE</option>
+                            <option data-testid="22" value="13">LA HABANA SUR</option>
+                            <option data-testid="10" value="14">LAS TUNAS</option>
+                            <option data-testid="4" value="15">MATANZAS</option>
+                            <option data-testid="16" value="16">MAYABEQUE</option>
+                            <option data-testid="3" value="17">PINAR DEL RIO</option>
+                            <option data-testid="7" value="18">SANCTI SPIRITUS</option>
+                            <option data-testid="13" value="19">STGO. DE CUBA</option>
+                            <option data-testid="6" value="20">VILLA CLARA</option>
+                        </select></div>
+                        <div class="rc-error-list-variant-wrapper">
+                            <div class=" closed" style="overflow: hidden; height: 0px; transition: height 0.4s ease 0s;"><div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <div class="col-sm-6" style="float: right" >
+                <div class="input-group input-variant input-group-brand" style="-webkit-box-sizing: border-box;-webkit-box-shadow: 0 0 0 3px rgba(0,0,0,.08);box-shadow: 0 0 0 1px rgba(0,0,0,.08);border-radius: 5px;">
+                        <span class="input-group-addon">
+                            <i class="fa fa-home"></i>
+                        </span>
+                        <select class="form-control" id="Tiendas0" name="Tiendas" onchange="Tienda()" style="display:none;border-radius:0px 4px 4px 0px;display: block" disabled data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                        </select>
+                        <select class="form-control" id="Tiendas1" name="Tiendas" onchange="Tienda()" style="display: none"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="29" value="0">BARACOA - ARTEMISA</option>
+                            <option data-testid="44" value="1">MULTISERVICIO ARTEMISA</option>
+                        </select>
+                        <select class="form-control" id="Tiendas2" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="16" value="0">CAMAGUEY</option>
+                            <option data-testid="40" value="1">SANTA LUCIA</option>
+                        </select>
+                        <select class="form-control" id="Tiendas3" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="26" value="0">CAYO COCO</option>
+                            <option data-testid="17" value="1">CIEGO DE AVILA</option>
+                            <option data-testid="39" value="2">MORON</option>
+                        </select>
+                        <select class="form-control" id="Tiendas4" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                           <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="7" value="0">CENTRO DE NEGOCIOS ALMACENES UNIVERSALES</option>
+                        </select>
+                        <select class="form-control" id="Tiendas5" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="1" value="0">SEDE HABANA</option>
+                        </select>
+                        <select class="form-control" id="Tiendas6" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="41" value="1">BAYAMO</option>
+                        </select>
+                        <select class="form-control" id="Tiendas7" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="20" value="0">BARACOA - GUANTANAMO</option>
+                            <option data-testid="42" value="1">GTMO - TELEPUNTO</option>
+                            <option data-testid="11" value="2">GUANTANAMO</option>
+                            <option data-testid="24" value="3">MANZANILLO</option>
+                        </select><select class="form-control" id="Tiendas8" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="9" value="0">CENTRO DE NEGOCIOS HOLGUIN</option>
+                            <option data-testid="5" value="1">MOA</option>
+                        </select><select class="form-control" id="Tiendas9" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="14" value="0">ISLA DELA JUVENTUD</option>
+                        </select><select class="form-control" id="Tiendas10" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="46" value="0">COTORRO</option>
+                            <option data-testid="6" value="1">FERIA EXPOCUBA</option>
+                            <option data-testid="43" value="2">TARARA</option>
+                        </select><select class="form-control" id="Tiendas11" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="50" value="0">OFICINA ALAMAR</option>
+                            <option data-testid="23" value="1">VILLA PANAMERICANA</option>
+                        </select><select class="form-control" id="Tiendas12" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="48" value="0">AGUILA Y DRAGONES</option>
+                            <option data-testid="52" value="1">CM PRINCIPE</option>
+                            <option data-testid="47" value="2">FOCSA</option>
+                            <option data-testid="19" value="3">OBISPO</option>
+                            <option data-testid="13" value="4">VEDADO</option>
+                            <option data-testid="36" value="5">Z.FRANCA TIENDA C.H</option>
+                            <option data-testid="32" value="6">ZONA FRANCA - C.HAB</option>
+                        </select><select class="form-control" id="Tiendas13" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="34" value="0">LA COPA</option>
+                            <option data-testid="8" value="1">MTC PREPAGOS</option>
+                        </select><select class="form-control" id="Tiendas14" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="28" value="0">10 DE OCTUBRE</option>
+                            <option data-testid="33" value="1">AEROP JOSE MARTI T-2</option>
+                            <option data-testid="2" value="2">AEROP JOSE MARTI T-3</option>
+                            <option data-testid="51" value="3">OFICINA LUZ Y REYES</option>
+                        </select><select class="form-control" id="Tiendas15" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="12" value="0">LAS TUNAS</option>
+                            <option data-testid="41" value="1">PUERTO PADRE</option>
+                        </select><select class="form-control" id="Tiendas16" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="27" value="0">CARDENAS</option>
+                            <option data-testid="25" value="1">MATANZAS</option>
+                            <option data-testid="3" value="2">VARADERO</option>
+                        </select>
+                        <select class="form-control" id="Tiendas17" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="30" value="0">GUINES</option>
+                            <option data-testid="21" value="1">SAN JOSE - MAYABEQUE</option>
+                        </select>
+                        <select class="form-control" id="Tiendas18" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="18" value="0">MULTISERVICIO HERMANOS CRUZ</option>
+                        </select>
+                        <select class="form-control" id="Tiendas19" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="15" value="0">SANCTI SPIRITUS</option>
+                            <option data-testid="38" value="1">TRINIDAD</option>
+                        </select>
+                        <select class="form-control" id="Tiendas20" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="4" value="0">SANTIAGO DE CUBA</option>
+                        </select>
+                        <select class="form-control" id="Tiendas21" name="Tiendas" style="display: none" onchange="Tienda()"  data-testid="shop">
+                            <option data-testid="default" value="-1">Selecciona una tienda</option>
+                            <option data-testid="4" value="0">SANTA CLARA</option>
+                        </select>
+
+                    </div>
+                </div>
+              </div>
+                    <div class="text-center" style="margin-top:10px;opacity: 0.8; max-height: 60px; overflow: hidden; transition: opacity 0.4s ease 0s, max-height 0.4s ease 0s;">
+                        <p data-testid="shopInfo"><b>información de la tienda seleccionada:</b><br>
+                            <span data-testid="shopAddress">
+                                <i class="fa fa-map-marker"></i>&nbsp;Alfredo Barrera # 6 entre Máximo Gómez y Villuendas
+                            </span>
+                            <span>&nbsp;<b>|</b>&nbsp;</span>
+                            <span data-testid="shopPhoneNumbers">
+                                <i class="fa fa-phone"></i>
+                                &nbsp;42226922 / 52680436</span>
+                        </p>
+                    </div>
+
+                    <div class="rc-error-list-variant-wrapper">
+                        <div class=" closed" style="overflow: hidden; height: 0px; transition: height 0.4s ease 0s;">
+                        </div>
+                    </div>
+
+                <h4 class="text-center" style="color:#28a4c9;margin-top: 30px">Introdusta los datos del Destinatario</h4>
+                    <hr class="col-sm-10" style="width:90%;">
+                <div class="col-sm-12" style="display:flex;justify-content:space-between;padding: 0px">
+                    <div class="col-sm-6" >
+                        <div class="input-group input-variant input-group-brand">
+                            <span class="input-group-addon">
+                                <i class="fa fa-user"></i>
+                            </span>
+                            <input name="fullName" class="form-control " type="text" data-testid="fullName" placeholder="Ingrese nombre y apellidos" value=""></div><div class="rc-error-list-variant-wrapper"><div class=" closed" style="overflow: hidden; height: 0px; transition: height 0.4s ease 0s;">
+                        </div>
+                    </div>
+                    </div>
+                <div class="col-sm-6">
+                    <div class="input-group input-variant input-group-brand">
+                        <span class="input-group-addon">
+                            <i class="fa fa-id-card"></i>
+                        </span>
+                        <select name="docType" class="form-control select-doc-type "  data-testid="documentType" style="width: 40%;">
+                            <option data-testid="documentType_0" value="0">c.Identidad</option>
+                            <option data-testid="documentType_1" value="1">Pasaporte</option>
+                        </select>
+                        <input name="docNumber"  class="form-control select-doc-code " data-testid="documentNumber" placeholder="Número" value="" style="width: 60%;">
+                    </div><div class="rc-error-list-variant-wrapper">
+                    <div class=" closed" style="overflow: hidden; height: 0px; transition: height 0.4s ease 0s;">
+                        </div>
+                </div>
+                </div>
+            </div>
+                 <div class="col-sm-12" style="display: flex;justify-content: center">
+                    <button class="col-sm-3 btn btn-success" href="#" style="position:absolute;margin-top: 20px;margin-bottom: 15px;font-size:17px;font-family:inherit">Terminar y Pagar</button>
+                </div>
+        </div>
+
+        </div>
+</div>
+</body>
+<script>
+    var tiendaSelect=document.getElementById('Tiendas0');;
+    function Provincia() {
+        Tienda0=document.getElementById('Tiendas0');
+        Tienda0.style.display='none';
+        if(document.getElementById('Provincia').selectedIndex==0){
+            document.getElementById("Tiendas"+document.getElementById('Provincia').selectedIndex).style.display='none';
+            Tienda0.style.display='block';
+            tiendaSelect.style.display='none';
+            tiendaSelect=document.getElementById("Tiendas"+document.getElementById('Provincia').selectedIndex)
+        }else {
+            alert(document.getElementById("Tiendas"+document.getElementById('Provincia').selectedIndex).id);
+            document.getElementById("Tiendas"+document.getElementById('Provincia').selectedIndex).style.display='block';
+            Tienda0.style.display='none';
+            tiendaSelect.style.display='none';
+            tiendaSelect=document.getElementById("Tiendas"+document.getElementById('Provincia').selectedIndex)
+        }
+    }
+    function Tienda(){
+       // alert(document.getElementById('Tiendas').selectedIndex)
+    }
+</script>
+{% endblock %}

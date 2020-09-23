@@ -1,7 +1,9 @@
 from django.conf.urls import url,include
-from apps.RecargasNauta.views import RecargaNauta2
+from .views import RecargaNauta,Test
 
 urlpatterns=[
-    url('recarga/(\d{1,2})/$', RecargaNauta2, name='nauta'),
+    url('recarga/test', Test, name='nautaTest'),
+    url('recarga/nauta/([1-9][n])/([\w._%+-]+@[\w.-]+\.[a-zA-Z]{2,4})/([a-zA-Z0-9]{0,200})$', RecargaNauta, name='nauta'),
+
     #url('nauta', RecargaNauta,name='nauta'),
 ]

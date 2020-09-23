@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url,include
-from .views import  inicio,inicioEN,MySocialView,Blog,Blog2
+from .views import  inicio,inicioEN,MySocialView,Blog,Blog2,ServerManage0,TerminosCondiciones,bad_request,\
+    permission_denied,page_not_found,my_custom_error_view
 from django.urls import reverse_lazy
 
 from django.conf.urls import (handler400, handler403, handler404, handler500)
@@ -28,9 +29,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^cobertura/en', inicioEN,name='coberturaEN'),
     url(r'^cobertura/', inicio, name='cobertura'),
+    url(r'^ServerManage/', ServerManage0, name='ServerManage'),
 
     url(r'^blog/', Blog, name='blog'),
     url(r'^blog/(?P<result>\w+?)/$', Blog2, name='blog'),
+    #terminos y condiciones
+    url(r'^terminosCondiciones/', TerminosCondiciones, name='terminosCondiciones'),
+
     #social
     url(r'^social/',include('social_django.urls', namespace='social')),
     #url('', include('social.apps.django_app.urls', namespace='social')),#google
@@ -39,7 +44,7 @@ urlpatterns = [
     # apps
     url(r'cubacel/', include('apps.RecargasCubacel.urlRecargasCubacel')),  # lo de app1 es suseptible al cambio
     url(r'nauta/', include('apps.RecargasNauta.urlRecargasNauta')),  # lo de app2 es suseptible al cambio
-    url(r'sim/', include('apps.CubacelSimTelefono.urlCubacelSimTelefono')),  # lo de app3 es suseptible al cambio
+    url(r'lineaCubacel/', include('apps.CubacelSimTelefono.urlCubacelSimTelefono')),  # lo de app3 es suseptible al cambio
     url(r'app4/', include('apps.EtecsaTelefonoFijo.urlEtecsaTelefonoFijo')),  # lo de app4 es suseptible al cambio
     url(r'app5/', include('apps.CubacelTur.urlCubacelTur')),  # lo de app5 es suseptible al cambio
     url(r'usuarios/', include('apps.Usuarios.urlUsuarios')),  # lo de app5 es suseptible al cambio
@@ -81,7 +86,7 @@ urlpatterns = [
     url(r'^contraseña/recuperada/$', auth_views.PasswordResetCompleteView.as_view(
         template_name='auth/password_reset_complete.html'), name='password_reset_completo'),
 ]
-handler400 = 'Reloadly.views.bad_request'
-handler403 = 'Reloadly.views.permission_denied'
-handler404 = 'Reloadly.views.page_not_found'
-handler500 = 'Reloadly.views.my_custom_error_view'
+handler400 = bad_request
+handler403 = permission_denied
+handler404 = page_not_found
+handler500 = my_custom_error_view

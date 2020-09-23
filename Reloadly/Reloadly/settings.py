@@ -25,10 +25,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'pw6#wa+2zk#s46y=gy3k#g8jjom*%(j(!j7x@4r5it4p*t%l5x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-#TEMPLATE_DEBUG = DEBUG
-#ALLOWED_HOSTS = ['127.0.0.1']
+import socket
+if socket.gethostname() == "Natalia-PC":
+   DEBUG = TEMPLATE_DEBUG = True
+else:
+   DEBUG = TEMPLATE_DEBUG = False
 
+
+ALLOWED_HOSTS = ['127.0.0.1']
+
+ADMINS = (
+("Alejandro Ferrá Díaz", "aferra444@gmail.com"),
+)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -136,7 +144,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-es'
 
 TIME_ZONE = 'UTC'
 
@@ -179,6 +187,12 @@ SOCIAL_AUTH_STRATEGY='rest_social_auth.strategy.DRFStrategy'
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(BASE_DIR,'static'),
+)
 
 LOGIN_REDIRECT_URL = reverse_lazy('cobertura')
 LOGOUT_REDIRECT_URL = reverse_lazy('cobertura')
@@ -192,6 +206,7 @@ EMAIL_HOST_USER = 'aferra444'
 EMAIL_HOST_PASSWORD = '97091602468'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'aferra444@gmail.com'
+#DEFAULT_FROM_EMAIL = 'cobertura@gmail.com'  crear la cuenta de correo cobertura
 
 #sweetAlert2
 SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'

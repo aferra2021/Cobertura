@@ -1,37 +1,50 @@
 from django.http import HttpResponse,Http404
 from django.shortcuts import render
-from apps.RecargasCubacel.serviciosCubacel import recargaCubacel
+from apps.RecargasCubacel.serviciosCubacel import recargaCubacel,PaquetesDatosCubacel
 from apps.RecargasNauta.serviciosNauta import recargasNauta
 from apps.EtecsaTelefonoFijo.serviciosTelefonoFijo import recargasTelefonoFijo
 from apps.CubacelTur.serviciosCubacelTur import recargaCubacelTur
 from apps.CubacelSimTelefono.serviciosCubacelSimTelefono import transCubacelSimTelefono
+from apps.Usuarios.models import TransferenciaActual
 
-def ServerManage(listTrans):
+def ServerManage(request):
+    listTrans = TransferenciaActual.objects.filter(cliente=request.user)
     cubacel=[]
     nauta=[]
+    paquetes=[]
+    Json=[]
+    """Reserva=[]
     telefonoFijo=[]
     Cubaceltur=[]
-    SimTelefono=[]
+    SimTelefono=[]"""
     for l in listTrans:
-        if l.tipo=="Cubacel":
+        if l.tipo=="Recarga Cubacel" or l.tipo=="Saldo+Bono":
             cubacel.append(l)
         elif l.tipo=="Nauta":
             nauta.append(l)
-        elif l.tipo=='TelefonoFijo':
-            telefonoFijo.append(l)
-        elif l.tipo=='CubacelTur':
-            Cubaceltur.append(l)
-        elif l.tipo=='SimTelefono':
-            SimTelefono.append(l)
+        elif l.tipo=="Datos Moviles Cubacel":
+            paquetes.append(l)
+            # guardar el la tabla de reservas
+#        elif l.tipo=='SimTelefono':
+#            SimTelefono.append(l)
     ####################################################################################################################
-    Json=recargaCubacel(cubacel)
+    if cubacel:
+        #print(recargaCubacel(cubacel))
+        Json.append(recargaCubacel(cubacel))
     ####################################################################################################################
-    Json.append(recargasNauta(nauta))
+    if nauta:
+        #print(recargasNauta(nauta))
+        Json.append(recargasNauta(nauta))
     ####################################################################################################################
-        #recargasTelefonoFijo(telefonoFijo)
+    if paquetes:
+        Json.append(PaquetesDatosCubacel(paquetes))
+
     ####################################################################################################################
         #recargaCubacelTur(Cubaceltur)
     ####################################################################################################################
         #transCubacelSimTelefono(SimTelefono)
     ####################################################################################################################
-    return Json
+    Carrito = TransferenciaActual.objects.filter(cliente=request.user)
+    #if len(Carrito)!=0:
+     #   return HttpResponse(render(request,'UsuariosTemplates/carrito.html',{'error':'error','cantidadCarrito': len(Carrito),'carrito':Carrito}))
+    return HttpResponse(render(request,'Test.html',{'Json':Json,'cantidadCarrito': len(Carrito),'carrito':Carrito}))
