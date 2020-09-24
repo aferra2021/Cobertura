@@ -24,16 +24,20 @@ a:hover:after {
 left: 0;
 }
 </style>
+{% include 'navbar.html' %}
 
-<div class="container" style="align: center">
-    <h2 class="well text-center">Crea tu Cuenta en COBERTURA</h2>
+<div class="jumbotron container" style="align: center">
+  <div class="col-sm-12" style="display: flex;justify-content: center;flex-direction: column">
+    <h2 class="text-center">Crea tu Cuenta en COBERTURA</h2>
+    <hr class="" id="lineAuth" style="background-color: #002a8f">
+  </div>
   <form id="formReg" class="form-horizontal" method="POST">
                 {% csrf_token %}
     <div class="form-group " style="display: flex;justify-content: center" name="UserDivs">
         <label class="control-label col-sm-4" style="display: flex;justify-content: left"  for="username">Nombre de Usuario:</label>
      </div>
     <div class="form-group " style="display: flex;justify-content: center" name="UserDivs">
-        <div name="meterAlert" class="col-sm-4" style="margin-top: -10px;width: 35%" title="ok">
+        <div name="meterAlert" class="col-sm-4" id="divuser" style="margin-top: -10px;width: 35%" title="ok">
             <input  id="userNameReg" type="text" name="username" oninput="ValidarUser()"
                     class="form-control" autocomplete="off" title="Complete este campo">
             <span id="Wait" name="UserDivs" class=""></span>
@@ -44,7 +48,7 @@ left: 0;
           <label class="control-label col-sm-4" style="display: flex;justify-content: left"  for="email">Correo:</label>
     </div>
     <div class="form-group " style="display: flex;justify-content: center" name="CorreoDivs">
-        <div class="col-sm-4" name="meterAlert" style="margin-top: -10px;width: 35%" title="ok">
+        <div class="col-sm-4" name="meterAlert" id="divCorreo" style="margin-top: -10px;width: 35%" title="ok">
             <input type="text" name="email" class="form-control" autocomplete="off" id="correoReg"  oninput="ValidarCorreo(this)"
                  title="Complete este campo" >
             <span  name="CorreoDivs" class=""></span>
@@ -55,7 +59,7 @@ left: 0;
           <label class="control-label col-sm-4" style="display: flex;justify-content: left"  for="password1">Contraseña:</label>
     </div>
     <div class="form-group" style="display: flex;justify-content: center" name="PassDivs">
-        <div class="col-sm-4" name="meterAlert" style="margin-top: -10px;width: 35%" title="ok">
+        <div class="col-sm-4" name="meterAlert" id="divPass" style="margin-top: -10px;width: 35%" title="ok">
             <input type="password" name="password1" class="form-control" autocomplete="off" id="passReg"
                    oninput="ValidarPass(this,2,'PassDivs')"
                 title="Complete este campo">
@@ -70,7 +74,7 @@ left: 0;
             for="password2">Confirmar Contraseña:</label>
     </div>
     <div class="form-group " style="display: flex;justify-content: center" name="Pass2Divs">
-        <div class="col-sm-4" name="meterAlert" style="margin-top: -10px;width: 35%" id="last" title="ok">
+        <div class="col-sm-4" name="meterAlert" id="divPass2" style="margin-top: -10px;width: 35%" id="last" title="ok">
             <input type="password" name="password2" class="form-control" autocomplete="off"
                id="password2"  oninput="ValidarPass(this,3,'Pass2Divs')" title="Complete este campo">
             <span class="form-control-feedback" name="Pass2Divs"></span>
@@ -78,47 +82,15 @@ left: 0;
         </div>
     </div>
      <div class="col-sm-12 text-center">
-           <button type="submit" disabled value="submit" name="submit" id="ingresar" class="btn btn-default"
+           <button type="submit" disabled value="submit" name="submit" id="ingresar" class="btn btn-default success"
            style="background-color: #002a8f;color: white;width: 200px"
            data-toggle="tooltip" data-placement="bottom" title="Crea tu nueva cuenta">Crear cuenta</button>
       </div>
-          <!--<div class="container" style="display: flex;justify-content: center">
-            <div class="col-md-6" style="justify-content: left">
-                <div class="form-group">
-                    <label for="email">Correo:</label>
-                    <input type="text" name="email" class="form-control" id="correoReg" required
-                    pattern="^[a-zA-Z1-9._-]+@[a-zA-Z1-9.-]+\.([a-zA-Z]{2,4})+$" title="Esta no es una
-                    dirección de correo válida.">
-                </div>
-            </div>
-        </div>
-        <div class="container" style="display: flex;justify-content: center">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="password1">Contraseña:</label>
-                    <input type="password" name="password1" class="form-control" id="passReg" required min="8"
-                    pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
-                    title="Debe tener al menos 8 caracteres e incluir mayúsculas, minúsculas y caracteres especiales.">
-                </div>
-            </div>
-        </div>
-        <div class="container" style="display: flex;justify-content: center">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="password2">Confirmar Contraseña:</label>
-                    <input type="password" name="password2" class="form-control" id="confirm" required>
-                </div>
-            </div>
-        </div>
-          <div class="form-group text-center">
-                <input type="submit" class="btn btn-primary" value="Ingresar">
-            </div>
-          <div class=" text-center" >
-                <a class="col-sm-12 " href="{% url 'social:begin' 'facebook' %}">INICIA CON FACEBOOK</a>
-                <a class="col-sm-12 " href="{% url 'social:begin' 'google-oauth2' %}">INICIA CON GOOGLE</a>
-        </div>-->
-    </form>
+         </form>
     <div class="col-sm-12">&nbsp;</div>
+</div>
+{% include 'footer.html' %}
+
 </div>
     <!--pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{7,19}$"-->
 
@@ -131,7 +103,7 @@ left: 0;
         $('#formReg').on('submit', function(e){
             e.preventDefault();
             CamposObligatorios();
-            if(user1&&correo1&pass1&&document.getElementById('last').title=='ok'){
+            if(user1&&correo1&pass1){
 
                 if ($('#passReg').val()==$('#password2').val()) {
                     document.getElementById('userNameReg').disabled=true;
@@ -167,10 +139,19 @@ left: 0;
                                 window.location.href=URL;
                              }else{
                                  //window.location.href = "{% url 'cobertura' %}";
-                                 setTimeout(function (){window.location.href = "{% url 'cobertura' %}"},2000);
-                                 alertify.success("Usuario creado correctamente");
+                                setTimeout(function (){window.location.href = "{% url 'cobertura' %}"},2200);
+                                var usuario=document.createTextNode(response.usuario);
+                                alertify.alert('<p></p>','<h2 class="text-center" style="color: limegreen"><i class="fa fa-check-circle text-center" style="font-size: 35px;color: limegreen;margin-right: 20px"></i>Bienvenido <strong style="color: #002a8f">'+usuario.textContent+'</strong></h2>');
+                                var aler=document.getElementsByClassName('ajs-close');
+                                aler[0].remove()
+                                var OK=document.getElementsByClassName('ajs-button ajs-ok');
+                                OK[0].remove()
+                                var header=document.getElementsByClassName("ajs-header");
+                                var footer=document.getElementsByClassName("ajs-footer");
+                                header[0].style.backgroundColor="#b8e57c";
+                                footer[0].style.backgroundColor="#b8e57c";
                              }
-                        })
+                    });
                     }else {
                         pass2=document.getElementById('password2');
                         EliminarError(pass2, 3);
@@ -613,6 +594,45 @@ left: 0;
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
         });
+
+    function ajustesAuth(){
+        var divuser=document.getElementById('divuser');
+        var divCorreo=document.getElementById('divCorreo');
+        var divPass=document.getElementById('divPass');
+        var divPass2=document.getElementById('divPass2');
+        var ingresar=document.getElementById('ingresar');
+        var divPass=document.getElementById('divPass');
+        var lineAuth=document.getElementById('lineAuth');
+
+       if($(window).width()>768){
+            navbar('grande')
+            divuser.style.width='35%';
+            divPass.style.width='35%';
+            divCorreo.style.width='35%';
+            divPass2.style.width='35%';
+            ingresar.style.width='20%';
+            lineAuth.style.width='90%';
+            lineAuth.className='col-sm-11';
+       }else{
+             navbar('pequeño')
+            divuser.style.width='70%';
+            divPass.style.width='70%';
+            divCorreo.style.width='70%';
+            divPass2.style.width='70%';
+            ingresar.style.width='50%';
+            lineAuth.style.width='80%';
+            lineAuth.className='col-sm-8';
+       }
+    }
+
+
+    window.onload=function () {
+        ajustesAuth()
+       window.onresize=function () {
+        ajustesAuth()
+       }
+    }
+
     </script>
 
 {% endblock %}

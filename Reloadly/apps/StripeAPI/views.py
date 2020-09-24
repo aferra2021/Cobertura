@@ -3,18 +3,12 @@ from django.conf import settings # new
 from django.http.response import JsonResponse # new
 from django.views.decorators.csrf import csrf_exempt # new
 from django.views.generic.base import TemplateView
-import stripe
+#import stripe
 from django.shortcuts import render,redirect,reverse
 from django.http import HttpResponse
 from apps.Usuarios.models import TransferenciaActual
 
 # Create your views here.
-
-""""def Param(request,result):
-    print("result")
-    print("result")
-    print(result)
-    return HomePageView.as_view()"""
 
 class HomePageViewClass(TemplateView):
     template_name = 'StripeAPITemplates/home.html'
@@ -23,8 +17,11 @@ def HomePageView(request, result):
     user=request.user
     Trans=TransferenciaActual.objects.get(id=result)
     Trans.cliente = user
+    contacto=Trans.contacto
+    contacto.User=user
+    contacto.save()
     Trans.save()
-    return redirect(reverse('pagoStripeAPI'))
+    return redirect(reverse('carrito'))
 
 
 @csrf_exempt

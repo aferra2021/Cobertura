@@ -1,0 +1,342 @@
+{% load static %}
+
+<style>
+
+  .footer{
+	padding: 50px 0;
+    width: 100%;
+    background: #1c2431;
+    color: #fff;
+
+}
+.footer-title{
+	position: relative;
+    color: #fff;
+	font-size: 24px;
+    font-weight: 600;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #4e4e4e;
+}
+.footer-title:after{
+	position: absolute;
+	content: '';
+	left: 0;
+	bottom: 0;
+	width: 60px;
+	height: 4px;
+	background: #6455ca;
+}
+.footer-links a{
+	padding: 10px 0;
+	border-bottom: 1px solid #404040;
+	color: #fff;
+	display: block;
+	transition: color 0.5s ease-in-out;
+   	text-decoration:none;
+}
+.footer-links a:hover{
+	color: #6455ca;
+	font-size: large;
+}
+
+/* g. Footer bottom section */
+.footer-bottom{
+	width: 100%;
+	padding: 25px 0;
+	text-align: center;
+	color: #fff;
+	background: #151b27;
+}
+	.rs{
+		padding: 10px;
+	}
+	.rsi:hover{
+		font-size: 35px;
+		background-color: white;
+		color: #6351ce;
+		border: 5px solid white;
+		border-radius: 5px;
+	}
+	.info{
+		margin-right: 15px;
+	}
+	.links{
+		margin-right: 5px;
+	}
+	.fa-thumbs-up:hover{
+		color: #6351ce;
+		width: 30px;
+		height: auto;
+	}
+
+</style>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div style="background-color: #6351ce; height: 60px">
+    <div class="container">
+
+      <!-- Texto + Redes-->
+      <div class="row py-4 d-flex align-items-center">
+
+        <!-- Get connected with us on social networks! -->
+        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+          <h4 id="FraseManten" style="color: white;text-align: center">¡Mantén el contacto en las redes sociales!</h4>
+        </div>
+        <!-- Grid column -->
+
+        <!-- redes -->
+        <div class="col-md-6 col-lg-7 text-center text-md-right" id="redesSociales" style="">
+
+          <!-- Facebook -->
+          <a class="fb-ic rs" style="font-size: 30px;color: white" href="#">
+            <i class="fab fa-facebook-f rsi"> </i>
+          </a>
+          <!-- Twitter -->
+          <a class="tw-ic rs" style="font-size: 30px;color: white" href="#">
+            <i class="fab fa-twitter rsi"> </i>
+          </a>
+          <!-- Google +-->
+          <a class="gplus-ic rs" style="font-size: 30px;color: white" href="#">
+            <i class="fab fa-google-plus-g rsi"> </i>
+          </a>
+          <!--Linkedin -->
+          <a class="li-ic rs" style="font-size: 30px;color: white" href="#">
+            <i class="fab fa-linkedin-in rsi"> </i>
+          </a>
+          <!--Instagram-->
+          <a class="ins-ic rs" style="font-size: 30px;color: white" href="#">
+            <i class="fab fa-instagram rsi"> </i>
+          </a>
+
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row-->
+
+    </div>
+  </div>
+
+<!--Links del footer-->
+<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 m-b-30">
+					<div class="footer-title m-t-5 m-b-20 p-b-8">
+						Nuestra Empresa
+					</div>
+					<p class="white-text" id="descripcion">
+						lalalalalla alalala lalalala lalalaalal lalaalalllalalala. lalalajja aadnsjdhjsadlasdhgsdgasgd
+					</p>
+				</div>
+				<div class="col-md-3 m-b-30">
+					<div class="footer-title m-t-5 m-b-20 p-b-8">
+						Productos
+					</div>
+					<div class="footer-links" id="listaProductos">
+						<a href="#Ofertas" onclick="Collapse('linkCubacel')" data-toggle="collapse">
+							<i class="fa fa-mobile links"></i>
+							Cubacel
+						</a>
+						<a href="#Ofertas" onclick="Collapse('linkNauta')" data-toggle="collapse">
+							<i class="fa fa-wifi links"></i>
+							Nauta
+						</a>
+						<a href="{% url 'cubacelventa' %}">
+							<i class="fa fa-sim-card links"></i>
+							Cubacel Sim
+						</a>
+						<a href="{% url 'etecsa' %}">
+							<i class="fa fa-phone-square links"></i>
+							ETECSA
+						</a>
+						<a href="{% url 'cubaceltur' %}">
+							<i class="fa fa-globe links"></i>
+							Cubacel Tur
+						</a>
+					</div>
+				</div>
+				<div class="col-md-3 m-b-30">
+					<div class="footer-title m-t-5 m-b-20 p-b-8">
+						Enlaces Útiles
+					</div>
+					<div class="footer-links" id="enlaces">
+						<a href="#inicio">
+							<i class="fa fa-arrow-up links"></i>
+							Inicio
+						</a>
+						<a href="{% url 'blog' %}">
+							<i class="fa fa-blog links"></i>
+							Blog
+						</a>
+						<a href="{% url 'terminosCondiciones' %}">
+							<i class="fa fa-check links"></i>
+							Términos y Condiciones
+						</a>
+						<a href="#">
+							<i class="fa fa-hand-paper links"></i>
+							Política de Privacidad
+						</a>
+					</div>
+				</div>
+				<div class="col-md-3 m-b-30">
+					<div class="footer-title m-t-5 m-b-20 p-b-8">
+						Contacto
+					</div>
+					<div class="footer-links" id="contacto">
+						<a href="#">
+							<i class="fa fa-home info"></i>
+							Ciudad de la Habana, Cuba <br>
+						</a>
+						<a href="#">
+							<i class="fa fa-envelope info"></i>
+							natalycm98@gmail.com
+						</a>
+						<a href="#">
+							<i class="fa fa-phone info"></i>
+							+53 53570656
+						</a>
+						<a href="#">
+							<i class="fa fa-print info"></i>
+							+53 53570656
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<div class="footer-bottom">
+		Copyright © 2020, Todos los Derechos Reservados por VÓRTICE
+		<i class="fa fa-thumbs-up" style="margin-left: 5px;font-size: x-large"></i>
+	</div>
+	</div>
+</div>
+
+<script>
+  //aki comienza el navbar
+       $(document).ready(function () {
+             {% if not user.is_authenticated %}
+              document.getElementById('cantCarrito').childNodes[2].textContent=' 0';
+             {% endif %}
+       });
+
+		 var descripcion=document.getElementById("descripcion");
+		 var listaProductos=document.getElementById("listaProductos");
+		 var enlaces=document.getElementById("enlaces");
+		 var contacto=document.getElementById("contacto");
+		 var redesSociales=document.getElementById("redesSociales");
+
+    function navbar(x){
+        myNavbar=document.getElementById('myNavbar');
+        listanavbar=document.getElementById('listanavbar');
+        blog1=document.getElementById('blog1');
+        blog2=document.getElementById('blog2');
+        line=document.getElementById('line');
+        FraseManten=document.getElementById('FraseManten');
+        if (x=='grande'){
+            myNavbar.style.cssFloat='right';
+            myNavbar.style.width='';
+            listanavbar.style.cssFloat='right';
+            listanavbar.style.width='';
+            blog1.style.display='';
+            blog2.style.display='none';
+            line.style.display='none';
+            descripcion.className="white-text";
+			listaProductos.className="footer-links";
+			enlaces.className="footer-links";
+			contacto.className="footer-links";
+			FraseManten.style.padding='10px';
+        }else{
+            myNavbar.style.cssFloat='left';
+            myNavbar.style.width='100%';
+            listanavbar.style.cssFloat='left';
+            listanavbar.style.width='100%';
+            blog1.style.display='none';
+            blog2.style.display='';
+            line.style.display='';
+			descripcion.className="white-text text-center";
+			listaProductos.className="footer-links text-center";
+			enlaces.className="footer-links text-center";
+			contacto.className="footer-links text-center";
+			FraseManten.style.padding='';
+        }
+    }
+
+
+       window.onload=function () {
+          var size=$(window).width();
+          if($(window).width()>768){
+             navbar('grande')
+          }else{
+			  navbar('pequeño')
+          }
+
+          window.onresize=function () {
+              function change() {
+                  if ($(window).width() > 829 && size > 829) {
+                      return false;
+                  }
+                  if ($(window).width() < 829 && size < 829) {
+                      return false;
+                  }
+                  size = $(window).width();
+                  return true;
+              }
+              //if(change()){
+                  if($(window).width()>768){
+                      navbar('grande');
+                  }
+                  else{
+                      navbar('pequeño');
+                  }
+             }
+    }
+    function CerrarSecion(){
+        var b=0;
+        b={{cantidadCarrito}}+0;
+        if ( b> 0){
+        alertify.confirm('<h2 class="text-center" style="color: #d0142c">' +
+                '<i class="fa fa-exclamation-triangle text-center" style="font-size: 35px;color: #d0142c;margin-right: 20px">' +
+                '</i>Si cierra la sesión perderá los elementos del carrito.</h2>', function (e) {
+          if (e) {
+                window.location.href="{% url 'cerrar-sesion' %}";
+            }
+        });
+        }
+        else{
+            window.location.href="{% url 'cerrar-sesion' %}";
+        }
+        var nombre=document.getElementsByClassName('ajs-header');
+        nombre[0].textContent="Atención";
+        nombre[0].style.color="white";
+        var OK=document.getElementsByClassName('ajs-button ajs-ok');
+        var Cancel=document.getElementsByClassName('ajs-button ajs-cancel');
+        OK[0].style.color="white";
+        OK[0].textContent = "Cerrar Seción";
+        OK[0].disabled=false;
+        Cancel[0].style.color="white";
+        OK[0].title = 'Cerrar Seción y eliminar todas las ordenes.';
+        var header=document.getElementsByClassName("ajs-header")[0];
+        var footer=document.getElementsByClassName("ajs-footer")[0];
+        header.style.backgroundColor="#e2808a";
+        footer.style.backgroundColor="#e2808a";
+        document.getElementsByClassName("ajs-header")[0].id = 'header';
+        document.getElementsByClassName("ajs-footer")[0].id = 'footer';
+        OK[0].addEventListener('mouseover', e => {
+            OK[0].style.color = '#d0142c';
+        });
+        OK[0].addEventListener('mouseleave', e => {
+            OK[0].style.color = 'white';
+        });
+        Cancel[0].addEventListener('mouseover', e => {
+            Cancel[0].style.color = '#d0142c';
+        });
+        Cancel[0].addEventListener('mouseleave', e => {
+            Cancel[0].style.color = 'white';
+        });
+    }
+    //aki termina el navbar
+</script>

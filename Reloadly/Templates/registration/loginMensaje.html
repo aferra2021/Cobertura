@@ -26,20 +26,23 @@ a:hover:after {
 left: 0;
 }
 </style>
-
+{% include 'navbar.html' %}
         {% if user.is_authenticated %}
-            <h1>ya esta autenticado</h1>
-            {{user}}
+         <h1 class="text-center jumbotron">Usted ya esta autenticado como: {{user}}</h1>
         {% else %}
-      <div class="container" id="general"  disabled="true" style="align: center">
-    <h2 class="well text-center">Iniciar cuenta en COBERTURA</h2>
+      <div class="container jumbotron" id="general"  disabled="true" style="align: center">
+          <div class="col-sm-12" style="display: flex;justify-content: center;flex-direction: column">
+              <h2 class="text-center">Iniciar cuenta en COBERTURA</h2>
+              <h5 class="text-center">¿Aún no tienes cuenta? Create  una.</h5>
+              <hr class="col-sm-4" id="lineAuth" style="background-color: #002a8f">
+          </div>
   <form id="formReg" class="form-horizontal" disabled="true" method="POST">
                 {% csrf_token %}
     <div class="form-group " style="display: flex;justify-content: center" name="UserDivs">
         <label class="control-label col-sm-4" style="display: flex;justify-content: left"  for="username">Nombre de Usuario:</label>
      </div>
     <div class="form-group " style="display: flex;justify-content: center" name="UserDivs">
-        <div name="meterAlert" class="col-sm-4" style="margin-top: -10px;width: 35%" title="ok">
+        <div name="meterAlert" id="divuser" class="col-sm-4" style="margin-top: -10px;width: 35%" title="ok">
             <input  id="userNameReg" type="text" name="username" oninput="ValidarUser()"
                     class="form-control" autocomplete="off" title="Complete este campo">
             <span id="Wait" name="UserDivs" class=""></span>
@@ -50,7 +53,7 @@ left: 0;
           <label class="control-label col-sm-4" style="display: flex;justify-content: left"  for="password1">Contraseña:</label>
     </div>
     <div class="form-group" style="display: flex;justify-content: center" name="PassDivs">
-        <div class="col-sm-4" name="meterAlert" style="margin-top: -10px;width: 35%" title="ok">
+        <div class="col-sm-4" name="meterAlert" id="divPass" style="margin-top: -10px;width: 35%" title="ok">
             <input type="password" name="password1" class="form-control" autocomplete="off" id="passReg" oninput="ValidatePass()"
                 title="Complete este campo">
             <span name="PassDivs" class="form-control-feedback"></span>
@@ -111,11 +114,9 @@ left: 0;
                     </div>
             </form>-->
         {% endif %}
+{% include 'footer.html' %}
 
 <script>
-       window.onload=function () {
-       alert('debes autenticarte antes de realizar esa action');
-       };
     var user1=false;
     var pass1=true;
     var disabled=false;
@@ -154,8 +155,16 @@ left: 0;
             var args = {type: "POST", url: "{% url 'iniciarsecion' %}", data};
             $.ajax(args).done(function (response){
                 if(response.Result=='True'){
-                    setTimeout(function (){window.location.href=URL} ,2000);
-                    alertify.success("este es un mensaje de exito");
+                    setTimeout(function (){window.location.href=URL} ,2200);
+                    //alertify.success("este es un mensaje de exito");
+                    var usuario=document.createTextNode(response.usuario);
+                    alertify.alert('<p></p>','<h2 class="text-center" style="color: limegreen"><i class="fa fa-check-circle text-center" style="font-size: 35px;color: limegreen;margin-right: 20px"></i>Bienvenido <strong style="color: #002a8f">'+usuario.textContent+'</strong></h2>');
+                    var OK=document.getElementsByClassName('ajs-button ajs-ok');
+                    OK[0].remove()
+                    var header=document.getElementsByClassName("ajs-header");
+                    var footer=document.getElementsByClassName("ajs-footer");
+                    header[0].style.backgroundColor="#b8e57c";
+                    footer[0].style.backgroundColor="#b8e57c";
                 }
                 else{
                         CampoObligatorio(1, false);
@@ -286,7 +295,6 @@ left: 0;
         }
     }
     function RedirectRegister(){
-        alert('redirect');
         var URLactual = window.location.search;
         window.location.href="{% url 'registrar' %}"+URLactual;
     }
@@ -296,6 +304,47 @@ left: 0;
      //   alert($('#userNameReg').val())
         window.location.href=href+'?='+$('#userNameReg').val();
 
+    }
+     function ajustesAuthMensajes(){
+        var divuser=document.getElementById('divuser');
+        var ingresar=document.getElementById('ingresar');
+        var divPass=document.getElementById('divPass');
+        var lineAuth=document.getElementById('lineAuth');
+
+       if($(window).width()>768){
+           navbar('grande');
+           divuser.style.width='35%';
+            divPass.style.width='35%';
+            ingresar.style.width='20%';
+            lineAuth.style.width='';
+            lineAuth.className='col-sm-4';
+       }else{
+             navbar('pequeño');
+            divuser.style.width='70%';
+            divPass.style.width='70%';
+            ingresar.style.width='50%';
+            lineAuth.style.width='80%';
+            lineAuth.className='col-sm-8';
+       }
+    }
+    window.onload=function () {
+        //alert('debes autenticarte antes de realizar esa action');
+        //setTimeout(function (){window.location.href = "{% url 'loginMensaje' %}"},2200);
+        alertify.alert('<p style="color: white">Atención</p>','<h2 class="text-center" style="color: orange"><i class="fa fa-exclamation-triangle text-center" style="font-size: 35px;color: orange;margin-right: 20px"></i>Debe estar autenticado antes de realizar esta acción.</h2>');
+        var aler=document.getElementsByClassName('ajs-close');
+        aler[0].remove();
+        var OK2=document.getElementsByClassName('ajs-button ajs-ok');
+        var header=document.getElementsByClassName('ajs-header');
+        var footer=document.getElementsByClassName('ajs-footer');
+        header[0].style.backgroundColor="#febd57";
+        footer[0].style.backgroundColor="#febd57";
+        OK2[0].style.color="white";
+
+
+        ajustesAuthMensajes();
+        window.onresize=function () {
+        ajustesAuthMensajes();
+       }
     }
 </script>
 

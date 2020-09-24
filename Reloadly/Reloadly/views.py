@@ -9,15 +9,23 @@ from rest_social_auth.views import SocialSessionAuthView
 from .serializers import MyUserSerializer
 from django.contrib.auth.models import User
 from apps.Usuarios.models import Comentario,TransferenciaActual
+from apps.RecargasCubacel.views import ajax_promotion_cubacel
+from .ServiciosGenerales import ServerManage
+
+def ServerManage0(request):
+   return ServerManage(request)
 
 def inicio(request):
     if request.user.is_authenticated:
         Carrito=TransferenciaActual.objects.filter(cliente=request.user)
-        return HttpResponse(render(request,'index.html',{'carrito':len(Carrito)}))
-    return HttpResponse(render(request,'index.html',{'carrito':0}))
+        return HttpResponse(render(request,'index.html',{'cantidadCarrito':len(Carrito),'bool':'false','Promotion':ajax_promotion_cubacel}))
+    return HttpResponse(render(request,'index.html',{'cantidadCarrito':0,'bool':'false','Promotion':ajax_promotion_cubacel}))
 
 def inicioEN(request):
-    return HttpResponse(render(request,'indexEn.html'))
+    if request.user.is_authenticated:
+        Carrito=TransferenciaActual.objects.filter(cliente=request.user)
+        return HttpResponse(render(request,'indexEn.html',{'cantidadCarrito':len(Carrito),'bool':'false','Promotion':ajax_promotion_cubacel}))
+    return HttpResponse(render(request,'indexEn.html',{'cantidadCarrito':0,'bool':'false','Promotion':ajax_promotion_cubacel}))
 
 def Blog2(request,result):
     user = request.user
@@ -31,6 +39,11 @@ def Blog(request):
 
 class MySocialView(SocialSessionAuthView):
       serializer_class = MyUserSerializer
+
+
+def TerminosCondiciones(request):
+    response = HttpResponse(render(request,'UsuariosTemplates/terminosCondiciones.html'))
+    return response
 
 
 ########################################################################################################################
@@ -53,5 +66,3 @@ def my_custom_error_view(request):#500
     response = HttpResponse(render(request,'ExceptionTemplates/500.html'))
     response.status_code = 500
     return response
-
-

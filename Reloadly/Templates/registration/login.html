@@ -4,15 +4,10 @@
 {% endblock %}
 
 {% block Content %}
+
 <style>
- a {
-position: relative;
-overflow: hidden;
-display: inline-block;
-text-decoration: none;
-color: #002a8f;
-}
-a:after {
+
+    .btn-link::after{
 content: "";
 position: absolute;
 bottom: 0;
@@ -21,25 +16,32 @@ width: 100%;
 height: 2px;
 background: #002a8f;
 transition: left .8s;
-}
-a:hover:after {
-left: 0;
-}
+    }
+
+    .btn-link:hover::after{
+        left: 0;
+
+    }
+
 </style>
 
+{% include 'navbar.html' %}
         {% if user.is_authenticated %}
-            <h1>ya esta autenticado</h1>
-            {{user}}
+            <h1 class="text-center jumbotron">Usted ya esta autenticado como: {{user}}</h1>
         {% else %}
-      <div class="container" id="general" style="align: center">
-    <h2 class="well text-center">Iniciar cuenta en COBERTURA</h2>
-  <form id="formReg" class="form-horizontal" method="POST">
+      <div class="container jumbotron" id="general" style="align: center">
+          <div class="col-sm-12" style="display: flex;justify-content: center;flex-direction: column">
+              <h2 class="text-center">Iniciar cuenta en COBERTURA</h2>
+              <h5 class="text-center">¿Aún no tienes cuenta? Crea una.</h5>
+              <hr class="col-sm-4" id="lineAuth" style="background-color: #002a8f ">
+          </div>
+          <form id="formReg" class="form-horizontal" method="POST">
                 {% csrf_token %}
     <div class="form-group " style="display: flex;justify-content: center" name="UserDivs">
         <label class="control-label col-sm-4" style="display: flex;justify-content: left"  for="username">Nombre de Usuario:</label>
      </div>
     <div class="form-group " style="display: flex;justify-content: center" name="UserDivs">
-        <div name="meterAlert" class="col-sm-4" style="margin-top: -10px;width: 35%" title="ok">
+        <div name="meterAlert" id="divuser" class="col-sm-4" style="margin-top: -10px;width: 35%" title="ok">
             <input  id="userNameReg"  type="text" name="username" oninput="ValidarUser()"
                     class="form-control" autocomplete="off" title="Complete este campo">
             <span id="Wait" name="UserDivs" class=""></span>
@@ -50,7 +52,7 @@ left: 0;
           <label class="control-label col-sm-4" style="display: flex;justify-content: left"  for="password1">Contraseña:</label>
     </div>
     <div class="form-group" style="display: flex;justify-content: center" name="PassDivs">
-        <div class="col-sm-4" name="meterAlert" style="margin-top: -10px;width: 35%" title="ok">
+        <div class="col-sm-4" id="divPass" name="meterAlert" style="margin-top: -10px;width: 35%" title="ok">
             <input type="password"  name="password1" class="form-control" autocomplete="off" id="passReg" oninput="ValidatePass()"
                 title="Complete este campo">
             <span name="PassDivs" class="form-control-feedback"></span>
@@ -62,66 +64,62 @@ left: 0;
      <div class="col-sm-12 text-center">
         <button id="ingresar" type="submit" class="btn btn-default" style="width: 200px;background-color: #002a8f;color: white"
          data-toggle="tooltip" data-placement="bottom" title="Iniciar cuenta">Ingresar</button>
-        <button  style="color: #002a8f;text-decoration: none" class="btn btn-link" id="linkOlvideContraseña" onclick="recuperarContrasenna()"
-            data-toggle="tooltip" data-placement="bottom" title="Click si olvidaste tu contraseña">Olvidé mi contraseña</button>
+        <a  style="color: #002a8f;text-decoration: none" class="btn btn-link" id="linkOlvideContraseña" onclick="recuperarContrasenna()"
+            data-toggle="tooltip" data-placement="bottom" title="Click si olvidaste tu contraseña">Olvidé mi contraseña</a>
     </div>
       <div class="col-sm-12">&nbsp;</div>
       <div class="col-sm-12 text-center">
+          <h6 style="color: #2b669a">¿Aún no tienes cuenta?</h6>
           <a class="btn btn-default"  id="crearCliente" href="{% url 'registrar' %}" onclick="RedirectRegister()"
           data-toggle="tooltip" data-placement="bottom" title="Crear una nueva cuenta">Crear Cuenta en Cobertura</a>
       </div>
     </form>
-    <div class="col-sm-12">&nbsp;</div>
+    <div class="col-sm-12"> &nbsp;</div>
 </div>
-      <!--     <form class="jumbotron container" method="post" style="margin-top: 50px; border-radius: 10px;
-           padding: 80px 0px;width: 600px;height: auto" method="post">
-                {% csrf_token %}
-                    <div class="container" style="display: flex;justify-content: center">
-                        <div class="col-md-6" style="justify-content: left">
-                            <div class="form-group">
-                                <label for="username">Nombre de Usuario:</label>
-                                <input id="userName" type="text" name="username" class="form-control" required>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="container" style="display: flex;justify-content: center">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="password">Contraseña:</label>
-                                <input id="pass" type="password" name="password" class="form-control" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container col-sm-12" style="display: flex;justify-content: center">
-                     <div>
-                        <div class="form-group">
-                            <a href="{% url 'password_reset' %}" onclick="User()">Olvide mi contraseña</a>
-                            <input type="submit" class="btn btn-primary" value="Ingresar">
-                        </div>
-                     </div>
-                    </div>
-                      <div class="container col-sm-12" style="display: flex;justify-content: center">
-                     <div>
-                        <div class="form-group">
-                            <a href="{% url 'social:begin' 'facebook' %}">INICIA CON FACEBOOK</a>
-                            <a href="{% url 'social:begin' 'google-oauth2' %}">INICIA CON GOOGLE</a>
-                        </div>
-                     </div>
-                    </div>
-            </form>-->
         {% endif %}
+{% include 'footer.html' %}
 
 <script>
+
     var user1=false;
     var pass1=true;
     var disabled=false;
-    //document.getElementById('mostrarPass');
+    function ajustesAuth(){
+        var divuser=document.getElementById('divuser');
+        var ingresar=document.getElementById('ingresar');
+        var divPass=document.getElementById('divPass');
+        var lineAuth=document.getElementById('lineAuth');
+
+       if($(window).width()>768){
+            navbar('grande')
+            divuser.style.width='35%';
+            divPass.style.width='35%';
+            ingresar.style.width='20%';
+            lineAuth.style.width='';
+            lineAuth.className='col-sm-4';
+       }else{
+             navbar('pequeño')
+            divuser.style.width='70%';
+            divPass.style.width='70%';
+            ingresar.style.width='50%';
+            lineAuth.style.width='80%';
+            lineAuth.className='col-sm-8';
+       }
+    }
+
+    window.onload=function () {
+        ajustesAuth()
+       window.onresize=function () {
+        ajustesAuth()
+       }
+    }
+
     if ($("#userNameReg").val().length==0||$("#passReg").val().length==0){
           document.getElementById('ingresar').disabled = true;
           $('#crearCliente').attr('disabled', true);
         $('#linkOlvideContraseña').attr('disabled', true);
     }
+
     $('#formReg').on('submit', function(e){
          document.getElementById('userNameReg').disabled=true;
          document.getElementById('passReg').disabled=true;
@@ -129,7 +127,7 @@ left: 0;
          $('#mostrarPass').attr('disabled',true);
          $('#crearCliente').attr('disabled',true);
          $('#linkOlvideContraseña').attr('disabled',true);
-         $('#general').css('background-color', '#92a8d1')
+         $('#formReg').css('background-color', '#92a8d1')
            .css('opacity', 0.5);
         document.getElementById('mostrarPass').disabled=true;
        e.preventDefault();
@@ -144,9 +142,22 @@ left: 0;
             var args = {type: "POST", url: "{% url 'iniciarsecion' %}", data};
             $.ajax(args).done(function (response) {
                 if(response.Result=='True'){
-                    setTimeout(function (){window.location.href = "{% url 'cobertura' %}"},2000);
-                    $("formReg :input").prop('readonly', true);
-                    alertify.success("este es un mensaje de exito");
+                    setTimeout(function (){
+                    window.location.href = "{% url 'cobertura' %}"},2200);
+                    //$("formReg :input").prop('readonly', true);
+                    var usuario=document.createTextNode(response.usuario);
+                    alertify.alert('<p></p>','<h2 class="text-center" style="color: limegreen"><i class="fa fa-check-circle text-center" style="font-size: 35px;color: limegreen;margin-right: 20px"></i>Bienvenido <strong style="color: #002a8f">'+usuario.textContent+'</strong></h2>');
+                    var aler=document.getElementsByClassName('ajs-close');
+                    aler[0].remove()
+                    var OK=document.getElementsByClassName('ajs-button ajs-ok');
+                    OK[0].remove()
+                    var header=document.getElementsByClassName("ajs-header");
+                    var footer=document.getElementsByClassName("ajs-footer");
+                    header[0].style.backgroundColor="#b8e57c";
+                    footer[0].style.backgroundColor="#b8e57c";
+                    /*alertify.success('<div style="background-color: white;height: 50px;width: 227px;margin: 0px;padding: 0px;border: 0px">' +
+                        '<i class="fa fa-check-circle" style="color: limegreen;font-size: large;margin-top: 5px"></i>' +
+                        '<p style="color: limegreen;font-family: bold;font-size: large">Bienvenido</p></div>');*/
                 }else{
                     if(pass1==true) {
                         if(disabled) {
@@ -171,11 +182,10 @@ left: 0;
                         //btn.disabled
                     }
                 }
-
             });
         }
-
     });
+
     function  ValidarUser(){
             var userNameReg = $("#userNameReg").val();
             var errorUser = document.getElementById('userNameReg');
@@ -219,7 +229,9 @@ left: 0;
                            }
                            if (errorUser.parentElement.title == 'ok') {
                                CampoObligatorio(0,false,'');
-                               CampoObligatorio(0,true,'El usuario "'+userNameReg+'", no existe.');
+                               if (userNameReg.length>0){
+                                   CampoObligatorio(0,true,'El usuario "'+userNameReg+'", no existe.');
+                               }
                                errorUser.parentElement.title = 'error';
                                user1 = false;
                            }

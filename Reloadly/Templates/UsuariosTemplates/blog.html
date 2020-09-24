@@ -3,285 +3,326 @@
 
 {% block Content %}
 <style>
-  .carousel-inner > .item > img,
-  .carousel-inner > .item > a > img {
-      width: 800px;
-      margin: auto;
-  }
-    h3{
-        color: white;
-        background-color: darkgrey;
-        border-radius: 10px;
-        width: 300px;
-    }
-
-
-.counter-box {
-    display: block;
-    background: #e8e8e8;
-    padding: 40px 20px 37px;
-    text-align: center;
-    border-radius: 20px;
-}
-
-.counter-box p {
-    margin: 5px 0 0;
-    padding: 0;
-    color: #909090;
-    font-size: 18px;
-    font-weight: 500
-}
 
 .counter {
-    display: block;
     font-size: 32px;
     font-weight: 700;
     color: #666;
     line-height: 28px
 }
 
-.counter-box.colored p,
-.counter-box.colored i,
-.counter-box.colored .counter {
-    color: #fff
+
+div.img {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 180px;
 }
+
+div.img:hover {
+    border: 1px solid #002a8f;
+}
+
+div.img img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0px 0px;
+}
+
+div.desc {
+    text-align: center;
+}
+
+div label:hover{
+    color: #002a8f;
+}
+
+    div.i{
+        transition: width 2s, height 2s, transform 2s;
+    }
+    div.i:hover{
+        transform: rotateY(180deg);
+    }
+
+    .enviar{
+        transition: width 2s, height 2s, transform 2s;
+    }
+    .enviar:hover {
+    transform: rotateY(360deg);
+}
+    .fa-thumbs-up{
+        transition: width 2s, height 2s, transform 2s;
+    }
+    .fa-thumbs-up:hover{
+        transform: rotateY(180deg);
+    }
+    .fa-thumbs-down{
+        transition: width 2s, height 2s, transform 2s;
+    }
+    .fa-thumbs-down:hover {
+         transform: rotateX(180deg);
+    }
+
+    .form-control:hover{
+
+    }
 
 </style>
 
 <body>
- <!--<nav class="container-fluid navbar " id="barra" style="background-color: #f7f7f7">
-            <div class="row-container" id="Principal" style="display: flex;justify-content: space-between" >
-                <div class="navbar-header" id="general"style="width: 30%">
-                    <button type="button"  id="boton" style="background-color:transparent;float: left" onclick="AjusteNavbar1(this)"  class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="{% url 'cobertura' %}">
-                        <img id="myLogo" src= "{% static 'images/IMG-20200616-WA0002.jpg' %}" alt="Logo"
-                        style="height: 50px;width: auto; border-color: #0f0f0f;border-radius: 5px;margin-top: -15px">
-                    </a>
-                </div>
-                <div class="collapse navbar-collapse row"  style="width: 70%" id="myNavbar">
-                    <ul class="nav navbar-nav" style="float: right" id="listanavbar">
-                        <li class="">
-                                 <a href="{% url 'coberturaEN' %}" style="color: #002a8f" data-toggle="tooltip"
-                                    title="Cambiar a inglés" data-placement="bottom" class="idioma">
-                                    <i class="fa fa-globe"></i>&nbsp;ES
-                                    <span class="caret"></span>
-                                </a>
-                        </li>
-                        <li><a style="color: #002a8f"  href="{% url 'nuevarecarga' %}">
-                            <i class="fa fa-check"></i>
-                            Nueva Recarga</a></li>
-                        {% if user.is_authenticated %}
-                               <li><a href="{% url 'adminUser' %}  " onclick="cli(x)" style="color: #002a8f"
-                               data-toggle="tooltip" title="Perfil de usuario" data-placement="bottom">
-                                   <i class="glyphicon glyphicon-user"></i>
-                                   {{user}}</a></li>
-                               <li><a href="{% url 'cerrar-sesion' %}" style="color: #002a8f"
-                               data-toggle="tooltip" title="Salir de la cuenta" data-placement="bottom">
-                                   <i class="glyphicon glyphicon-log-out"></i>
-                               </a></li>
-                            {% else %}
-                                <li><a href="{% url 'iniciarsecion' %}  " onclick="cli(x)" style="color: #002a8f"
-                                data-toggle="tooltip" title="Autenticarse" data-placement="bottom">
-                                    <i class="glyphicon glyphicon-log-in"></i>
-                                </a></li>
-                                <li><a href="{% url 'registrar' %}  " onclick="cli(x)" style="color: #002a8f"
-                                data-toggle="tooltip" title="Registrarse" data-placement="bottom">
-                                    <i class="glyphicon glyphicon-edit"></i>
-                                </a></li>
-                        {% endif%}
-                        <li><a style="color: #002a8f" href="{% url 'blog' %}" data-toggle="tooltip" title="Deja tu comentario"
-                               data-placement="bottom">
-                            <i class="fa fa-blog"></i>
-                            Blog</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-    </nav>-->
 {% include 'navbar.html' %}
+  <div class="col-sm-12" style="display: flex;justify-content: center;flex-direction: column;font-family: FontAwesome;color: dimgrey">
+     <h1 class="text-center ">Estadísticas</h1>
+      <hr class="col-sm-11" id="lineblog" style="width: 90%;background-color: #002a8f">
+  </div>
 
-<div style="display: flex;justify-content: center;margin-top: -25px;margin-bottom: -15px;font-family: FontAwesome;color: dimgrey">
- <h1>Nuestro sitio ofrece</h1>
-</div>
+<!--Imágenes+Contadores-->
+<div class="container" style="display: flex;justify-content: space-between;">
 
- <div class="container-fluid">
-  <br>
-  <div id="myCarousel" class="carousel slide" data-ride="carousel" >
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-      <li data-target="#myCarousel" data-slide-to="3"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-
-      <div class="item active">
-        <img src="{% static 'images/Havana-Cuba_Ultra-HD-1.jpg' %}" alt="Cuba" width="460" height="345">
-        <div class="carousel-caption" style="display: flex;justify-content: center">
-          <h3>Buenas Ofertas</h3>
+ <div class="img">
+  <a target="_blank" href="{% static 'images/Havana-Cuba_Ultra-HD-1.jpg' %}">
+    <img src="{% static 'images/Havana-Cuba_Ultra-HD-1.jpg' %}" alt="img">
+  </a>
+  <div class="desc">
+        <div class="i">
+        <i class="fa fa-smile" style="font-size: 45px;margin: 0 0 15px;color: #002a8f"></i>
         </div>
-      </div>
-
-      <div class="item">
-        <img src="{% static 'images/93eb9ebd-eb71-4fcc-8d22-1fea80dfb1a2.jpg' %}" alt="Cuba" width="460" height="345">
-        <div class="carousel-caption" style="display: flex;justify-content: center">
-          <h3>Bajos costos</h3>
-        </div>
-      </div>
-
-      <div class="item">
-        <img src="{% static 'images/01_Capitolio_Habana_por_Pedro_Govea.jpg' %}" alt="Flower" width="460" height="345">
-        <div class="carousel-caption" style="display: flex;justify-content: center">
-          <h3>El&iacute;genos</h3>
-        </div>
-      </div>
-
-      <div class="item">
-        <img src="{% static 'images/galeria-la-habana-malecon.jpg' %}" alt="Flower" width="460" height="345">
-        <div class="carousel-caption" style="display: flex;justify-content: center">
-          <h3>Una buena opci&oacute;n</h3>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"
-       data-toggle="tooltip" data-placement="bottom" title="Anterior"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"
-       data-toggle="tooltip" data-placement="bottom" title="Siguiente"></span>
-      <span class="sr-only">Next</span>
-    </a>
+          <span class="counter">100</span>
+        <p style="margin: 5px 0 0;
+                        padding: 0;
+                        color: #909090;
+                        font-size: 18px;
+                        font-weight: 500;">
+        Clientes Felices</p>
   </div>
 </div>
 
-<!--Contadores-->
-<div class="container" style="margin-top: 50px;margin-bottom: 25px">
-    <div class="row">
-        <div class="four col-md-3">
-            <div class="counter-box colored" style="background-color: #002a8f">
-                <i class="fa fa-smile" style="font-size: 60px;margin: 0 0 15px;color: #d2d2d2"></i>
-                <span class="counter">2147</span>
-                <p>Clientes Felices</p>
-            </div>
-        </div>
-        <div class="four col-md-3">
-            <div class="counter-box">
-                <i class="fa fa-users" style="font-size: 60px;margin: 0 0 15px;color: #002a8f"></i>
-                <span class="counter">3275</span>
-                <p>Miembros Registrados</p>
-            </div>
-        </div>
-        <div class="four col-md-3">
-            <div class="counter-box">
-                <i class="fa fa-shopping-cart" style="font-size: 60px;margin: 0 0 15px;color: #002a8f"></i>
-                <span class="counter">289</span>
-                <p>Productos disponibles</p>
-            </div>
-        </div>
-        <div class="four col-md-3">
-            <div class="counter-box">
-                <i class="fa fa-user" style="font-size: 60px;margin: 0 0 15px;color: #002a8f"></i>
-                <span class="counter">1563</span>
-                <p>Contactos asociados</p>
-            </div>
-        </div>
-    </div>
+<div class="img">
+  <a target="_blank" href="{% static 'images/93eb9ebd-eb71-4fcc-8d22-1fea80dfb1a2.jpg' %}">
+    <img src="{% static 'images/93eb9ebd-eb71-4fcc-8d22-1fea80dfb1a2.jpg' %}" alt="img">
+  </a>
+  <div class="desc">
+      <div class="i">
+      <i class="fa fa-users" style="font-size: 45px;margin: 0 0 15px;color: #002a8f"></i>
+      </div>
+                <span class="counter">100</span>
+                <p style="margin: 5px 0 0;
+                        padding: 0;
+                        color: #909090;
+                        font-size: 18px;
+                        font-weight: 500;">
+                Miembros Registrados</p>
+  </div>
 </div>
 
-<div class="container">
-    <div style="display: flex;justify-content: center">
-      <h2>Nuestros usuarios dicen:</h2>
-    </div>
+<div class="img">
+  <a target="_blank" href="{% static 'images/01_Capitolio_Habana_por_Pedro_Govea.jpg' %}">
+    <img src="{% static 'images/01_Capitolio_Habana_por_Pedro_Govea.jpg' %}" alt="img">
+  </a>
+  <div class="desc">
+      <div class="i">
+      <i class="fa fa-shopping-cart" style="font-size: 45px;margin: 0 0 15px;color: #002a8f"></i>
+      </div>
+                <span class="counter">100</span>
+                <p style="margin: 5px 0 0;
+                        padding: 0;
+                        color: #909090;
+                        font-size: 18px;
+                        font-weight: 500;">
+                Ofertas disponibles</p>
+  </div>
+</div>
+
+<div class="img">
+  <a target="_blank" href="{% static 'images/galeria-la-habana-malecon.jpg' %}">
+    <img src="{% static 'images/galeria-la-habana-malecon.jpg' %}" alt="img">
+  </a>
+  <div class="desc">
+      <div class="i">
+      <i class="fa fa-user" style="font-size: 45px;margin: 0 0 15px;color: #002a8f"></i>
+      </div>
+                <span class="counter">100</span>
+                <p style="margin: 5px 0 0;
+                        padding: 0;
+                        color: #909090;
+                        font-size: 18px;
+                        font-weight: 500;">
+                Contactos asociados</p>
+  </div>
+</div>
+</div>
+
+
+<div class="container" id="Comentar" style="display:block;justify-content: center;">
     <form class="container"  method="POST" style="padding: 30px">
     {% csrf_token %}
         <div class="form-group">
-            <label for="comment">Dejanos tu opinion:</label>
-            <textarea class="form-control" rows="5" id="comment" for="text" style="background-color: #e8e8e8"></textarea>
+            <label for="comment" style="font-size: large">Déjanos tu opinión:</label>
+            <textarea class="form-control" rows="5" id="comment" for="text" style="background-color: #e8e8e8;opacity: 0.5"></textarea>
         </div>
         <div class="text-right">
-            <a type="" class="btn btn-default" data-toggle="tooltip" data-placement="bottom"
-            title="Envia tu comentario" onclick="Comentar()" style="width: 200px;background-color: #002a8f;color: white">Enviar</a>
+            <a href="#Comentar" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom"
+            title="Envia tu comentario" onclick="Comentar()" style="width: 150px;height: 35px;background-color: #002a8f;
+            color: white;"><p class="enviar">Enviar</p></a>
         </div>
     </form>
 </div>
 
-<ul>
+<div style="display: flex;justify-content: center">
+      <h2>Nuestros usuarios dicen:</h2>
+</div>
+
+ <div class="container well" id="Comentarios" style=";background-color: #e8e8e8">
+<ol class="comment-list" id="listComment" style="display: block;
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px">
     {% if comentarios %}
-    {% for coment in comentarios %}
-    <li class="well container" style="list-style: none">
-    <div>
-        <div style="width: 95%;float: left">
-         <p>{{coment.text}}</p>
+
+    {%  for coment in comentarios|dictsortreversed:"created"|slice:""  %}
+    <li class="well" name="comment" id="{{coment}}" style="display:none;margin-top: 20px;padding: 32px;border: 2px solid #fff;
+    border-right: none;list-style-type: none;text-align: -webkit-match-parent;">
+        <header class="comment-header">
+            <p class="comment-author">
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="comment-author-name" style="font-size: 20px"><strong>{{coment.user}} </strong>opina:</span>
+            </p>
+            <p class="comments-meta" style="margin: 20px 0;padding: 0;display: block;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px;">
+                {{coment.created}}
+            </p>
+        </header>
+        <hr style="background-color: gray;height:1px;width: 100%">
+        <article class="text-center text-justify"  style="display: flex;box-sizing: border-box;font-size: 16px">{{coment.text}}</article>
+        <div class="" style="float: right">
+            <a href="#{{coment}}" onclick="like(this,'like')" name="inactive" style="text-decoration: none;font-size: 15px"><i class="fa fa-thumbs-up" style="color: #002a8f;font-size: 30px;margin-right: 6px"></i>{{coment.votosP}}<p style="display:none">{{coment.id}}</p></a>
+            <a href="#{{coment}}" onclick="like(this,'dislike')" name="inactive" style="text-decoration: none"><i class="fa fa-thumbs-down" style=";color: indianred;font-size: 20px;margin-right: 6px"></i>{{coment.votosN}}<p style="display:none">{{coment.id}}</p></a>
         </div>
-        <div style="width: 5%;float: right">
-         <a href="#"><i class="fa fa-thumbs-up"></i></a>
-         <a href="#"><i class="fa fa-thumbs-down" style="color: indianred;margin-left: 5px"></i></a>
-        </div>
-    </div>
+        &nbsp;
     </li>
     {% endfor %}
+    <i class="fa fa-arrow-down"></i><a href="#MasComentarios" id="MasComentarios" type="button" class="btn btn-link" style="color:#0f0f0f;text-decoration: none" onclick="MasComentarios()">Mas Comentarios</a>
     {% else %}
-    <p>no hay comentarios</p>
+    <p>No hay comentarios</p>
     {% endif %}
-</ul>
+</ol>
+</div>
 
+{% include 'footer.html' %}
 
 </body>
-
 <script>
-$(document).ready(function() {
+    $(document).ready(function() {
 
-$('.counter').each(function () {
-$(this).prop('Counter',0).animate({
-Counter: $(this).text()
-}, {
-duration: 4000,
-easing: 'swing',
-step: function (now) {
-$(this).text(Math.ceil(now));
-}
-});
-});
-
-});
-
-$(document).ready(function(){
-         $('[data-toggle="tooltip"]').tooltip();
-        });
-
-function Comentar() {
-    var text=$('#comment').val();
-    var user='';
-   {% if user.is_authenticated %}
-        user='user';
-    {% else %}
-        alert('debe autenticarse antes de comentar. Luego de que se autentique su comentario sera guardado');
-    {% endif %}
-    data={text:text};
-    var args={type: "GET",url: "{% url 'comentar' %}", data};
-    $.ajax(args).done(function (response){
-        if(response.Result==true){
-            window.location.href="{% url 'blog' %}";
-        }else{
-            window.location.href="{% url 'loginMensaje' %}"+'?next=/blog/'+response.id;
-        }
+    $('.counter').each(function () {
+    $(this).prop('Counter',0).animate({
+    Counter: $(this).text()
+    }, {
+    duration: 4000,
+    easing: 'swing',
+    step: function (now) {
+    $(this).text(Math.ceil(now));
+    }
+    });
+    });
 
     });
 
-         //primero preguntar s el tipo se autentico sino hacer lo q yo hize con las recargas de manera q se pueda comentar y no se guarde hasta q el tpo se autentique
-}
+    $(document).ready(function(){
+             $('[data-toggle="tooltip"]').tooltip();
+            });
+
+    var comment=0;
+
+    $(document).ready(function() {
+        var last=document.getElementsByName('comment');
+        for (var i=0;i<5;i++){
+            if (i<last.length)
+            last[i].style.display="block";
+        }
+        comment=5;
+    });
+
+    function like(x,y) {
+        var direction=0;
+        var Valor=parseInt(x.childNodes[2].textContent);
+        var disminuir='';
+         if (y=='like'&&x.parentNode.childNodes[3].name=='active'&&x.name=='inactive'){
+            var parner=parseInt(x.parentNode.childNodes[3].childNodes[2].textContent);
+            x.parentNode.childNodes[3].childNodes[2].textContent=parner-1;
+            x.parentNode.childNodes[3].name='inactive';
+            disminuir='dislike';
+        }
+        if (y=='dislike'&& x.parentNode.childNodes[1].name=='active'&& x.name=='inactive'){
+            var parner=parseInt(x.parentNode.childNodes[1].childNodes[2].textContent);
+            x.parentNode.childNodes[1].childNodes[2].textContent=parner-1;
+            x.parentNode.childNodes[1].name='inactive';
+            disminuir='like';
+        }
+         if (x.name=='inactive'){
+            direction=1;
+            x.name='active';
+            x.childNodes[2].textContent=Valor+1
+        }else {
+            direction=-1;
+            x.name='inactive';
+            x.childNodes[2].textContent=Valor-1
+        }
+
+        var id=x.childNodes[3].childNodes[0].textContent;
+        data={id:id,like:y,direction:direction,disminuir:disminuir,dataType :"json"};
+        var args = {type: "GET", url: "{% url 'AjaxLikeComment' %}", data};
+        $.ajax(args)
+        //incrementar un like de ese comentario
+        //ajax
+    }
+
+    function MasComentarios() {
+        var last=document.getElementsByName('comment');
+        for (var i=comment;i<comment+5;i++){
+            if (i<last.length){
+                last[i].style.display="block";
+            }
+        }
+        comment+=5;
+    }
+
+    function Comentar() {
+        var text=$('#comment').val();
+        var user='';
+        if (text==''){
+            //alert('Debes escribir algo antes de comentar.')
+            alertify.alert("<h2 class=\"text-center\" style=\"color: orange\"><i class=\"fa fa-exclamation-triangle text-center\" " +
+                "style=\"font-size: 35px;color: orange;margin-right: 20px\"></i>Debe escribir algún comentario antes de enviarlo.</h2>");
+            var header=document.getElementsByClassName("ajs-header");
+            var footer=document.getElementsByClassName("ajs-footer");
+            var ok=document.getElementsByClassName("ajs-button ajs-ok");
+            header[0].textContent="Atención";
+            header[0].style.color="white";
+            header[0].style.backgroundColor="#febd57";
+            footer[0].style.backgroundColor="#febd57";
+            ok[0].style.color="white";
+
+        }else {
+            {% if user.is_authenticated %}
+            user = 'user';
+            {% else %}
+            alert('debe autenticarse antes de comentar. Luego de que se autentique su comentario sera guardado');
+            {% endif %}
+            data = {text: text};
+            var args = {type: "GET", url: "{% url 'comentar' %}", data};
+            $.ajax(args).done(function (response) {
+                if (response.Result == true) {
+                    window.location.href = "{% url 'blog' %}";
+                } else {
+                    window.location.href = "{% url 'loginMensaje' %}" + '?next=/blog/' + response.id;
+                }
+
+            });
+        }
+             //primero preguntar s el tipo se autentico sino hacer lo q yo hize con las recargas de manera q se pueda comentar y no se guarde hasta q el tpo se autentique
+    }
 
 </script>
 {% endblock %}

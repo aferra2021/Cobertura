@@ -53,11 +53,9 @@
 {% include 'navbar.html' %}
 
 {% endblock %}
-<div class="col-sm-12">&nbsp;</div>
-<div class="col-sm-12">&nbsp;</div>
 <h1 class="text-center">Recargas Cubacel</h1>
 <div class="col-sm-12">&nbsp;</div>
-<div class="container " style=" display: flex;justify-content: center">
+<div class="container " style=" display: flex;justify-content: center;margin-bottom: 30px">
             <form class="well" method="post">
                    {% csrf_token %}
                     <div class="col-sm-12">
@@ -75,4 +73,7 @@
                     </div>
             </form>
 </div>
+
+{% include 'footer.html' %}
+
 {% endblock %}
