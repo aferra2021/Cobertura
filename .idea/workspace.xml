@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b19be355-f63e-427d-abdc-61364bb96c75" name="Default Changelist" comment="&quot;carrito&quot;">
+    <list default="true" id="b19be355-f63e-427d-abdc-61364bb96c75" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/Reloadly/Templates/Test.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Reloadly/Templates/Test/Test1.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/aside.html" afterDir="false" />
@@ -722,7 +722,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596819729923</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="avance2">
+      <created>1600906361425</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1600906361425</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -750,7 +757,8 @@
     <MESSAGE value="&quot;mercadoPago&quot;" />
     <MESSAGE value="&quot;formularioCrearClienteMercadoPago&quot;" />
     <MESSAGE value="&quot;carrito&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;carrito&quot;" />
+    <MESSAGE value="avance2" />
+    <option name="LAST_COMMIT_MESSAGE" value="avance2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="249" y="3" key="#Inspections" timestamp="1593543297750">
@@ -769,11 +777,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="396" y="96" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1599710276386" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1600902550613">
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1600906863946">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1593740028565" />
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1600902550613" />
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1600906863946" />
     <state x="258" y="52" key="DiffContextDialog" timestamp="1593496675184">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
