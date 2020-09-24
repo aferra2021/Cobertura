@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b19be355-f63e-427d-abdc-61364bb96c75" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Reloadly/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Reloadly/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Reloadly/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Reloadly/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Reloadly/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Reloadly/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/Base/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/Base/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/StripeAPI/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/StripeAPI/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/Usuarios/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -654,7 +648,8 @@
     <MESSAGE value="&quot;formularioCrearClienteMercadoPago&quot;" />
     <MESSAGE value="&quot;carrito&quot;" />
     <MESSAGE value="avance1" />
-    <option name="LAST_COMMIT_MESSAGE" value="avance1" />
+    <MESSAGE value="despliegue1" />
+    <option name="LAST_COMMIT_MESSAGE" value="despliegue1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="249" y="3" key="#Inspections" timestamp="1593543297750">
@@ -673,11 +668,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="396" y="96" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1599710276386" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1600887612330">
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1600908302252">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1593740028565" />
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1600887612330" />
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1600908302252" />
     <state x="258" y="52" key="DiffContextDialog" timestamp="1593496675184">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -715,11 +710,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="98" y="90" width="1182" height="544" key="com.intellij.dvcs.ui.CompareBranchesDialog/0.0.1366.728@0.0.1366.728" timestamp="1594325148751" />
-    <state x="350" y="179" width="565" height="352" key="com.intellij.ide.util.TipDialog" timestamp="1600881164987">
+    <state x="350" y="179" width="565" height="352" key="com.intellij.ide.util.TipDialog" timestamp="1600908627896">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="328" y="169" width="565" height="352" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1593739563014" />
-    <state x="350" y="179" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1600881164987" />
+    <state x="350" y="179" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1600908627896" />
     <state x="441" y="262" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593740056510">
       <screen x="0" y="0" width="1280" height="689" />
     </state>
