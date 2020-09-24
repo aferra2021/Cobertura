@@ -57,10 +57,10 @@ INSTALLED_APPS = [
     'apps.MercadoPago',
     'apps.StripeAPI',
     #Social,(pip install rest-social-auth)
-    'rest_framework',#facebook
+    #'rest_framework',#facebook
     #'rest_framework.authtoken',  # only if you use token authentication
-    'social_django',  # django social auth#facebook
-    'rest_social_auth',  # this package#facebook
+    #'social_django',  # django social auth#facebook
+    #'rest_social_auth',  # this package#facebook
     #'knox',  # Only if you use django-rest-knox
     #'rest_framework_social_oauth2',
     #'oauth2_provider',
@@ -70,7 +70,6 @@ INSTALLED_APPS = [
     #'xauth',#autentication with ajax
     'six',
     #sweetAlert
-    'sweetify'
 
 ]
 # Application definition
@@ -187,12 +186,12 @@ SOCIAL_AUTH_STRATEGY='rest_social_auth.strategy.DRFStrategy'
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
+"""STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(BASE_DIR,'static'),
-)
+)"""
 
 LOGIN_REDIRECT_URL = reverse_lazy('cobertura')
 LOGOUT_REDIRECT_URL = reverse_lazy('cobertura')
@@ -209,7 +208,6 @@ DEFAULT_FROM_EMAIL = 'aferra444@gmail.com'
 #DEFAULT_FROM_EMAIL = 'cobertura@gmail.com'  crear la cuenta de correo cobertura
 
 #sweetAlert2
-SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)

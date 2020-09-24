@@ -2,118 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b19be355-f63e-427d-abdc-61364bb96c75" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Reloadly/Templates/Test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/Templates/Test/Test1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/aside.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/carritoAside.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/Templates/footer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/Templates/navbarEn.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/migrations/0019_auto_20200812_1342.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/migrations/0020_transferenciaactual_descripcion.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/migrations/0021_auto_20200812_1343.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/migrations/0022_auto_20200902_0043.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/migrations/0023_auto_20200906_1245.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/migrations/0024_auto_20200906_2008.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/migrations/0025_transferenciaactual_cant.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/migrations/0026_tranferenciageneral_transferref.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/migrations/0027_auto_20200909_2345.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/migrations/0028_contacto_name.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/migrations/0029_auto_20200916_2045.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/cssGiftLoading/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/fuentesLoading/FontAwesome.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/fuentesLoading/fontawesome-webfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/fuentesLoading/fontawesome-webfont.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/fuentesLoading/fontawesome-webfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/fuentesLoading/fontawesome-webfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/fuentesLoading/fontawesome-webfont.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/1500px-Habana_01_2014_Castillo_de_los_Tres_Reyes_del_Morro_&amp;_Fortaleza_de_San_Carlos_de_la_Cabaña_7508.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/15970870-4g-circuito-de-microchip-de-la-tarjeta-sim-emblema-aislado-sobre-fondo-blanco.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/18f009dbee3a0ebbed726cf7541d03c6a77c2b51.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/34264194-24cc-4ea7-b630-1dee9c0e7cbf.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/36489642-tarjeta-del-color-sim-para-el-teléfono-móvil-o-smartphone-con-capacidad-de-conexión-4g-lte-aislado-en-fondo-.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/6dcca4dacd4c2546150db2fa6f0bd596.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/CUBACEL.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/IMG-20200616-WA0000 - copia.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/NAUTA.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/cubacel-tur.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/cubacelOfer.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/cubacelSim.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/cubacelSim.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/descarga (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/descarga.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/descarga2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/e2a3dde8-e9b2-4fa2-8ca1-8a61f55e460c.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/esta.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/etecsa-logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/etecsa.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/etecsaSinFondo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/faceboockLogo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/flag-md.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/fotoApp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/giftLoading/Spin-1s-200px.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/giftLoading/bc0c6b69321565.5b7d0cbe723b5.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/giftLoading/loader-1.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/giftLoading/loader-icon.1.0.41.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/giftLoading/loader.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/giftLoading/loading-gif-png-4.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/giftLoading/loading.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/giftLoading/preview.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/giftLoading/tenor.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/giftLoading/unnamed.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/google_play_btn-402x120_esp.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/inicioMovil.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/instagramLogo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/linkedinLogo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/nauta_wifi.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/panoramic-view-havana-skyline-iconic-260nw-1261272511.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/playas-sin-arrecifes.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/polls/lwogo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/promoAPK3 - copia2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/twitterLogo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/unnamed (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/unnamed.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/whatsappLogo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reloadly/static/images/youtubeLogo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Reloadly/ServiciosGenerales.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Reloadly/ServiciosGenerales.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reloadly/Reloadly/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Reloadly/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reloadly/Reloadly/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Reloadly/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reloadly/Reloadly/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Reloadly/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reloadly/Templates/Base/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/Base/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/CubacelSimTelefonoTemplates/CubacelSimTelefono.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/CubacelSimTelefonoTemplates/CubacelSimTelefono.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/ExceptionTemplates/400.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/ExceptionTemplates/400.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/ExceptionTemplates/403.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/ExceptionTemplates/403.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/ExceptionTemplates/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/ExceptionTemplates/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/ExceptionTemplates/500.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/ExceptionTemplates/500.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/RecargasCubacelTemplates/RecargasCubacel.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/RecargasCubacelTemplates/RecargasCubacel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/StripeAPITemplates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/StripeAPITemplates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/blog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/cantTransfer.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/cantTransfer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/carrito.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/carrito.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/nuevaRecarga.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/userAdmin.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/UsuariosTemplates/userAdmin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/auth/user_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/auth/user_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/indexEn.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/indexEn.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/registration/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/Templates/registration/loginMensaje.html" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/Templates/registration/loginMensaje.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/CubacelSimTelefono/urlCubacelSimTelefono.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/CubacelSimTelefono/urlCubacelSimTelefono.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/CubacelSimTelefono/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/CubacelSimTelefono/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/RecargasCubacel/serviciosCubacel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/RecargasCubacel/serviciosCubacel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/RecargasCubacel/urlRecargasCubacel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/RecargasCubacel/urlRecargasCubacel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/RecargasCubacel/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/RecargasCubacel/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/RecargasNauta/serviciosNauta.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/RecargasNauta/serviciosNauta.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/RecargasNauta/urlRecargasNauta.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/RecargasNauta/urlRecargasNauta.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/RecargasNauta/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/RecargasNauta/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/ServiciosDing/Servicios.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/ServiciosDing/Servicios.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reloadly/apps/StripeAPI/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/StripeAPI/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/Usuarios/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/Usuarios/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/apps/Usuarios/urlUsuarios.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/urlUsuarios.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reloadly/apps/Usuarios/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/apps/Usuarios/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Reloadly/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reloadly/static/images/favicon.ico" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -630,7 +525,7 @@
       <workItem from="1600652736477" duration="6575000" />
       <workItem from="1600709238895" duration="13862000" />
       <workItem from="1600787479732" duration="21900000" />
-      <workItem from="1600881159964" duration="1556000" />
+      <workItem from="1600881159964" duration="8553000" />
     </task>
     <task id="LOCAL-00001" summary="subido">
       <created>1591995525040</created>
@@ -723,7 +618,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596819729923</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="avance1">
+      <created>1600887619022</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1600887619022</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -751,7 +653,8 @@
     <MESSAGE value="&quot;mercadoPago&quot;" />
     <MESSAGE value="&quot;formularioCrearClienteMercadoPago&quot;" />
     <MESSAGE value="&quot;carrito&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;carrito&quot;" />
+    <MESSAGE value="avance1" />
+    <option name="LAST_COMMIT_MESSAGE" value="avance1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="249" y="3" key="#Inspections" timestamp="1593543297750">
@@ -770,19 +673,19 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="396" y="96" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1599710276386" />
-    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1600887603229">
+    <state x="0" y="0" key="CommitChangelistDialog2" timestamp="1600887612330">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="0" y="0" key="CommitChangelistDialog2/0.0.1280.689@0.0.1280.689" timestamp="1593740028565" />
-    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1600887603229" />
+    <state x="0" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1600887612330" />
     <state x="258" y="52" key="DiffContextDialog" timestamp="1593496675184">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="258" y="52" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1593496675184" />
-    <state x="697" y="122" key="FileChooserDialogImpl" timestamp="1598366740274">
+    <state x="697" y="122" key="FileChooserDialogImpl" timestamp="1600896623428">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="697" y="122" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1598366740274" />
+    <state x="697" y="122" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1600896623428" />
     <state x="545" y="250" width="266" height="216" key="Github.ShareDialog" timestamp="1593490262169">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -803,11 +706,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1600540132261" />
-    <state x="413" y="94" key="Vcs.Push.Dialog.v2" timestamp="1596819747904">
+    <state x="413" y="94" key="Vcs.Push.Dialog.v2" timestamp="1600887685954">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="387" y="89" key="Vcs.Push.Dialog.v2/0.0.1280.689@0.0.1280.689" timestamp="1593740065871" />
-    <state x="413" y="94" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1596819747904" />
+    <state x="413" y="94" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1600887685954" />
     <state x="98" y="90" width="1182" height="544" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1594325148751">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

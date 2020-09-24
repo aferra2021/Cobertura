@@ -1,11 +1,9 @@
 from json.decoder import JSONArray
-
 from django.template import Template,Context
 from django.http import HttpResponse,Http404
 from django.shortcuts import render,redirect,reverse
 from django.template import RequestContext
 from django.views.generic import UpdateView
-from rest_social_auth.views import SocialSessionAuthView
 from .serializers import MyUserSerializer
 from django.contrib.auth.models import User
 from apps.Usuarios.models import Comentario,TransferenciaActual
@@ -36,9 +34,6 @@ def Blog2(request,result):
 
 def Blog(request):
     return redirect('comentar')
-
-class MySocialView(SocialSessionAuthView):
-      serializer_class = MyUserSerializer
 
 
 def TerminosCondiciones(request):

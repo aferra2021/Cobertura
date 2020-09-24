@@ -16,7 +16,6 @@ import json
 
 # Create your views here.
 from json.decoder import JSONArray
-import sweetify
 class Registrarse(CreateView):
     model = User
     form_class = RegistroFormUsuario

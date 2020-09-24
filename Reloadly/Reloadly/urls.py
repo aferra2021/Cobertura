@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url,include
-from .views import  inicio,inicioEN,MySocialView,Blog,Blog2,ServerManage0,TerminosCondiciones,bad_request,\
+from .views import  inicio,inicioEN,Blog,Blog2,ServerManage0,TerminosCondiciones,bad_request,\
     permission_denied,page_not_found,my_custom_error_view
 from django.urls import reverse_lazy
 
@@ -37,10 +37,9 @@ urlpatterns = [
     url(r'^terminosCondiciones/', TerminosCondiciones, name='terminosCondiciones'),
 
     #social
-    url(r'^social/',include('social_django.urls', namespace='social')),
+    #url(r'^social/',include('social_django.urls', namespace='social')),
     #url('', include('social.apps.django_app.urls', namespace='social')),#google
-    url(r'^api/login/', include('rest_social_auth.urls_session'),name='authFace'),
-    url(r'^api/login/social/$', MySocialView.as_view(), name='social_login'),
+    #url(r'^api/login/', include('rest_social_auth.urls_session'),name='authFace'),
     # apps
     url(r'cubacel/', include('apps.RecargasCubacel.urlRecargasCubacel')),  # lo de app1 es suseptible al cambio
     url(r'nauta/', include('apps.RecargasNauta.urlRecargasNauta')),  # lo de app2 es suseptible al cambio
